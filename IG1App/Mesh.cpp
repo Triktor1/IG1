@@ -129,7 +129,7 @@ Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 		x = r * cos(radians(alpha));
 		y = r * sin(radians(alpha));
 
-		//Añadimos vértice al vector
+		//Añadimos vértices y colores a los vectores correspondientes
 		poligono->vVertices.emplace_back(x, y, 0.0);
 		poligono->vColors.emplace_back(1.0, 1.0, 1.0, 1.0);
 
