@@ -112,3 +112,30 @@ Mesh::createRGBAxes(GLdouble l)
 
 	return mesh;
 }
+
+Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
+	Mesh* poligono = new Mesh();
+	poligono->mPrimitive = GL_LINE_LOOP;
+	poligono->mNumVertices = num;
+	poligono->vVertices.reserve(poligono->mNumVertices);
+
+	float alpha = 0,
+		alphaSum = 360.0 / num,
+		x = 0,
+		y = 0;
+
+	for (int i = 0; i < num; i++) {
+		//Cálculo de posiciones (x, y, 0) de los vértices del polígono regular
+		x = r * cos(radians(alpha));
+		y = r * sin(radians(alpha));
+
+		//Añadimos vértice al vector
+		poligono->vVertices.emplace_back(x, y, 0.0);
+		poligono->vColors.emplace_back(1.0, 1.0, 1.0, 1.0);
+
+		//Sumamos al ángulo
+		alpha += alphaSum;
+	}
+
+	return poligono;
+}
