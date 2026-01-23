@@ -7,9 +7,9 @@ using namespace glm;
 constexpr GLuint NONE = numeric_limits<GLuint>::max();
 
 Mesh::Mesh()
- : mVAO(NONE)
- , mVBO(NONE)
- , mCBO(NONE)
+	: mVAO(NONE)
+	, mVBO(NONE)
+	, mCBO(NONE)
 {
 }
 
@@ -21,11 +21,11 @@ Mesh::~Mesh()
 void
 Mesh::draw() const
 {
-	
+
 	glDrawArrays(
-	  mPrimitive,
-	  0,
-	  size()); // primitive graphic, first index and number of elements to be rendered
+		mPrimitive,
+		0,
+		size()); // primitive graphic, first index and number of elements to be rendered
 }
 
 void
@@ -119,10 +119,10 @@ Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	poligono->mNumVertices = num;
 	poligono->vVertices.reserve(poligono->mNumVertices);
 
-	float alpha = 0,
+	float alpha = 90,
 		alphaSum = 360.0 / num,
-		x = 0,
-		y = 0;
+		x,
+		y;
 
 	for (int i = 0; i < num; i++) {
 		//Cálculo de posiciones (x, y, 0) de los vértices del polígono regular
