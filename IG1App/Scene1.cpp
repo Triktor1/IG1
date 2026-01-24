@@ -2,7 +2,6 @@
 
 using namespace glm;
 
-
 void
 Scene1::init()
 {

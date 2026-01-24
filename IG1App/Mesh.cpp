@@ -121,8 +121,7 @@ Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 
 	float alpha = 90,
 		alphaSum = 360.0 / num,
-		x,
-		y;
+		x, y;
 
 	for (int i = 0; i < num; i++) {
 		//Cálculo de posiciones (x, y, 0) de los vértices del polígono regular
@@ -138,4 +137,31 @@ Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	}
 
 	return poligono;
+}
+
+Mesh* Mesh::generateRGBTriangle(GLdouble r) {
+	Mesh* triangle = new Mesh();
+	triangle->mPrimitive = GL_TRIANGLES;
+	triangle->mNumVertices = 3;
+	triangle->vVertices.reserve(triangle->mNumVertices);
+	float alpha = 90,
+		alphaSum = 120,
+		x, y;
+
+	glm::vec4 colors[3] = {
+		{1, 0, 0, 1},
+		{0, 1, 0, 1},
+		{0, 0, 1, 1}
+	};
+
+	for (int i = 0; i < 3; i++) {
+		x = r * cos(radians(alpha));
+		y = r * sin(radians(alpha));
+
+		triangle->vVertices.emplace_back(x, y, 0.0);
+		triangle->vColors.emplace_back(colors[i]);
+
+		alpha += alphaSum;
+	}
+	return triangle;
 }

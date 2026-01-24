@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Scene1.obj",
+            "outputs": [
+                "x64\\Debug\\Scene1.h_5651387BF7E7C883.ifc.dt.module.json",
+                "x64\\Debug\\Scene1.h_5651387BF7E7C883.ifc.dt.d.json",
+                "x64\\Debug\\Scene1.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene1.h",
+                    "source-path": "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\scene1.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
