@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Scene1.obj",
+            "outputs": [
+                "x64\\Debug\\Scene1.h_A06031E0D498F9C8.ifc.dt.module.json",
+                "x64\\Debug\\Scene1.h_A06031E0D498F9C8.ifc.dt.d.json",
+                "x64\\Debug\\Scene1.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\victo\\OneDrive\\Documents\\New Joker Forge\\Alfred\\IG1\\IG1\\IG1App\\Scene1.h",
+                    "source-path": "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\scene1.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
