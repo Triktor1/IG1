@@ -12,6 +12,7 @@ Scene2::init()
 	// Textures
 
 	// Graphics objects (entities) of the scene
+	gObjects.push_back(new RGBAxes(400.0));
 	gObjects.push_back(new RGBTriangle(300.0));
 }
 

@@ -12,7 +12,8 @@ Scene3::init()
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBRectangle(250,125));
+	gObjects.push_back(new RGBAxes(400.0));
+	gObjects.push_back(new RGBRectangle(600,275));
 }
 
 Scene3::~Scene3()
