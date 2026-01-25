@@ -172,22 +172,19 @@ Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h) {
 	Mesh* rect = new Mesh();
 	rect->mPrimitive = GL_TRIANGLE_STRIP;
-	rect->mNumVertices = 5;
+	rect->mNumVertices = 4;
 	rect->vVertices.reserve(rect->mNumVertices);
 	rect->vColors.reserve(rect->mNumVertices);
 	GLdouble width = w / 2.0, height = h / 2.0; //Para no repetir operaciones de division
 
 	// COLORES
-	rect->vVertices.emplace_back(-width, -height, 0.0);
-	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
-
 	rect->vVertices.emplace_back(-width, height, 0.0);
 	rect->vColors.emplace_back(1.0, 0.0, 0.0, 1.0); // Rojo
 
-	rect->vVertices.emplace_back(width, height, 0.0);
+	rect->vVertices.emplace_back(-width, -height, 0.0);
 	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
 
-	rect->vVertices.emplace_back(-width, -height, 0.0);
+	rect->vVertices.emplace_back(width, height, 0.0);
 	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
 
 	rect->vVertices.emplace_back(width, -height, 0.0);
