@@ -113,7 +113,8 @@ Mesh::createRGBAxes(GLdouble l)
 	return mesh;
 }
 
-Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
+Mesh* 
+Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	Mesh* poligono = new Mesh();
 	poligono->mPrimitive = GL_LINE_LOOP;
 	poligono->mNumVertices = num;
@@ -139,7 +140,8 @@ Mesh* Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	return poligono;
 }
 
-Mesh* Mesh::generateRGBTriangle(GLdouble r) {
+Mesh*
+Mesh::generateRGBTriangle(GLdouble r) {
 	Mesh* triangle = new Mesh();
 	triangle->mPrimitive = GL_TRIANGLES;
 	triangle->mNumVertices = 3;
@@ -164,4 +166,48 @@ Mesh* Mesh::generateRGBTriangle(GLdouble r) {
 		alpha += alphaSum;
 	}
 	return triangle;
+}
+
+Mesh*
+Mesh::generateRGBRectangle(GLdouble w, GLdouble h) {
+	Mesh* rect = new Mesh();
+	rect->mPrimitive = GL_TRIANGLE_STRIP;
+	rect->mNumVertices = 5;
+	rect->vVertices.reserve(rect->mNumVertices);
+	rect->vColors.reserve(rect->mNumVertices);
+	GLdouble width = w / 2.0, height = h / 2.0; //Para no repetir operaciones de division
+
+	// COLORES
+	rect->vVertices.emplace_back(-width, -height, 0.0);
+	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
+
+	rect->vVertices.emplace_back(-width, height, 0.0);
+	rect->vColors.emplace_back(1.0, 0.0, 0.0, 1.0); // Rojo
+
+	rect->vVertices.emplace_back(width, height, 0.0);
+	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
+
+	rect->vVertices.emplace_back(-width, -height, 0.0);
+	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
+
+	rect->vVertices.emplace_back(width, -height, 0.0);
+	rect->vColors.emplace_back(0.0, 0.0, 1.0, 1.0); // Azul
+
+	return rect;
+}
+
+Mesh*
+Mesh::generateRectangle(GLdouble w, GLdouble h) {
+	Mesh* rect = new Mesh();
+	rect->mPrimitive = GL_TRIANGLE_STRIP;
+	rect->mNumVertices = 4;
+	rect->vVertices.reserve(rect->mNumVertices);
+	GLdouble width = w / 2.0, height = h / 2.0;
+
+	rect->vVertices.emplace_back(-width, -height, 0.0);
+	rect->vVertices.emplace_back(-width, height, 0.0);
+	rect->vVertices.emplace_back(width, -height, 0.0);
+	rect->vVertices.emplace_back(width, height, 0.0);
+
+	return rect;
 }

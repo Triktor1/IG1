@@ -261,7 +261,9 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\cctype",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\ctype.h",
             "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\regularpolygon.h",
-            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\singlecolorentity.h"
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\singlecolorentity.h",
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbtriangle.h",
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbrectangle.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
