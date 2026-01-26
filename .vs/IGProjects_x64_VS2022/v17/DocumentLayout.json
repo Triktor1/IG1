@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\RGBRectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\RGBRectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\RGBRectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\RGBRectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\RGBTriangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -203,13 +203,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Scene2.cpp",
               "DocumentMoniker": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene2.cpp",
               "RelativeDocumentMoniker": "IG1App\\Scene2.cpp",
               "ToolTip": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\Scene2.cpp",
               "RelativeToolTip": "IG1App\\Scene2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-25T10:21:11.854Z",
               "EditorCaption": ""
@@ -241,13 +241,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "RGBRectangle.cpp",
               "DocumentMoniker": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\RGBRectangle.cpp",
               "RelativeDocumentMoniker": "IG1App\\RGBRectangle.cpp",
               "ToolTip": "C:\\Users\\yosoy\\OneDrive\\Documents\\GitHub\\IG1\\IG1\\IG1App\\RGBRectangle.cpp",
               "RelativeToolTip": "IG1App\\RGBRectangle.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-25T10:19:19.66Z",
               "EditorCaption": ""
