@@ -68,6 +68,7 @@ Scene::render(Camera const& cam) const
 {
 	cam.upload();
 
-	for (Abs_Entity* el : gObjects)
+	for (Abs_Entity* el : gObjects) {
 		el->render(cam.viewMat());
+	}
 }

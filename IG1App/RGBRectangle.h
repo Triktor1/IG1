@@ -5,4 +5,5 @@ class RGBRectangle :
 {
 public:
     RGBRectangle(GLdouble, GLdouble);
+    void render(const glm::mat4& modelViewMat) const override;
 };
