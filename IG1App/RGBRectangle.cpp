@@ -10,8 +10,8 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const {
 	if (mMesh != nullptr) {
 		glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
-		glPolygonMode(0x0404, 0x1B01); //GL_FRONT, GL_LINE, no funciona en uno de los dispositivos por alguna razón
-		glPolygonMode(0x0405, 0x1B02); //GL_BACK, GL_FILL, lo mismo, no funciona...
+		glPolygonMode(GL_FRONT, GL_LINE);
+		glPolygonMode(GL_BACK, GL_FILL);
 		upload(aMat);
 		mMesh->render();
 	}

@@ -141,7 +141,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 }
 
 Mesh*
-Mesh::generateRGBTriangle(GLdouble r) {
+Mesh::generateRGBTriangle(GLdouble r, GLdouble posX = 0, GLdouble posY = 0) {
 	Mesh* triangle = new Mesh();
 	triangle->mPrimitive = GL_TRIANGLES;
 	triangle->mNumVertices = 3;
@@ -157,8 +157,8 @@ Mesh::generateRGBTriangle(GLdouble r) {
 	};
 
 	for (int i = 0; i < 3; i++) {
-		x = r * cos(radians(alpha));
-		y = r * sin(radians(alpha));
+		x = r * cos(radians(alpha)) + posX;
+		y = r * sin(radians(alpha)) + posY;
 
 		triangle->vVertices.emplace_back(x, y, 0.0);
 		triangle->vColors.emplace_back(colors[i]);

@@ -28,6 +28,8 @@ public:
 	void load();
 	void unload();
 
+	virtual void update() {};
+
 protected:
 	Mesh* mMesh = nullptr; // the mesh
 	glm::mat4 mModelMat;  // modeling matrix

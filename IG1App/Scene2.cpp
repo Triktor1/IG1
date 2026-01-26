@@ -13,7 +13,7 @@ Scene2::init()
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
-	gObjects.push_back(new RGBTriangle(100.0));
+	gObjects.push_back(new RGBTriangle(100.0, 200.0, 0.0));
 	gObjects.push_back(new RGBRectangle(282, 282));
 	gObjects.push_back(new RegularPolygon(50, 200, vec4(1, 0, 1, 1)));
 }

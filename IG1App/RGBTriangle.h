@@ -5,4 +5,5 @@ class RGBTriangle :
 {
 public:
     RGBTriangle(GLdouble);
+    RGBTriangle(GLdouble, GLdouble, GLdouble);
 };

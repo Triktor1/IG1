@@ -29,6 +29,8 @@ public:
 	void load();
 	void unload();
 
+	virtual void update();
+
 protected:
 	void destroy();
 	void setGL();
