@@ -201,10 +201,10 @@ Mesh::generateRectangle(GLdouble w, GLdouble h) {
 	rect->vVertices.reserve(rect->mNumVertices);
 	GLdouble width = w / 2.0, height = h / 2.0;
 
-	rect->vVertices.emplace_back(-width, -height, 0.0);
 	rect->vVertices.emplace_back(-width, height, 0.0);
-	rect->vVertices.emplace_back(width, -height, 0.0);
+	rect->vVertices.emplace_back(-width, -height, 0.0);
 	rect->vVertices.emplace_back(width, height, 0.0);
+	rect->vVertices.emplace_back(width, -height, 0.0);
 
 	return rect;
 }
