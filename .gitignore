@@ -14,4 +14,5 @@
 *.tlog
 *.recipe
 *.exe
+*.vs
 .vs/IGProjects_x64_VS2022/v17/.suo
