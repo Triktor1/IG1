@@ -10,9 +10,15 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const {
 	if (mMesh != nullptr) {
 		glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
-		glPolygonMode(GL_FRONT, GL_LINE);
-		glPolygonMode(GL_BACK, GL_FILL);
 		upload(aMat);
+
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();
+		glCullFace(GL_FRONT);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		mMesh->render();
+		glDisable(GL_CULL_FACE);
 	}
 }
