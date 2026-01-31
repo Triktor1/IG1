@@ -9,7 +9,7 @@ IG1App IG1App::s_ig1app; // default constructor (constructor with no parameters)
 
 // Print OpenGL errors and warnings
 void GLAPIENTRY debugCallback(GLenum source, GLenum type, GLuint id, GLenum severity,
-                   GLsizei length, const GLchar* message, const void* userParam)
+	GLsizei length, const GLchar* message, const void* userParam)
 {
 	const char* prefix = (type == GL_DEBUG_TYPE_ERROR)
 		? "\x1b[31m[ERROR]\x1b[0m "
@@ -61,7 +61,7 @@ IG1App::init()
 	mScenes.push_back(new Scene3);
 
 	mCamera->set2D();
-	for (Scene* s: mScenes) s->init();
+	for (Scene* s : mScenes) s->init();
 	mScenes[mCurrentScene]->load();
 }
 
@@ -91,7 +91,7 @@ IG1App::iniWinOpenGL()
 	if (GLenum err = glewInit(); err != GLEW_OK) {
 		glfwTerminate();
 		throw std::logic_error("Error while loading extensions: "s +
-		                       reinterpret_cast<const char*>(glewGetErrorString(err)));
+			reinterpret_cast<const char*>(glewGetErrorString(err)));
 	}
 
 	// Callback registration
@@ -154,28 +154,28 @@ IG1App::key(unsigned int key)
 	bool need_redisplay = true;
 
 	switch (key) {
-		case '+':
-			mCamera->setScale(+0.01); // zoom in  (increases the scale)
-			break;
-		case '-':
-			mCamera->setScale(-0.01); // zoom out (decreases the scale)
-			break;
-		case 'l':
-			mCamera->set3D();
-			break;
-		case 'o':
-			mCamera->set2D();
-			break;
-		case 'u':
-			mScenes[mCurrentScene]->update();
-			break;
-		default:
-			if (key >= '0' && key <= '9') {
-				if (changeScene(key - '0')) break;
-				cout << "[NOTE] There is no scene " << char(key) << ".\n";
-			}
-			need_redisplay = false;
-			break;
+	case '+':
+		mCamera->setScale(+0.01); // zoom in  (increases the scale)
+		break;
+	case '-':
+		mCamera->setScale(-0.01); // zoom out (decreases the scale)
+		break;
+	case 'l':
+		mCamera->set3D();
+		break;
+	case 'o':
+		mCamera->set2D();
+		break;
+	case 'u':
+		mScenes[mCurrentScene]->update();
+		break;
+	default:
+		if (key >= '0' && key <= '9') {
+			if (changeScene(key - '0')) break;
+			cout << "[NOTE] There is no scene " << char(key) << ".\n";
+		}
+		need_redisplay = false;
+		break;
 	} // switch
 
 	if (need_redisplay)
@@ -194,30 +194,30 @@ IG1App::specialkey(int key, int scancode, int action, int mods)
 	// Handle keyboard input
 	// (key reference: https://www.glfw.org/docs/3.4/group__keys.html)
 	switch (key) {
-		case GLFW_KEY_ESCAPE:                     // Escape key
-			glfwSetWindowShouldClose(mWindow, true); // stops main loop
-			break;
-		case GLFW_KEY_RIGHT:
-			if (mods == GLFW_MOD_CONTROL)
-				mCamera->pitch(-1); // rotates -1 on the X axis
-			else
-				mCamera->pitch(1); // rotates 1 on the X axis
-			break;
-		case GLFW_KEY_LEFT:
-			if (mods == GLFW_MOD_CONTROL)
-				mCamera->yaw(1); // rotates 1 on the Y axis
-			else
-				mCamera->yaw(-1); // rotate -1 on the Y axis
-			break;
-		case GLFW_KEY_UP:
-			mCamera->roll(1); // rotates 1 on the Z axis
-			break;
-		case GLFW_KEY_DOWN:
-			mCamera->roll(-1); // rotates -1 on the Z axis
-			break;
-		default:
-			need_redisplay = false;
-			break;
+	case GLFW_KEY_ESCAPE:                     // Escape key
+		glfwSetWindowShouldClose(mWindow, true); // stops main loop
+		break;
+	case GLFW_KEY_RIGHT:
+		if (mods == GLFW_MOD_CONTROL)
+			mCamera->pitch(-1); // rotates -1 on the X axis
+		else
+			mCamera->pitch(1); // rotates 1 on the X axis
+		break;
+	case GLFW_KEY_LEFT:
+		if (mods == GLFW_MOD_CONTROL)
+			mCamera->yaw(1); // rotates 1 on the Y axis
+		else
+			mCamera->yaw(-1); // rotate -1 on the Y axis
+		break;
+	case GLFW_KEY_UP:
+		mCamera->roll(1); // rotates 1 on the Z axis
+		break;
+	case GLFW_KEY_DOWN:
+		mCamera->roll(-1); // rotates -1 on the Z axis
+		break;
+	default:
+		need_redisplay = false;
+		break;
 	} // switch
 
 	if (need_redisplay)
