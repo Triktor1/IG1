@@ -4,7 +4,8 @@ class RGBTriangle :
     public EntityWithColors
 {
 private:
-    GLdouble x = 0, y = 0, r = 100, alpha = 0;
+    GLdouble x = 0, y = 0, r = 100;
+    GLfloat alphaTriangle = 0.0f, alpha = 0.0f;
 public:
     RGBTriangle(GLdouble, GLdouble, GLdouble);
 
