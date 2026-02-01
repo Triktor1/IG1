@@ -32,6 +32,8 @@ public:
 	bool changeScene(size_t sceneNr);
 
 	void run();   // the main event processing loop
+	void update();
+
 	void close(); // the application
 
 protected:
@@ -65,6 +67,10 @@ protected:
 	GLFWwindow* mWindow = nullptr; // window's handle
 	int mWinW = 800;               // window's width
 	int mWinH = 600;               // window's height
+
+	static constexpr double FRAME_DURATION = 1.0 / 60.0; //60 fps
+	bool mUpdateEnabled = false; //Se activa y desactiva con la U para que se actualize o no
+	double mNextUpdate = 0.0; //comprueba cuando es el siguiente cambio de frame
 };
 
 inline Viewport const&

@@ -30,19 +30,36 @@ IG1App::run() // enters the main event processing loop
 	if (mWindow == 0) // if not intilialized
 		init();
 
+	mNextUpdate = glfwGetTime() + FRAME_DURATION;
+
 	// IG1App main loop
 	while (!glfwWindowShouldClose(mWindow)) {
 		// Redisplay the window if needed
+		
+		if (mUpdateEnabled && glfwGetTime() >= mNextUpdate) {
+			update();
+			mNextUpdate += FRAME_DURATION;
+		}
+
 		if (mNeedsRedisplay) {
 			display();
 			mNeedsRedisplay = false;
 		}
 
-		// Stop and wait for new events
-		glfwWaitEvents();
+		// Stop and wait for new events (glfwWaitEvents();)
+
+		// No espera a que suceda un evento. Comprueba si hay y entonces lo procesa. 
+		glfwPollEvents();
 	}
 
 	destroy();
+}
+
+void 
+IG1App::update()
+{
+	mScenes[mCurrentScene]->update();
+	mNeedsRedisplay = true;
 }
 
 void
@@ -167,7 +184,7 @@ IG1App::key(unsigned int key)
 		mCamera->set2D();
 		break;
 	case 'u':
-		mScenes[mCurrentScene]->update();
+		mUpdateEnabled = !mUpdateEnabled;
 		break;
 	default:
 		if (key >= '0' && key <= '9') {
