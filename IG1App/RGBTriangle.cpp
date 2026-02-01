@@ -1,6 +1,6 @@
 #include "RGBTriangle.h"
 
-RGBTriangle::RGBTriangle(GLdouble r, GLdouble x = 0, GLdouble y = 0) : EntityWithColors()
+RGBTriangle::RGBTriangle(GLdouble r, GLdouble x = 0, GLdouble y = 0) : EntityWithColors(), x(x), y(y), r(r)
 {
 	mMesh = Mesh::generateRGBTriangle(r, 0, 0);
 	mModelMat = glm::translate(mModelMat, glm::vec3(x, y, 0));
@@ -35,6 +35,6 @@ void RGBTriangle::update() {
 	alpha += 2.0;
 
 	mModelMat = glm::mat4(1.0f);
-	mModelMat = glm::translate(mModelMat, glm::vec3(r * cos(glm::radians(alpha)) + x, r * sin(glm::radians(alpha)) + y, 0.0));
+	mModelMat = glm::translate(mModelMat, glm::vec3(200 * cos(glm::radians(alpha)), 200 * sin(glm::radians(alpha)), 0.0));
 	mModelMat = glm::rotate(mModelMat, glm::radians(alphaTriangle), glm::vec3(0.0, 0.0, 1.0));
 }
