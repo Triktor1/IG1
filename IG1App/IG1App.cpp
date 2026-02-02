@@ -35,10 +35,10 @@ IG1App::run() // enters the main event processing loop
 	// IG1App main loop
 	while (!glfwWindowShouldClose(mWindow)) {
 		// Redisplay the window if needed
-		
 		if (mUpdateEnabled && glfwGetTime() >= mNextUpdate) {
 			update();
-			mNextUpdate += FRAME_DURATION;
+			mNextUpdate = glfwGetTime() + FRAME_DURATION;
+			mNeedsRedisplay = true;
 		}
 
 		if (mNeedsRedisplay) {
@@ -47,15 +47,15 @@ IG1App::run() // enters the main event processing loop
 		}
 
 		// Stop and wait for new events (glfwWaitEvents();)
-
-		// No espera a que suceda un evento. Comprueba si hay y entonces lo procesa. 
-		glfwPollEvents();
+		mUpdateEnabled ?
+			glfwWaitEventsTimeout(mNextUpdate - glfwGetTime()) :
+			glfwWaitEvents();
 	}
 
 	destroy();
 }
 
-void 
+void
 IG1App::update()
 {
 	mScenes[mCurrentScene]->update();
