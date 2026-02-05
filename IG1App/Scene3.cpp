@@ -13,7 +13,7 @@ Scene3::init()
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
-	gObjects.push_back(new RGBRectangle(600,275));
+	gObjects.push_back(new Cube(200));
 }
 
 Scene3::~Scene3()

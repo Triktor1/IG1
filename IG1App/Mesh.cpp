@@ -208,3 +208,67 @@ Mesh::generateRectangle(GLdouble w, GLdouble h) {
 
 	return rect;
 }
+
+Mesh*
+Mesh::generateCube(GLdouble l) {
+	Mesh* cube = new Mesh();
+	cube->mPrimitive = GL_TRIANGLES;
+	cube->mNumVertices = 36;
+	cube->vVertices.reserve(cube->mNumVertices);
+
+	//CARA 1
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, l, l);
+
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(l, l, l);
+	cube->vVertices.emplace_back(-l, l, l);
+
+	//CARA 2
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	//CARA 3
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(-l, l, l);
+
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	//CARA 4
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+	cube->vVertices.emplace_back(l, l, l);
+
+	//CARA 5
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(l, l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	//CARA 6
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, l);
+
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(-l, -l, l);
+
+	return cube;
+}
