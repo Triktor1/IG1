@@ -31,7 +31,5 @@ void RGBTriangle::render(const glm::mat4& modelViewMat) const {
 }
 
 void RGBTriangle::update() {
-	alpha = 5.0;
-
 	mModelMat = glm::rotate(glm::mat4(1), glm::radians(alpha), glm::vec3(0.0, 0.0, 1.0)) * glm::rotate(mModelMat, glm::radians(-3*alpha), glm::vec3(0.0, 0.0, 1.0));
 }
