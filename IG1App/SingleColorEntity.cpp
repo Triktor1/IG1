@@ -13,6 +13,7 @@ void SingleColorEntity::render(const glm::mat4& modelViewMat) const {
 		mShader->setUniform("color", mColor);
 		upload(aMat);
 		mMesh->render();
+		mShader->setUniform("color", glm::vec4(0, 0, 0, 1));
 	}
 }
 
