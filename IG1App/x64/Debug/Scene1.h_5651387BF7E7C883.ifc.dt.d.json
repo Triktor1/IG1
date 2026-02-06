@@ -276,7 +276,9 @@
             "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\regularpolygon.h",
             "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\singlecolorentity.h",
             "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\rgbtriangle.h",
-            "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\rgbrectangle.h"
+            "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\rgbrectangle.h",
+            "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\cube.h",
+            "c:\\users\\yosoy\\onedrive\\documents\\github\\ig1\\ig1\\ig1app\\rgbcube.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

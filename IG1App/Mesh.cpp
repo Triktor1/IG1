@@ -169,6 +169,22 @@ Mesh::generateRGBTriangle(GLdouble r, GLdouble posX = 0, GLdouble posY = 0) {
 }
 
 Mesh*
+Mesh::generateRectangle(GLdouble w, GLdouble h) {
+	Mesh* rect = new Mesh();
+	rect->mPrimitive = GL_TRIANGLE_STRIP;
+	rect->mNumVertices = 4;
+	rect->vVertices.reserve(rect->mNumVertices);
+	GLdouble width = w / 2.0, height = h / 2.0;
+
+	rect->vVertices.emplace_back(-width, height, 0.0);
+	rect->vVertices.emplace_back(-width, -height, 0.0);
+	rect->vVertices.emplace_back(width, height, 0.0);
+	rect->vVertices.emplace_back(width, -height, 0.0);
+
+	return rect;
+}
+
+Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h) {
 	Mesh* rect = new Mesh();
 	rect->mPrimitive = GL_TRIANGLE_STRIP;
@@ -194,27 +210,13 @@ Mesh::generateRGBRectangle(GLdouble w, GLdouble h) {
 }
 
 Mesh*
-Mesh::generateRectangle(GLdouble w, GLdouble h) {
-	Mesh* rect = new Mesh();
-	rect->mPrimitive = GL_TRIANGLE_STRIP;
-	rect->mNumVertices = 4;
-	rect->vVertices.reserve(rect->mNumVertices);
-	GLdouble width = w / 2.0, height = h / 2.0;
-
-	rect->vVertices.emplace_back(-width, height, 0.0);
-	rect->vVertices.emplace_back(-width, -height, 0.0);
-	rect->vVertices.emplace_back(width, height, 0.0);
-	rect->vVertices.emplace_back(width, -height, 0.0);
-
-	return rect;
-}
-
-Mesh*
-Mesh::generateCube(GLdouble l) {
+Mesh::generateCube(GLdouble length) {
 	Mesh* cube = new Mesh();
 	cube->mPrimitive = GL_TRIANGLES;
 	cube->mNumVertices = 36;
 	cube->vVertices.reserve(cube->mNumVertices);
+
+	GLdouble l = length / 2;
 
 	//CARA 1
 	cube->vVertices.emplace_back(-l, -l, l);
@@ -269,6 +271,88 @@ Mesh::generateCube(GLdouble l) {
 	cube->vVertices.emplace_back(-l, -l, -l);
 	cube->vVertices.emplace_back(l, -l, l);
 	cube->vVertices.emplace_back(-l, -l, l);
+
+	return cube;
+}
+
+Mesh* 
+Mesh::generateRGBCubeTriangles(GLdouble length) {
+	Mesh* cube = new Mesh();
+	cube->mPrimitive = GL_TRIANGLES;
+	cube->mNumVertices = 36;
+	cube->vVertices.reserve(cube->mNumVertices);
+	cube->vColors.reserve(cube->mNumVertices);
+
+	GLdouble l = length / 2;
+
+	//CARA 1
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, l, l);
+
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(l, l, l);
+	cube->vVertices.emplace_back(-l, l, l);
+
+	//CARA 2
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	//Caras 1 y 2 son rojas
+	for(int i = 0; i < 12; i++) {
+		cube->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
+	}
+
+	//CARA 3
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, -l, l);
+	cube->vVertices.emplace_back(-l, l, l);
+
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	//CARA 4
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+	cube->vVertices.emplace_back(l, l, l);
+
+	//Caras 3 y 4 son verdes
+	for (int i = 0; i < 12; i++) {
+		cube->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+	}
+
+	//CARA 5
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(l, l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+
+	cube->vVertices.emplace_back(-l, l, l);
+	cube->vVertices.emplace_back(l, l, -l);
+	cube->vVertices.emplace_back(-l, l, -l);
+
+	//CARA 6
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, l);
+
+	cube->vVertices.emplace_back(-l, -l, -l);
+	cube->vVertices.emplace_back(l, -l, l);
+	cube->vVertices.emplace_back(-l, -l, l);
+
+	//Caras 5 y 6 son azules
+	for (int i = 0; i < 12; i++) {
+		cube->vColors.emplace_back(0.0, 0.0, 1.0, 1.0);
+	}
 
 	return cube;
 }
