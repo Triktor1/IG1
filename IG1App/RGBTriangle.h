@@ -5,7 +5,7 @@ class RGBTriangle :
 {
 private:
     GLdouble x = 0, y = 0, r = 100;
-    GLfloat alphaTriangle = 0.0f, alpha = 0.0f;
+    GLfloat alpha = 0.0f;
 public:
     RGBTriangle(GLdouble, GLdouble, GLdouble);
 
