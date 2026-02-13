@@ -276,7 +276,9 @@
             "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\regularpolygon.h",
             "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\singlecolorentity.h",
             "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbtriangle.h",
-            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbrectangle.h"
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbrectangle.h",
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\cube.h",
+            "c:\\users\\victo\\onedrive\\documents\\new joker forge\\alfred\\ig1\\ig1\\ig1app\\rgbcube.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
