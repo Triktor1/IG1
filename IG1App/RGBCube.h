@@ -8,4 +8,5 @@ private:
 public:
     RGBCube(GLdouble l);
     void update();
+	void moveRGBCube(GLdouble x, GLdouble y, GLdouble z);
 };

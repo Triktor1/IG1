@@ -4,7 +4,6 @@
 RGBCube::RGBCube(GLdouble l) : EntityWithColors()
 {
 	mMesh = Mesh::generateRGBCubeTriangles(l);
-	mModelMat = glm::translate(mModelMat, glm::vec3(l/2, l/2, -l/2));
 }
 
 void RGBCube::update() {
@@ -26,4 +25,9 @@ void RGBCube::update() {
 		alphaAct = 0;
 		eje = (eje+1) % 3;
 	}
+}
+
+void RGBCube::moveRGBCube(GLdouble x, GLdouble y, GLdouble z) {
+	mModelMat = glm::translate(mModelMat, glm::vec3(x, y, z));
+
 }

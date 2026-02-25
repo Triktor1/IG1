@@ -10,4 +10,4 @@ public:
 
     void update() override;
     void moveRGBTriangle(GLdouble x, GLdouble y, GLdouble z);
-};
+};  

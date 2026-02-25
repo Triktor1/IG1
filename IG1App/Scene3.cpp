@@ -5,6 +5,13 @@ using namespace glm;
 void
 Scene3::init()
 {
+	//Variables del RGBCube
+	GLdouble l = 200.0;
+
 	Scene::init();
-	gObjects.push_back(new RGBCube(200));
+	RGBCube* cube = new RGBCube(l);
+	cube->moveRGBCube(l / 2, l / 2, -l / 2);
+	gObjects.push_back(cube);
+
+
 }
