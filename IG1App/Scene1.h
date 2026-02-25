@@ -4,7 +4,7 @@ class Scene1 :
 {
 public:
     //Scene1() = default;
-    virtual ~Scene1();
+    virtual ~Scene1() = default;
 
     void init() override;
 private:

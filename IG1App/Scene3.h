@@ -3,8 +3,8 @@ class Scene3 :
     public Scene
 {
 public:
-    //Scene2() = default;
-    virtual ~Scene3();
+    //Scene3() = default;
+    virtual ~Scene3() = default;
 
     void init() override;
 private:
