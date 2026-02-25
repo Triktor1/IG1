@@ -8,6 +8,5 @@ private:
 public:
     RGBTriangle(GLdouble, GLdouble, GLdouble);
 
-    void render(const glm::mat4& modelViewMat) const;
     void update() override;
 };
