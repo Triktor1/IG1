@@ -3,10 +3,11 @@ class RGBTriangle :
     public EntityWithColors
 {
 private:
-    GLdouble x = 0, y = 0, r = 100;
+    GLdouble r = 100;
     GLfloat alpha = 5.0f;
 public:
-    RGBTriangle(GLdouble, GLdouble, GLdouble);
+    RGBTriangle(GLdouble);
 
     void update() override;
+    void moveRGBTriangle(GLdouble x, GLdouble y, GLdouble z);
 };
