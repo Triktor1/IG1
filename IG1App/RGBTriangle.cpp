@@ -11,5 +11,4 @@ void RGBTriangle::update() {
 
 void RGBTriangle::moveRGBTriangle(GLdouble x, GLdouble y, GLdouble z) {
 	mModelMat = glm::translate(mModelMat, glm::vec3(x, y, z));
-
 }
