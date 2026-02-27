@@ -11,8 +11,8 @@ void Ground::render(const glm::mat4& modelViewMat) const {
 	if (mMesh != nullptr) {
 		glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
-		mModelMat = glm::rotate(glm::mat4(1), glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
-
+		aMat = glm::rotate(aMat, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
 		upload(aMat);
+		mMesh->render();
 	}
 }

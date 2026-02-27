@@ -11,6 +11,7 @@
 #include "RGBRectangle.h"
 #include "Cube.h"
 #include "RGBCube.h"
+#include "Ground.h"
 
 #include <vector>
 
