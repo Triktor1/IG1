@@ -6,6 +6,6 @@ class Ground :
     public EntityWithTexture
 {
 public:
-    Ground(GLdouble, GLdouble, Texture*);
+    Ground(GLdouble, GLdouble, GLuint, GLuint, Texture*);
 };
 

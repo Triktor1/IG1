@@ -13,7 +13,7 @@ Scene4::init()
 	Texture* tex = new Texture();
 	tex->load("../assets/images/baldosaC.png", 255);
 	gTextures.push_back(tex);
-	gObjects.push_back(new Ground(l * 2, l * 2, tex));
+	gObjects.push_back(new Ground(l * 2, l * 2, 4, 4, tex));
 
 	glm::mat4 groundRot = {
 		{1, 0, 0, 0},

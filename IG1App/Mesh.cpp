@@ -374,16 +374,16 @@ Mesh::generateRGBCubeTriangles(GLdouble length) {
 	return cube;
 }
 
-Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h) {
+Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh) {
 	Mesh* rect = Mesh::generateRectangle(w, h);
 	rect->vTexCoords.reserve(rect->mNumVertices);
 
 	GLdouble width = w / 2.0, height = h / 2.0;
 
-	rect->vTexCoords.emplace_back(0.0, 1.0);
+	rect->vTexCoords.emplace_back(0.0, 1.0*rh);
 	rect->vTexCoords.emplace_back(0.0, 0.0);
-	rect->vTexCoords.emplace_back(1.0, 1.0);
-	rect->vTexCoords.emplace_back(1.0, 0.0);
+	rect->vTexCoords.emplace_back(1.0*rw, 1.0*rh);
+	rect->vTexCoords.emplace_back(1.0*rw, 0.0);
 
 	return rect;
 }

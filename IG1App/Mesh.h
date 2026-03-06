@@ -17,7 +17,7 @@ public:
 	static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);
 	static Mesh* generateCube(GLdouble l);
 	static Mesh* generateRGBCubeTriangles(GLdouble length);
-	static Mesh* generateRectangleTexCor(GLdouble w, GLdouble h);
+	static Mesh* generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh);
 
 	Mesh();
 	virtual ~Mesh();
