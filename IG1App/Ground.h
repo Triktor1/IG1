@@ -1,11 +1,11 @@
 #pragma once
-#include "Entity.h"
+#include "EntityWithTexture.h"
+#include "Texture.h"
 
 class Ground :
-    public EntityWithColors
+    public EntityWithTexture
 {
 public:
-    Ground(GLdouble, GLdouble);
-    void render(const glm::mat4& modelViewMat) const override;
+    Ground(GLdouble, GLdouble, Texture*);
 };
 

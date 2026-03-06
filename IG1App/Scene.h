@@ -40,6 +40,7 @@ protected:
 	void resetGL();
 
 	std::vector<Abs_Entity*> gObjects; // Entities (graphic objects) of the scene
+	std::vector<Texture*> gTextures; // Textures of the scene
 };
 
 #endif //_H_Scene_H_

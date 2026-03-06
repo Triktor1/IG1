@@ -10,6 +10,7 @@ Mesh::Mesh()
 	: mVAO(NONE)
 	, mVBO(NONE)
 	, mCBO(NONE)
+	, mTCO(NONE)
 {
 }
 
@@ -51,6 +52,17 @@ Mesh::load()
 			glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(vec4), nullptr);
 			glEnableVertexAttribArray(1);
 		}
+
+		if (vTexCoords.size() > 0) {
+			glGenBuffers(1, &mTCO);
+			glBindBuffer(GL_ARRAY_BUFFER, mTCO);
+			glBufferData(GL_ARRAY_BUFFER,
+				vTexCoords.size() * sizeof(vec2),
+				vTexCoords.data(), GL_STATIC_DRAW);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
+				sizeof(vec2), nullptr);
+			glEnableVertexAttribArray(2);
+		}
 	}
 }
 
@@ -66,6 +78,11 @@ Mesh::unload()
 		if (mCBO != NONE) {
 			glDeleteBuffers(1, &mCBO);
 			mCBO = NONE;
+		}
+
+		if (mTCO != NONE) {
+			glDeleteBuffers(1, &mTCO);
+			mTCO = NONE;
 		}
 	}
 }
@@ -113,7 +130,7 @@ Mesh::createRGBAxes(GLdouble l)
 	return mesh;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	Mesh* poligono = new Mesh();
 	poligono->mPrimitive = GL_LINE_LOOP;
@@ -275,7 +292,7 @@ Mesh::generateCube(GLdouble length) {
 	return cube;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateRGBCubeTriangles(GLdouble length) {
 	Mesh* cube = new Mesh();
 	cube->mPrimitive = GL_TRIANGLES;
@@ -304,7 +321,7 @@ Mesh::generateRGBCubeTriangles(GLdouble length) {
 	cube->vVertices.emplace_back(l, l, -l);
 
 	//Caras 1 y 2 son rojas
-	for(int i = 0; i < 12; i++) {
+	for (int i = 0; i < 12; i++) {
 		cube->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
 	}
 
@@ -355,4 +372,18 @@ Mesh::generateRGBCubeTriangles(GLdouble length) {
 	}
 
 	return cube;
+}
+
+Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h) {
+	Mesh* rect = Mesh::generateRectangle(w, h);
+	rect->vTexCoords.reserve(rect->mNumVertices);
+
+	GLdouble width = w / 2.0, height = h / 2.0;
+
+	rect->vTexCoords.emplace_back(0.0, 1.0);
+	rect->vTexCoords.emplace_back(0.0, 0.0);
+	rect->vTexCoords.emplace_back(1.0, 1.0);
+	rect->vTexCoords.emplace_back(1.0, 0.0);
+
+	return rect;
 }
