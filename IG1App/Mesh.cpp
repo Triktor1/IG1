@@ -387,3 +387,32 @@ Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh
 
 	return rect;
 }
+
+Mesh* Mesh::generateBoxOutline(GLdouble length) {
+	Mesh* box = new Mesh();
+	box->mPrimitive = GL_TRIANGLE_STRIP;
+	box->mNumVertices = 10;
+	box->vVertices.reserve(box->mNumVertices);
+
+	GLdouble l = length / 2;
+
+	//CARA 1
+	box->vVertices.emplace_back(-l, -l, l);
+	box->vVertices.emplace_back(l, -l, l);
+	box->vVertices.emplace_back(l, l, l);
+	box->vVertices.emplace_back(-l, l, l);
+
+	//CARA 2
+	box->vVertices.emplace_back(-l, l, -l);
+	box->vVertices.emplace_back(-l, -l, -l);
+
+	//CARA 3
+	box->vVertices.emplace_back(l, l, -l);
+	box->vVertices.emplace_back(l, -l, -l);
+
+	//CARA 4
+	box->vVertices.emplace_back(l, l, l);
+	box->vVertices.emplace_back(l, -l, l);
+
+	return box;
+}

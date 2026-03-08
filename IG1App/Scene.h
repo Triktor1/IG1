@@ -12,6 +12,7 @@
 #include "Cube.h"
 #include "RGBCube.h"
 #include "Ground.h"
+#include "BoxOutline.h"
 
 #include <vector>
 
