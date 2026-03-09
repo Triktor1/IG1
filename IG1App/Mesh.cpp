@@ -446,3 +446,34 @@ Mesh::generateBoxOutlineTexCor(GLdouble length) {
 
 	return mesh;
 }
+
+Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
+	Mesh* star = new Mesh();
+	star->mPrimitive = GL_TRIANGLE_FAN;
+	star->mNumVertices = 1 + np * 2;
+	star->vVertices.reserve(star->mNumVertices);
+
+	star->vVertices.emplace_back(0, 0, 0);
+
+	float alpha = 90,
+		alphaSum = 360.0 / star->mNumVertices-1,
+		x, y,
+		ri = re / 2;
+
+	bool ext = true;
+	for (int i = 0; i < star->mNumVertices - 1; i++) {
+		if (ext) {
+			x = re * cos(radians(alpha));
+			y = re * sin(radians(alpha));
+			ext = false;
+		}
+		else {
+			x = ri * cos(radians(alpha));
+			y = ri * sin(radians(alpha));
+			ext = true;
+		}
+		star->vVertices.emplace_back(x, y, h);
+		alpha += alphaSum;
+	}
+	return star;
+}
