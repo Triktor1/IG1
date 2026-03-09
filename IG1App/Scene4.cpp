@@ -23,5 +23,5 @@ Scene4::init()
 	};
 	gObjects.back()->setModelMat(groundRot);
 
-	//gObjects.push_back(new BoxOutline(200));
+	gObjects.push_back(new BoxOutline(200));
 }
