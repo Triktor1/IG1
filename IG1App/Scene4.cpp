@@ -29,7 +29,7 @@ Scene4::init()
 	texBox2->load("../assets/images/container.jpg", 255);
 	gTextures.push_back(texBox1);
 	gTextures.push_back(texBox2);
-	gObjects.push_back(new BoxOutline(200, texBox1, texBox2));
+	gObjects.push_back(new Box(200, texBox1, texBox2));
 
 	gObjects.push_back(new Star3D(140, 8, 180));
 }

@@ -13,6 +13,7 @@
 #include "RGBCube.h"
 #include "Ground.h"
 #include "BoxOutline.h"
+#include "Box.h"
 #include "Star3D.h"
 
 #include <vector>
