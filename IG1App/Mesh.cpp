@@ -465,13 +465,12 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 		if (ext) {
 			x = re * cos(radians(alpha));
 			y = re * sin(radians(alpha));
-			ext = false;
 		}
 		else {
 			x = ri * cos(radians(alpha));
 			y = ri * sin(radians(alpha));
-			ext = true;
 		}
+		ext = !ext;
 		star->vVertices.emplace_back(x, y, h);
 		alpha += alphaSum;
 	}
