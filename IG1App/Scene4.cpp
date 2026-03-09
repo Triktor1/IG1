@@ -23,8 +23,11 @@ Scene4::init()
 	};
 	gObjects.back()->setModelMat(groundRot);
 
-	Texture* tex2 = new Texture();
-	tex2->load("../assets/images/papelE.png", 255);
-	gTextures.push_back(tex2);
-	gObjects.push_back(new BoxOutline(200, tex2));
+	Texture* texBox1 = new Texture();
+	Texture* texBox2 = new Texture();
+	texBox1->load("../assets/images/papelE.png", 255);
+	texBox2->load("../assets/images/container.jpg", 255);
+	gTextures.push_back(texBox1);
+	gTextures.push_back(texBox2);
+	gObjects.push_back(new BoxOutline(200, texBox1, texBox2));
 }
