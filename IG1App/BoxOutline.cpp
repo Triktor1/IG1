@@ -1,7 +1,8 @@
 #include "BoxOutline.h"
 
 BoxOutline::
-BoxOutline(GLdouble l): SingleColorEntity(glm::vec4(0.0, 0.0, 0.0, 1.0))
+BoxOutline(GLdouble l, Texture* tex): EntityWithTexture()
 {
-	mMesh = Mesh::generateBoxOutline(l);
+	mMesh = Mesh::generateBoxOutlineTexCor(l);
+	setTexture(tex);
 }

@@ -23,5 +23,8 @@ Scene4::init()
 	};
 	gObjects.back()->setModelMat(groundRot);
 
-	gObjects.push_back(new BoxOutline(200));
+	Texture* tex2 = new Texture();
+	tex2->load("../assets/images/papelE.png", 255);
+	gTextures.push_back(tex2);
+	gObjects.push_back(new BoxOutline(200, tex2));
 }

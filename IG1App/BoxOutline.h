@@ -1,8 +1,10 @@
-#include "SingleColorEntity.h"
+#include "EntityWithTexture.h"
+#include "Texture.h"
+
 class BoxOutline :
-	public SingleColorEntity
+	public EntityWithTexture
 {
 public:
-	BoxOutline(GLdouble l);
+	BoxOutline(GLdouble l, Texture* tex);
 };
 

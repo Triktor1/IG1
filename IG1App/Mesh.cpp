@@ -374,7 +374,8 @@ Mesh::generateRGBCubeTriangles(GLdouble length) {
 	return cube;
 }
 
-Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh) {
+Mesh* 
+Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh) {
 	Mesh* rect = Mesh::generateRectangle(w, h);
 	rect->vTexCoords.reserve(rect->mNumVertices);
 
@@ -388,7 +389,8 @@ Mesh* Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh
 	return rect;
 }
 
-Mesh* Mesh::generateBoxOutline(GLdouble length) {
+Mesh* 
+Mesh::generateBoxOutline(GLdouble length) {
 	Mesh* box = new Mesh();
 	box->mPrimitive = GL_TRIANGLE_STRIP;
 	box->mNumVertices = 10;
@@ -415,4 +417,32 @@ Mesh* Mesh::generateBoxOutline(GLdouble length) {
 	box->vVertices.emplace_back(-l, -l, l);
 
 	return box;
+}
+
+Mesh* 
+Mesh::generateBoxOutlineTexCor(GLdouble length) {
+	Mesh* mesh = Mesh::generateBoxOutline(length);
+	mesh->vTexCoords.reserve(mesh->mNumVertices);
+
+	GLdouble l = length / 2;
+
+	//CARA 1
+	mesh->vTexCoords.emplace_back(0.0, 1.0);
+	mesh->vTexCoords.emplace_back(0.0, 0.0);
+	mesh->vTexCoords.emplace_back(1.0, 1.0);
+	mesh->vTexCoords.emplace_back(1.0, 0.0);
+
+	//CARA 2
+	mesh->vTexCoords.emplace_back(0.0, 1.0);
+	mesh->vTexCoords.emplace_back(0.0, 0.0);
+
+	//CARA 3
+	mesh->vTexCoords.emplace_back(1.0, 1.0);
+	mesh->vTexCoords.emplace_back(1.0, 0.0);
+
+	//CARA 4
+	mesh->vTexCoords.emplace_back(0.0, 1.0);
+	mesh->vTexCoords.emplace_back(0.0, 0.0);
+
+	return mesh;
 }
