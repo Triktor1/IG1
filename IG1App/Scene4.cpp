@@ -31,5 +31,5 @@ Scene4::init()
 	gTextures.push_back(texBox2);
 	gObjects.push_back(new BoxOutline(200, texBox1, texBox2));
 
-	gObjects.push_back(new Star3D(20, 8, 12));
+	gObjects.push_back(new Star3D(140, 8, 180));
 }

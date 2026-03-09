@@ -450,18 +450,18 @@ Mesh::generateBoxOutlineTexCor(GLdouble length) {
 Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 	Mesh* star = new Mesh();
 	star->mPrimitive = GL_TRIANGLE_FAN;
-	star->mNumVertices = 1 + np * 2;
+	star->mNumVertices = 2 + np * 2;
 	star->vVertices.reserve(star->mNumVertices);
 
 	star->vVertices.emplace_back(0, 0, 0);
 
 	float alpha = 90,
-		alphaSum = 360.0 / star->mNumVertices-1,
+		alphaSum = 360.0 / (star->mNumVertices-2),
 		x, y,
 		ri = re / 2;
 
 	bool ext = true;
-	for (int i = 0; i < star->mNumVertices - 1; i++) {
+	for (int i = 0; i < star->mNumVertices - 2; i++) {
 		if (ext) {
 			x = re * cos(radians(alpha));
 			y = re * sin(radians(alpha));
@@ -475,5 +475,9 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 		star->vVertices.emplace_back(x, y, h);
 		alpha += alphaSum;
 	}
+	//vertice final que cierra la estrella
+	x = re * cos(radians(alpha));
+	y = re * sin(radians(alpha));
+	star->vVertices.emplace_back(x, y, h);
 	return star;
 }
