@@ -13,5 +13,10 @@ Star3D:: render(const glm::mat4& modelViewMat) const {
         mShader->use();
         upload(aMat);
         mMesh->render();
+
+        glm::mat4 inv = glm::scale(glm::dmat4(1.0), glm::dvec3(1.0, 1.0, -1.0));
+        glm::mat4 aMat2 = modelViewMat * mModelMat * inv;
+        upload(aMat2);
+        mMesh->render();
     }
 }
