@@ -16,6 +16,7 @@
 #include "Box.h"
 #include "Star3D.h"
 #include "GlassParapet.h"
+#include "Photo.h"
 
 #include <vector>
 
