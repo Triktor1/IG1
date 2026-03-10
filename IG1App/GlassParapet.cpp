@@ -23,8 +23,7 @@ void GlassParapet::render(const glm::mat4& modelViewMat) const {
 		mMesh->render();
 		if (mTexture != nullptr) mTexture->unbind();
 
-		glBlendColor(1.0f, 1.0f, 1.0f, 1.0f);
-		glEnable(GL_BLEND);
+		glDisable(GL_BLEND);
 		glDepthMask(GL_TRUE);
 	}
 }
