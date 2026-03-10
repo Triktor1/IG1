@@ -26,13 +26,17 @@ void Box::render(const glm::mat4& modelViewMat) const {
 		glm::mat4 rotTapa = glm::rotate(glm::mat4(1.0), glm::radians(-90.0f), glm::vec3(1, 0, 0));
 		glm::mat4 rotFondo = glm::rotate(glm::mat4(1.0), glm::radians(90.0f), glm::vec3(1, 0, 0));
 
-		glm::mat4 tapaMat = aMat * glm::translate(glm::mat4(1.0f), glm::vec3(0, l / 2.0, 0)) * rotTapa;
+		glm::mat4 tapaMat = aMat * 
+			glm::translate(glm::mat4(1.0f), glm::vec3(-l / 2.0f, l / 2.0f, 0)) * //Muevo para alterar el ancla
+			glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0, 0, 1)) * //Hago la rotación
+			glm::translate(glm::mat4(1.0f), glm::vec3(l / 2.0f, 0, 0)) * //Deshago el primer translate (solo en el eje x para mantener el ancla)
+			rotTapa; 
 
 		glm::mat4 fondoMat = aMat * glm::translate(glm::mat4(1.0f), glm::vec3(0, -l / 2.0, 0)) * rotFondo;
 
 		// CARA DELANTERA
 		glCullFace(GL_BACK);
-		if (EntityWithTexture::mTexture != nullptr) 
+		if (EntityWithTexture::mTexture != nullptr)
 			EntityWithTexture::mTexture->bind();
 
 		//Malla principal
@@ -51,14 +55,14 @@ void Box::render(const glm::mat4& modelViewMat) const {
 			mMeshFondo->render();
 		}
 
-		if (EntityWithTexture::mTexture != nullptr) 
+		if (EntityWithTexture::mTexture != nullptr)
 			EntityWithTexture::mTexture->unbind();
 
 		// CARA TRASERA
 		glCullFace(GL_FRONT);
-		if (Box::mTexture != nullptr) 
+		if (Box::mTexture != nullptr)
 			Box::mTexture->bind();
-		
+
 		//Malla principal
 		upload(aMat);
 		mMesh->render();
@@ -75,10 +79,26 @@ void Box::render(const glm::mat4& modelViewMat) const {
 			mMeshFondo->render();
 		}
 
-		if (Box::mTexture != nullptr) 
+		if (Box::mTexture != nullptr)
 			Box::mTexture->unbind();
 
 		//Desactivamos culling
 		glDisable(GL_CULL_FACE);
+	}
+}
+
+void Box::update() {
+	if (opening)
+		angle += angleInterval;
+	else
+		angle -= angleInterval;
+
+	if (angle > 180.0f) {
+		opening = false;
+		angle = 180;
+	}
+	else if (angle < 0.0f) {
+		opening = true;
+		angle = 0;
 	}
 }
