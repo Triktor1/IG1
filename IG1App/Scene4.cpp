@@ -71,16 +71,18 @@ Scene4::init()
 	gTextures.push_back(texGlass);
 	GlassParapet* glass = new GlassParapet(glassL, texGlass);
 	gObjects.push_back(glass);
+	//Escala para que abarque todo el suelo
 	glass->setModelMat(glm::scale(glm::mat4(1.0f), glm::vec3(glassScaleXZ, glassScaleY, glassScaleXZ)));
 
 	// GRASS
 	GLuint grassWH = 65;
 	GLfloat grassPosX = 95.0f, grassPosY = grassWH/2, grassPosZ = 80.0f;
-
 	Texture* texGrass = new Texture();
 	texGrass->load("../assets/images/grass.png", 255);
-	gTextures.push_back(texGlass);
+	gTextures.push_back(texGrass);
+
 	Grass* grass = new Grass(grassWH, grassWH, texGrass);
 	gObjects.push_back(grass);
+	//Movimiento de la estrella para ponerla en la posición correcta
 	grass->setModelMat(glm::translate(grass->modelMat(), glm::vec3(grassPosX, grassPosY, grassPosZ)));
 }
