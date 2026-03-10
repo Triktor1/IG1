@@ -1,9 +1,10 @@
 #include "Star3D.h"
 
 Star3D::
-Star3D(GLdouble re, GLuint np, GLdouble h) : SingleColorEntity(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f))
+Star3D(GLdouble re, GLuint np, GLdouble h, Texture* text) : EntityWithTexture()
 {
-	mMesh = Mesh::generateStar3D(re, np, h);
+	mMesh = Mesh::generateStar3DTexCor(re, np, h);
+    setTexture(text);
 }
 
 void 

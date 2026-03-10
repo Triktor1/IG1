@@ -480,3 +480,22 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 	star->vVertices.emplace_back(x, y, h);
 	return star;
 }
+
+Mesh* 
+Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) {
+	Mesh* mesh = Mesh::generateStar3D(re, np, h);
+	mesh->vTexCoords.resize(mesh->vVertices.size());
+
+	// Primer vértice = centro
+	mesh->vTexCoords[0] = glm::vec2(0.5f, 0.5f);
+
+	for (size_t i = 1; i < mesh->vVertices.size(); i++) {
+		glm::vec3 v = mesh->vVertices[i];
+		// Proyección XY, normalizada a [0,1]
+		float u = 0.5f + v.x / (2.0f * re);
+		float v_coord = 0.5f + v.y / (2.0f * re);
+		mesh->vTexCoords[i] = glm::vec2(u, v_coord);
+	}
+
+	return mesh;
+}
