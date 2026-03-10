@@ -10,7 +10,6 @@ public:
     void update() override;
 
 private:
-    Texture* mTexture;
     GLfloat alpha = 2.0f, alphaAct = 0;
 };
 #endif

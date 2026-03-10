@@ -408,19 +408,30 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 
 Mesh* 
 Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) {
-	Mesh* mesh = Mesh::generateStar3D(re, np, h);
-	mesh->vTexCoords.resize(mesh->vVertices.size());
+	Mesh* star = Mesh::generateStar3D(re, np, h);
+	star->vTexCoords.resize(star->vVertices.size());
 
-	// Primer v�rtice = centro
-	mesh->vTexCoords[0] = glm::vec2(0.5f, 0.5f);
+	star->vTexCoords.emplace_back(0.5, 0.5);
+	re = 0.5f;
+	float alpha = 90,
+		alphaSum = 360.0 / (star->mNumVertices - 2), 
+		x, y,
+		ri = 0.25f;
+	bool ext = true;
 
-	for (size_t i = 1; i < mesh->vVertices.size(); i++) {
-		glm::vec3 v = mesh->vVertices[i];
-		// Proyecci�n XY, normalizada a [0,1]
-		float u = 0.5f + v.x / (2.0f * re);
-		float v_coord = 0.5f + v.y / (2.0f * re);
-		mesh->vTexCoords[i] = glm::vec2(u, v_coord);
+	for (int i = 0; i < star->mNumVertices - 2; i++) {
+		if (ext) {
+			x = re * cos(radians(alpha));
+			y = re * sin(radians(alpha));
+		}
+		else {
+			x = ri * cos(radians(alpha));
+			y = ri * sin(radians(alpha));
+		}
+		ext = !ext;
+		star->vTexCoords.emplace_back(x, y);
+		alpha += alphaSum;
 	}
-
-	return mesh;
+	star->vTexCoords.emplace_back(0.0, 1.0);
+	return star;
 }
