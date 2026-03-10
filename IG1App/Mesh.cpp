@@ -136,21 +136,22 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 	poligono->mPrimitive = GL_LINE_LOOP;
 	poligono->mNumVertices = num;
 	poligono->vVertices.reserve(poligono->mNumVertices);
+	poligono->vColors.reserve(poligono->mNumVertices);
 
 	float alpha = 90,
 		alphaSum = 360.0 / num,
 		x, y;
 
 	for (int i = 0; i < num; i++) {
-		//Cálculo de posiciones (x, y, 0) de los vértices del polígono regular
+		//Cï¿½lculo de posiciones (x, y, 0) de los vï¿½rtices del polï¿½gono regular
 		x = r * cos(radians(alpha));
 		y = r * sin(radians(alpha));
 
-		//Añadimos vértices y colores a los vectores correspondientes
+		//Aï¿½adimos vï¿½rtices y colores a los vectores correspondientes
 		poligono->vVertices.emplace_back(x, y, 0.0);
 		poligono->vColors.emplace_back(1.0, 1.0, 1.0, 1.0);
 
-		//Sumamos al ángulo
+		//Sumamos al ï¿½ngulo
 		alpha += alphaSum;
 	}
 
@@ -159,13 +160,11 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r) {
 
 Mesh*
 Mesh::generateRGBTriangle(GLdouble r, GLdouble posX = 0, GLdouble posY = 0) {
-	Mesh* triangle = new Mesh();
+	Mesh* triangle = generateRegularPolygon(3, r);
 	triangle->mPrimitive = GL_TRIANGLES;
-	triangle->mNumVertices = 3;
-	triangle->vVertices.reserve(triangle->mNumVertices);
+	triangle->vColors.clear();
 	float alpha = 90,
-		alphaSum = 120,
-		x, y;
+		alphaSum = 120;
 
 	glm::vec4 colors[3] = {
 		{1, 0, 0, 1},
@@ -174,14 +173,10 @@ Mesh::generateRGBTriangle(GLdouble r, GLdouble posX = 0, GLdouble posY = 0) {
 	};
 
 	for (int i = 0; i < 3; i++) {
-		x = r * cos(radians(alpha)) + posX;
-		y = r * sin(radians(alpha)) + posY;
-
-		triangle->vVertices.emplace_back(x, y, 0.0);
 		triangle->vColors.emplace_back(colors[i]);
-
 		alpha += alphaSum;
 	}
+
 	return triangle;
 }
 
@@ -203,24 +198,13 @@ Mesh::generateRectangle(GLdouble w, GLdouble h) {
 
 Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h) {
-	Mesh* rect = new Mesh();
-	rect->mPrimitive = GL_TRIANGLE_STRIP;
-	rect->mNumVertices = 4;
-	rect->vVertices.reserve(rect->mNumVertices);
+	Mesh* rect = generateRectangle(w, h);
 	rect->vColors.reserve(rect->mNumVertices);
-	GLdouble width = w / 2.0, height = h / 2.0; //Para no repetir operaciones de division
 
 	// COLORES
-	rect->vVertices.emplace_back(-width, height, 0.0);
 	rect->vColors.emplace_back(1.0, 0.0, 0.0, 1.0); // Rojo
-
-	rect->vVertices.emplace_back(-width, -height, 0.0);
 	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
-
-	rect->vVertices.emplace_back(width, height, 0.0);
 	rect->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); // Verde
-
-	rect->vVertices.emplace_back(width, -height, 0.0);
 	rect->vColors.emplace_back(0.0, 0.0, 1.0, 1.0); // Azul
 
 	return rect;
@@ -294,77 +278,18 @@ Mesh::generateCube(GLdouble length) {
 
 Mesh*
 Mesh::generateRGBCubeTriangles(GLdouble length) {
-	Mesh* cube = new Mesh();
-	cube->mPrimitive = GL_TRIANGLES;
-	cube->mNumVertices = 36;
-	cube->vVertices.reserve(cube->mNumVertices);
+	Mesh* cube = generateCube(length);
 	cube->vColors.reserve(cube->mNumVertices);
-
-	GLdouble l = length / 2;
-
-	//CARA 1
-	cube->vVertices.emplace_back(-l, -l, l);
-	cube->vVertices.emplace_back(l, -l, l);
-	cube->vVertices.emplace_back(l, l, l);
-
-	cube->vVertices.emplace_back(-l, -l, l);
-	cube->vVertices.emplace_back(l, l, l);
-	cube->vVertices.emplace_back(-l, l, l);
-
-	//CARA 2
-	cube->vVertices.emplace_back(l, -l, -l);
-	cube->vVertices.emplace_back(-l, -l, -l);
-	cube->vVertices.emplace_back(-l, l, -l);
-
-	cube->vVertices.emplace_back(l, -l, -l);
-	cube->vVertices.emplace_back(-l, l, -l);
-	cube->vVertices.emplace_back(l, l, -l);
 
 	//Caras 1 y 2 son rojas
 	for (int i = 0; i < 12; i++) {
 		cube->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
 	}
 
-	//CARA 3
-	cube->vVertices.emplace_back(-l, -l, -l);
-	cube->vVertices.emplace_back(-l, -l, l);
-	cube->vVertices.emplace_back(-l, l, l);
-
-	cube->vVertices.emplace_back(-l, -l, -l);
-	cube->vVertices.emplace_back(-l, l, l);
-	cube->vVertices.emplace_back(-l, l, -l);
-
-	//CARA 4
-	cube->vVertices.emplace_back(l, -l, l);
-	cube->vVertices.emplace_back(l, -l, -l);
-	cube->vVertices.emplace_back(l, l, -l);
-
-	cube->vVertices.emplace_back(l, -l, l);
-	cube->vVertices.emplace_back(l, l, -l);
-	cube->vVertices.emplace_back(l, l, l);
-
 	//Caras 3 y 4 son verdes
 	for (int i = 0; i < 12; i++) {
 		cube->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
 	}
-
-	//CARA 5
-	cube->vVertices.emplace_back(-l, l, l);
-	cube->vVertices.emplace_back(l, l, l);
-	cube->vVertices.emplace_back(l, l, -l);
-
-	cube->vVertices.emplace_back(-l, l, l);
-	cube->vVertices.emplace_back(l, l, -l);
-	cube->vVertices.emplace_back(-l, l, -l);
-
-	//CARA 6
-	cube->vVertices.emplace_back(-l, -l, -l);
-	cube->vVertices.emplace_back(l, -l, -l);
-	cube->vVertices.emplace_back(l, -l, l);
-
-	cube->vVertices.emplace_back(-l, -l, -l);
-	cube->vVertices.emplace_back(l, -l, l);
-	cube->vVertices.emplace_back(-l, -l, l);
 
 	//Caras 5 y 6 son azules
 	for (int i = 0; i < 12; i++) {
@@ -486,12 +411,12 @@ Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) {
 	Mesh* mesh = Mesh::generateStar3D(re, np, h);
 	mesh->vTexCoords.resize(mesh->vVertices.size());
 
-	// Primer vértice = centro
+	// Primer vï¿½rtice = centro
 	mesh->vTexCoords[0] = glm::vec2(0.5f, 0.5f);
 
 	for (size_t i = 1; i < mesh->vVertices.size(); i++) {
 		glm::vec3 v = mesh->vVertices[i];
-		// Proyección XY, normalizada a [0,1]
+		// Proyecciï¿½n XY, normalizada a [0,1]
 		float u = 0.5f + v.x / (2.0f * re);
 		float v_coord = 0.5f + v.y / (2.0f * re);
 		mesh->vTexCoords[i] = glm::vec2(u, v_coord);
