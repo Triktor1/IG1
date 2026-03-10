@@ -29,6 +29,10 @@ Star3D:: render(const glm::mat4& modelViewMat) const {
 void 
 Star3D::update() {
     alphaAct += alpha;
-    mModelMat = glm::rotate(glm::mat4(1.0f), glm::radians(alphaAct), glm::vec3(0.0, 1.0, 0.0)) *
-                glm::rotate(glm::mat4(1.0f), glm::radians(alphaAct), glm::vec3(0.0, 0.0, 1.0));
+
+    glm::mat4 rot = glm::rotate(glm::mat4(1.0f), glm::radians(alphaAct), glm::vec3(0.0, 1.0, 0.0)) *
+                    glm::rotate(glm::mat4(1.0f), glm::radians(alphaAct), glm::vec3(0.0, 0.0, 1.0)); //hacer la rotacion
+    glm::vec3 pos = glm::vec3(mModelMat[3]); //coger posicion
+    //aplicar
+    mModelMat = glm::translate(glm::mat4(1.0f), pos) * rot; 
 }
