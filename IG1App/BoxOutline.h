@@ -1,3 +1,5 @@
+#ifndef _H_BoxOutline_H_
+#define _H_BoxOutline_H_
 #include "EntityWithTexture.h"
 #include "Texture.h"
 
@@ -10,4 +12,4 @@ public:
 private:
 	Texture* mTexture;
 };
-
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _H_EntityWithTexture_H_
+#define _H_EntityWithTexture_H_
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -17,4 +18,4 @@ public:
 	virtual void render(const glm::mat4& modelViewMat) const override;
 	void setTexture(Texture* tex) { mTexture = tex; };
 };
-
+#endif

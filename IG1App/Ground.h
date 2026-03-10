@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _H_Ground_H_
+#define _H_Ground_H_
 #include "EntityWithTexture.h"
 #include "Texture.h"
 
@@ -8,4 +9,4 @@ class Ground :
 public:
     Ground(GLdouble, GLdouble, GLuint, GLuint, Texture*);
 };
-
+#endif

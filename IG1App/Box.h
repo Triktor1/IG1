@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _H_Box_H_
+#define _H_Box_H_
 #include "EntityWithTexture.h"
 class Mesh;
 class Box :
@@ -18,5 +19,5 @@ private:
 	GLdouble l;
 	GLfloat angle = 0.0f, angleInterval = 2.0f;
 	bool opening = true;
-
 };
+#endif

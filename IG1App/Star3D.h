@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _H_Star3D_H_
+#define _H_Star3D_H_
 #include "EntityWithTexture.h"
 class Star3D :
     public EntityWithTexture
@@ -12,3 +13,4 @@ private:
     Texture* mTexture;
     GLfloat alpha = 2.0f, alphaAct = 0;
 };
+#endif

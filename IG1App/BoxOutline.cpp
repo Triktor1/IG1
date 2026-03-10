@@ -10,13 +10,10 @@ BoxOutline(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture()
 
 void BoxOutline::render(const glm::mat4& modelViewMat) const {
 	if (mMesh != nullptr) {
-
-
 		glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
-		upload(aMat);
-		//mShader->setUniform("modulate", mModulate);
 		mShader->setUniform("texture", mModulate);
+		upload(aMat);
 
 		//Activamos culling
 		glEnable(GL_CULL_FACE);

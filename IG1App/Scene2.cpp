@@ -23,4 +23,9 @@ Scene2::init()
 
 	gObjects.push_back(new RGBRectangle(length, length));
 	gObjects.push_back(new RegularPolygon(num, r, color));
+
+	Texture* texGlass = new Texture();
+	texGlass->load("../assets/images/windowC.png", 255);
+	gTextures.push_back(texGlass);
+	gObjects.push_back(new GlassParapet(200, texGlass));
 }

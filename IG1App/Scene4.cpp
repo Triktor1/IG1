@@ -33,5 +33,6 @@ Scene4::init()
 
 	Texture* texS = new Texture();
 	texS->load("../assets/images/rueda.png", 255);
+	gTextures.push_back(texS);
 	gObjects.push_back(new Star3D(140, 8, 180, texS));
 }
