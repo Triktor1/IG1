@@ -1,5 +1,5 @@
 #include "Star3D.h"
-
+#include "Texture.h"
 Star3D::
 Star3D(GLdouble re, GLuint np, GLdouble h, Texture* text) : EntityWithTexture()
 {
@@ -12,6 +12,9 @@ Star3D:: render(const glm::mat4& modelViewMat) const {
     if (mMesh != nullptr) {
         glm::mat4 aMat = modelViewMat * mModelMat;
         mShader->use();
+        mShader->setUniform("texture", mModulate);
+
+        if (mTexture != nullptr) mTexture->bind();
         upload(aMat);
         mMesh->render();
 
@@ -19,6 +22,7 @@ Star3D:: render(const glm::mat4& modelViewMat) const {
         glm::mat4 aMat2 = modelViewMat * mModelMat * inv;
         upload(aMat2);
         mMesh->render();
+        if (mTexture != nullptr) mTexture->unbind();
     }
 }
 

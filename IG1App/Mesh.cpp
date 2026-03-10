@@ -299,22 +299,22 @@ Mesh::generateRGBCubeTriangles(GLdouble length) {
 	return cube;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh) {
 	Mesh* rect = Mesh::generateRectangle(w, h);
 	rect->vTexCoords.reserve(rect->mNumVertices);
 
 	GLdouble width = w / 2.0, height = h / 2.0;
 
-	rect->vTexCoords.emplace_back(0.0, 1.0*rh);
+	rect->vTexCoords.emplace_back(0.0, 1.0 * rh);
 	rect->vTexCoords.emplace_back(0.0, 0.0);
-	rect->vTexCoords.emplace_back(1.0*rw, 1.0*rh);
-	rect->vTexCoords.emplace_back(1.0*rw, 0.0);
+	rect->vTexCoords.emplace_back(1.0 * rw, 1.0 * rh);
+	rect->vTexCoords.emplace_back(1.0 * rw, 0.0);
 
 	return rect;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateBoxOutline(GLdouble length) {
 	Mesh* box = new Mesh();
 	box->mPrimitive = GL_TRIANGLE_STRIP;
@@ -344,7 +344,7 @@ Mesh::generateBoxOutline(GLdouble length) {
 	return box;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateBoxOutlineTexCor(GLdouble length) {
 	Mesh* mesh = Mesh::generateBoxOutline(length);
 	mesh->vTexCoords.reserve(mesh->mNumVertices);
@@ -372,7 +372,7 @@ Mesh::generateBoxOutlineTexCor(GLdouble length) {
 	return mesh;
 }
 
-Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
+Mesh* Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h) {
 	Mesh* star = new Mesh();
 	star->mPrimitive = GL_TRIANGLE_FAN;
 	star->mNumVertices = 2 + np * 2;
@@ -381,7 +381,7 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 	star->vVertices.emplace_back(0, 0, 0);
 
 	float alpha = 90,
-		alphaSum = 360.0 / (star->mNumVertices-2),
+		alphaSum = 360.0 / (star->mNumVertices - 2),
 		x, y,
 		ri = re / 2;
 
@@ -406,32 +406,34 @@ Mesh* Mesh:: generateStar3D(GLdouble re, GLuint np, GLdouble h){
 	return star;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) {
 	Mesh* star = Mesh::generateStar3D(re, np, h);
-	star->vTexCoords.resize(star->vVertices.size());
+	star->vTexCoords.reserve(star->mNumVertices);
 
 	star->vTexCoords.emplace_back(0.5, 0.5);
 	re = 0.5f;
-	float alpha = 90,
-		alphaSum = 360.0 / (star->mNumVertices - 2), 
+	float alpha = 0.0,
+		alphaSum = 360.0 / (star->mNumVertices - 2),
 		x, y,
 		ri = 0.25f;
 	bool ext = true;
 
 	for (int i = 0; i < star->mNumVertices - 2; i++) {
 		if (ext) {
-			x = re * cos(radians(alpha));
-			y = re * sin(radians(alpha));
+			x = re * cos(radians(alpha)) / 2 + 0.5;
+			y = re * sin(radians(alpha)) / 2 + 0.5;
 		}
 		else {
-			x = ri * cos(radians(alpha));
-			y = ri * sin(radians(alpha));
+			x = ri * cos(radians(alpha)) / 2 + 0.5;
+			y = ri * sin(radians(alpha)) / 2 + 0.5;
 		}
 		ext = !ext;
 		star->vTexCoords.emplace_back(x, y);
 		alpha += alphaSum;
 	}
-	star->vTexCoords.emplace_back(0.0, 1.0);
+	x = re * cos(radians(alpha)) / 2 + 0.5;
+	y = re * sin(radians(alpha)) / 2 + 0.5;
+	star->vTexCoords.emplace_back(x, y);
 	return star;
 }
