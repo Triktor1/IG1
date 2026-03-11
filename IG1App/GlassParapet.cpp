@@ -10,13 +10,12 @@ void GlassParapet::render(const glm::mat4& modelViewMat) const {
 	if (mMesh != nullptr) {
 		glm::mat4 aMat = modelViewMat * mModelMat;
 		mShader->use();
-		mShader->setUniform("texture", mModulate);
+		mShader->setUniform("modulate", mModulate);
 
 		glDepthMask(GL_FALSE);
 		glEnable(GL_BLEND);
 
-		glBlendFunc(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
-		glBlendColor(1.0f, 1.0f, 1.0f, 0.5f);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		if (mTexture != nullptr) mTexture->bind();
 		upload(aMat);
