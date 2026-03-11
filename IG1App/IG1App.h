@@ -37,6 +37,8 @@ public:
 
 	void close(); // the application
 
+	void takeScreenshot(std::string name, GLuint width, GLuint height, GLuint buffer);
+
 protected:
 	IG1App() = default;
 	~IG1App() { close(); };

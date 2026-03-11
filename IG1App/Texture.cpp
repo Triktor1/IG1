@@ -1,5 +1,4 @@
 #include "Texture.h"
-
 #include "Image.h"
 
 Texture::~Texture()

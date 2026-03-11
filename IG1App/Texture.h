@@ -25,8 +25,7 @@ public:
 
 	void setWrap(GLuint wp); // GL_REPEAT, GL_CLAMP_TO_EDGE, ...
 
-	void loadColorBuffer(GLsizei width, GLsizei height,
-		                 GLuint buffer = GL_FRONT);
+	void loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer = GL_FRONT);
 
 protected:
 	void init();

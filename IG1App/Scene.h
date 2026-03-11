@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 
 #include "Camera.h"
+#include "Image.h"
 #include "Entity.h"
 #include "RegularPolygon.h"
 #include "RGBTriangle.h"

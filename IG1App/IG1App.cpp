@@ -1,6 +1,9 @@
 #include "IG1App.h"
 
 #include <iostream>
+#include <vector>
+#include "stb_image_write.h"
+
 
 using namespace std;
 
@@ -193,6 +196,9 @@ IG1App::key(unsigned int key)
 	case 'U':
 		mUpdateEnabled = !mUpdateEnabled;
 		break;
+	case 'f':
+		takeScreenshot("screenshot.png", mViewPort->width(), mViewPort->height(), GL_FRONT);
+		break;
 	default:
 		if (key >= '0' && key <= '9') {
 			if (changeScene(key - '0')) break;
@@ -263,4 +269,24 @@ IG1App::changeScene(size_t sceneNr)
 	}
 
 	return true;
+}
+
+void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuint buffer) {
+
+	//Vector de píxeles con todos los píxeles de la pantalla
+	std::vector<Image::rgba_color> pixels(width * height);
+
+	//Se leen los píxeles de pantalla y se guardan en pixels
+	glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+
+	Image screenshot;
+
+	//Carga en la imagen el vector pixels
+	screenshot.load(pixels.data(), width, height);
+
+	//Flip para que la imagen no salga al revés
+	stbi_flip_vertically_on_write(1);
+
+	//Guarda la imagen en el ordenador
+	screenshot.save("../assets/" + name);
 }
