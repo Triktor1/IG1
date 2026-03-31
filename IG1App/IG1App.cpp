@@ -200,10 +200,10 @@ IG1App::key(unsigned int key)
 		takeScreenshot("screenshot.png", mViewPort->width(), mViewPort->height(), GL_FRONT);
 		break;
 	case 'a':
-		mCamera->moveLR(3);
+		mCamera->moveLR(-3);
 		break;
 	case 'd':
-		mCamera->moveLR(-3);
+		mCamera->moveLR(3);
 		break;
 	case 'w':
 		mCamera->moveUD(3);
@@ -216,6 +216,9 @@ IG1App::key(unsigned int key)
 		break;
 	case 'S':
 		mCamera->moveFB(-3);
+		break;
+	case 'p':
+		mCamera->changePrj();
 		break;
 	default:
 		if (key >= '0' && key <= '9') {

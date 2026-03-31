@@ -106,6 +106,13 @@ Camera::setPM()
 		                 mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
+	else {
+        // perspective projection
+        mProjMat = glm::perspective(
+			glm::radians(45.0f * mScaleFact), 
+			(mViewPort->width()) / float(mViewPort->height()),
+			mNearVal, mFarVal);
+    }
 }
 
 void
@@ -148,4 +155,10 @@ void
 Camera::moveUD(GLfloat cs) {
 	mViewMat = translate(mViewMat, -mUpward * cs);
 	setAxes();
+}
+
+void 
+Camera::changePrj() {
+	bOrto = !bOrto;
+	setPM();
 }

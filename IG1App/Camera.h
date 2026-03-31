@@ -36,11 +36,13 @@ public:
 	// transfers its viewport, the view matrix and projection matrix to the GPU
 	void upload() const;
 
-	// Desplazar camara en ejes
+	// Move camera
 	void moveLR(GLfloat cs); // A izquierda/A derecha
 	void moveFB(GLfloat cs); // Adelante/Atrás
 	void moveUD(GLfloat cs); // Arriba/Abajo
 
+	// Change projection
+	void changePrj();
 protected:
 	glm::vec3 mEye = {0.0, 0.0, 500.0}; // camera's position
 	glm::vec3 mLook = {0.0, 0.0, 0.0};  // target's position
