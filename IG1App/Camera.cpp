@@ -3,6 +3,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_access.hpp>
 
 using namespace glm;
 
@@ -16,6 +17,7 @@ Camera::Camera(Viewport* vp)
   , mViewPort(vp)
 {
 	setPM();
+	setAxes();
 }
 
 void
@@ -28,6 +30,7 @@ void
 Camera::setVM()
 {
 	mViewMat = lookAt(mEye, mLook, mUp); // glm::lookAt defines the view matrix
+	setAxes();
 }
 
 void
@@ -53,6 +56,7 @@ Camera::pitch(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(1.0, 0, 0));
 	// glm::rotate returns mViewMat * rotationMatrix
+	setAxes();
 }
 
 void
@@ -60,6 +64,7 @@ Camera::yaw(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 1.0, 0));
 	// glm::rotate returns mViewMat * rotationMatrix
+	setAxes();
 }
 
 void
@@ -67,6 +72,7 @@ Camera::roll(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 0, 1.0));
 	// glm::rotate returns mViewMat * rotationMatrix
+	setAxes();
 }
 
 void
@@ -114,4 +120,32 @@ Camera::upload() const
 	mViewPort->upload();
 	uploadVM();
 	uploadPM();
+}
+
+void
+Camera::setAxes(){
+	mRight = glm::vec3(glm::row(mViewMat, 0));
+	mUpward = glm::vec3(glm::row(mViewMat, 1));
+	mFront = glm::vec3(glm::row(mViewMat, 2));
+}
+
+void
+Camera::moveLR(GLfloat cs) {
+	mViewMat = translate(mViewMat, -mRight * cs);
+	setAxes();
+}
+
+void
+Camera::moveFB(GLfloat cs) {
+	// Extrae el forward de la matriz actual
+	glm::vec3 forward = -glm::vec3(glm::row(mViewMat, 2));
+	// Aplica la traslación multiplicando por cs
+	mViewMat = glm::translate(mViewMat, -forward * cs);
+	setAxes();
+}
+
+void
+Camera::moveUD(GLfloat cs) {
+	mViewMat = translate(mViewMat, -mUpward * cs);
+	setAxes();
 }

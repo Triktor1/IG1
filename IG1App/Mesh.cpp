@@ -422,8 +422,8 @@ Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) {
 	for (int i = 0; i < star->mNumVertices - 2; i++) {
 		//REGLA DE 3 (/2+0.5) para cambiar el rango que se genera (-1/1) a (0/1)
 		if (ext) {
-			x = re * cos(radians(alpha)) / 2 + 0.5;
-			y = re * sin(radians(alpha)) / 2 + 0.5;
+			x = re * cos(radians(alpha)) + 0.5;
+			y = re * sin(radians(alpha)) + 0.5;
 		}
 		else {
 			x = ri * cos(radians(alpha)) / 2 + 0.5;

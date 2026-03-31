@@ -67,7 +67,7 @@ Scene4::init()
 	GLfloat glassScaleXZ = 1.0f, glassScaleY = 0.3f;
 
 	Texture* texGlass = new Texture();
-	texGlass->load("../assets/images/windowC.png", 255);
+	texGlass->load("../assets/images/windowC.png", 155);
 	gTextures.push_back(texGlass);
 	GlassParapet* glass = new GlassParapet(glassL, texGlass);
 	gObjects.push_back(glass);

@@ -199,6 +199,24 @@ IG1App::key(unsigned int key)
 	case 'f':
 		takeScreenshot("screenshot.png", mViewPort->width(), mViewPort->height(), GL_FRONT);
 		break;
+	case 'a':
+		mCamera->moveLR(3);
+		break;
+	case 'd':
+		mCamera->moveLR(-3);
+		break;
+	case 'w':
+		mCamera->moveUD(3);
+		break;
+	case 's':
+		mCamera->moveUD(-3);
+		break;
+	case 'W':
+		mCamera->moveFB(3);
+		break;
+	case 'S':
+		mCamera->moveFB(-3);
+		break;
 	default:
 		if (key >= '0' && key <= '9') {
 			if (changeScene(key - '0')) break;
