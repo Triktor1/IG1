@@ -15,7 +15,7 @@ Scene::init()
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBAxes(400.0));
+	gOpaqueObjects.push_back(new RGBAxes(400.0));
 
 }
 
@@ -29,10 +29,10 @@ void
 Scene::destroy()
 { // release memory and resources
 
-	for (Abs_Entity* el : gObjects)
+	for (Abs_Entity* el : gOpaqueObjects)
 		delete el;
 
-	gObjects.clear();
+	gOpaqueObjects.clear();
 
 	for (Texture* tex : gTextures)
 		delete tex;
@@ -43,14 +43,14 @@ Scene::destroy()
 void
 Scene::load()
 {
-	for (Abs_Entity* obj : gObjects)
+	for (Abs_Entity* obj : gOpaqueObjects)
 		obj->load();
 }
 
 void
 Scene::unload()
 {
-	for (Abs_Entity* obj : gObjects)
+	for (Abs_Entity* obj : gOpaqueObjects)
 		obj->unload();
 }
 
@@ -73,13 +73,13 @@ Scene::render(Camera const& cam) const
 {
 	cam.upload();
 
-	for (Abs_Entity* el : gObjects) {
+	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
 	}
 }
 
 void Scene::update() {
-	for (Abs_Entity* el : gObjects) {
+	for (Abs_Entity* el : gOpaqueObjects) {
 		el->update();
 	}
 }

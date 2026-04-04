@@ -15,4 +15,5 @@
 *.recipe
 *.exe
 *.vs
+*/x64
 .vs/IGProjects_x64_VS2022/v17/.suo

@@ -8,13 +8,13 @@
 using namespace glm;
 
 Camera::Camera(Viewport* vp)
-  : mViewMat(1.0)
-  , mProjMat(1.0)
-  , xRight(vp->width() / 2.0)
-  , xLeft(-xRight)
-  , yTop(vp->height() / 2.0)
-  , yBot(-yTop)
-  , mViewPort(vp)
+	: mViewMat(1.0)
+	, mProjMat(1.0)
+	, xRight(vp->width() / 2.0)
+	, xLeft(-xRight)
+	, yTop(vp->height() / 2.0)
+	, yBot(-yTop)
+	, mViewPort(vp)
 {
 	setPM();
 	setAxes();
@@ -36,18 +36,18 @@ Camera::setVM()
 void
 Camera::set2D()
 {
-	mEye = {0, 0, 500};
-	mLook = {0, 0, 0};
-	mUp = {0, 1, 0};
+	mEye = { 0, 0, 500 };
+	mLook = { 0, 0, 0 };
+	mUp = { 0, 1, 0 };
 	setVM();
 }
 
 void
 Camera::set3D()
 {
-	mEye = {500, 500, 500};
-	mLook = {0, 10, 0};
-	mUp = {0, 1, 0};
+	mEye = { 500, 500, 500 };
+	mLook = { 0, 10, 0 };
+	mUp = { 0, 1, 0 };
 	setVM();
 }
 
@@ -99,20 +99,20 @@ Camera::setPM()
 {
 	if (bOrto) { //  if orthogonal projection
 		mProjMat = ortho(xLeft * mScaleFact,
-		                 xRight * mScaleFact,
-		                 yBot * mScaleFact,
-		                 yTop * mScaleFact,
-		                 mNearVal,
-		                 mFarVal);
+			xRight * mScaleFact,
+			yBot * mScaleFact,
+			yTop * mScaleFact,
+			mNearVal,
+			mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
 	else {
-        // perspective projection
-        mProjMat = glm::perspective(
-			glm::radians(45.0f * mScaleFact), 
+		// perspective projection
+		mProjMat = glm::perspective(
+			glm::radians(45.0f * mScaleFact),
 			(mViewPort->width()) / float(mViewPort->height()),
 			mNearVal, mFarVal);
-    }
+	}
 }
 
 void
@@ -130,34 +130,67 @@ Camera::upload() const
 }
 
 void
-Camera::setAxes(){
+Camera::setAxes() {
 	mRight = glm::vec3(glm::row(mViewMat, 0));
 	mUpward = glm::vec3(glm::row(mViewMat, 1));
-	mFront = glm::vec3(glm::row(mViewMat, 2));
-}
-
-void
-Camera::moveLR(GLfloat cs) {
-	mViewMat = translate(mViewMat, -mRight * cs);
-	setAxes();
-}
-
-void
-Camera::moveFB(GLfloat cs) {
-	// Extrae el forward de la matriz actual
-	glm::vec3 forward = -glm::vec3(glm::row(mViewMat, 2));
-	// Aplica la traslación multiplicando por cs
-	mViewMat = glm::translate(mViewMat, -forward * cs);
-	setAxes();
-}
-
-void
-Camera::moveUD(GLfloat cs) {
-	mViewMat = translate(mViewMat, -mUpward * cs);
-	setAxes();
+	mFront = -glm::vec3(glm::row(mViewMat, 2));
 }
 
 void 
+Camera::moveLR(GLfloat cs) {
+	mEye += mRight * cs;
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void 
+Camera::moveFB(GLfloat cs) {
+	mEye += mFront * cs;
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void 
+Camera::moveUD(GLfloat cs) {
+	mEye += mUp * cs;
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void
+Camera::pitchReal(GLfloat cs) {
+	mat4 rot = rotate(glm::mat4(1.0f), radians(cs), mRight);
+
+	mFront = normalize(mat3(rot) * mFront);;
+	mUp = normalize(mat3(rot) * mUp);
+
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void
+Camera::yawReal(GLfloat cs) {
+	mat4 rot = rotate(glm::mat4(1.0f), radians(-cs), mUp);
+
+	mFront = normalize(mat3(rot) * mFront);
+	mRight = normalize(cross(mFront, mUp));
+
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void
+Camera::rollReal(GLfloat cs) {
+	mat4 rot = rotate(glm::mat4(1.0f), radians(cs), mFront);
+
+	mUp = normalize(mat3(rot) * mUp);
+	mRight = normalize(cross(mFront, mUp));
+
+	mLook = mEye + mFront;
+	setVM();
+}
+
+void
 Camera::changePrj() {
 	bOrto = !bOrto;
 	setPM();

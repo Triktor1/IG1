@@ -11,5 +11,5 @@ Scene3::init()
 	Scene::init();
 	RGBCube* cube = new RGBCube(l);
 	cube->moveRGBCube(l / 2, l / 2, -l / 2);
-	gObjects.push_back(cube);
+	gOpaqueObjects.push_back(cube);
 }

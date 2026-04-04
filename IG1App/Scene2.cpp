@@ -19,8 +19,8 @@ Scene2::init()
 
 	RGBTriangle* triangle = new RGBTriangle(trR);
 	triangle->moveRGBTriangle(trX, trY, trZ);
-	gObjects.push_back(triangle);
+	gOpaqueObjects.push_back(triangle);
 
-	gObjects.push_back(new RGBRectangle(length, length));
-	gObjects.push_back(new RegularPolygon(num, r, color));
+	gOpaqueObjects.push_back(new RGBRectangle(length, length));
+	gOpaqueObjects.push_back(new RegularPolygon(num, r, color));
 }

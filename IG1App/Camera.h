@@ -41,6 +41,10 @@ public:
 	void moveFB(GLfloat cs); // Adelante/Atrás
 	void moveUD(GLfloat cs); // Arriba/Abajo
 
+	void pitchReal(GLfloat cs);
+	void yawReal(GLfloat cs);
+	void rollReal(GLfloat cs);
+
 	// Change projection
 	void changePrj();
 protected:
