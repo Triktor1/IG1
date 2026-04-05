@@ -371,10 +371,9 @@ void IG1App::motion(double x, double y) {
 }
 
 void IG1App::mouseWheel(double dx, double dy) {
-	if (!glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS && !glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS) {
+	if (glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL) != GLFW_PRESS && glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) != GLFW_PRESS) {
 		mCamera->moveFB(dy);
 	}
-
+	else mCamera->setScale(dy);
 	mNeedsRedisplay = true;
-
 }
