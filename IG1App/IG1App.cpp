@@ -151,8 +151,23 @@ IG1App::display() const
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clears the back buffer
 
-	mScenes[mCurrentScene]->render(*mCamera); // uploads the viewport and camera to the GPU
+	if (!m2Vistas) mScenes[mCurrentScene]->render(*mCamera); // uploads the viewport and camera to the GPU
+	else {
+		Camera auxCam = *mCamera;
+		Viewport auxVP = *mViewPort;
+		mViewPort->setSize(mWinW / 2, mWinH);
+		auxCam.setSize(mViewPort->width(), mViewPort->height());
 
+		mViewPort->setPos(0, 0);
+		auxCam.set3D();
+		mScenes[mCurrentScene]->render(auxCam);
+
+		mViewPort->setPos(mWinW / 2, 0);
+		auxCam.setCenital();
+		mScenes[mCurrentScene]->render(auxCam);
+
+		*mViewPort = auxVP;
+	}
 	glfwSwapBuffers(mWindow); // swaps the front and back buffer
 }
 
@@ -175,18 +190,24 @@ IG1App::key(unsigned int key)
 	bool need_redisplay = true;
 
 	switch (key) {
+		//ZOOM
 	case '+':
 		mCamera->setScale(+0.01); // zoom in  (increases the scale)
 		break;
 	case '-':
 		mCamera->setScale(-0.01); // zoom out (decreases the scale)
 		break;
+		//VISTAS
 	case 'l':
 		mCamera->set3D();
 		break;
 	case 'o':
 		mCamera->set2D();
 		break;
+	case 'k':
+		m2Vistas = !m2Vistas;
+		break;
+		//UPDATE
 	case 'u':
 		if (!mUpdateEnabled) {
 		mScenes[mCurrentScene]->update();
@@ -199,6 +220,7 @@ IG1App::key(unsigned int key)
 	case 'f':
 		takeScreenshot("screenshot.png", mViewPort->width(), mViewPort->height(), GL_FRONT);
 		break;
+		//MOVER LA CAMARA 
 	case 'a':
 		mCamera->moveLR(-3);
 		break;
@@ -217,6 +239,7 @@ IG1App::key(unsigned int key)
 	case 'S':
 		mCamera->moveFB(-3);
 		break;
+		//CAMBIO DE PROYECCION
 	case 'p':
 		mCamera->changePrj();
 		break;
@@ -310,4 +333,48 @@ void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuin
 
 	//Guarda la imagen en el ordenador
 	screenshot.save("../assets/" + name);
+}
+
+void IG1App::mouse(int button, int state, int mods) {
+	mMouseButt = button;
+
+	double x, y;
+	glfwGetCursorPos(mWindow, &x, &y);
+	int height;
+	glfwGetWindowSize(mWindow, nullptr, &height);
+	y = height - y;
+
+	mMouseCoord = glm::dvec2(x, y);
+}
+
+void IG1App::motion(double x, double y) {
+	//Guardar en una variable auxiliar mp la diferencia entre mCoord y(x, y)
+	int height;
+	glfwGetWindowSize(mWindow, nullptr, &height);
+	y = height - y;
+	glm::dvec2 currentCoord(x, y);
+
+	glm::dvec2 mp = currentCoord - mMouseCoord;
+
+	//Guardar en mCoord la posición (x, y) del ratón
+	mMouseCoord = currentCoord;
+
+	//mBot es boton izquierdo
+	if (mMouseButt == GLFW_MOUSE_BUTTON_LEFT) mCamera->orbit(mp.x * 0.05, mp.y);
+	//mBot es boton derecho
+	else if (mMouseButt == GLFW_MOUSE_BUTTON_RIGHT) {
+		mCamera->moveLR(mp.x);
+		mCamera->moveUD(mp.y);
+	}
+
+	mNeedsRedisplay = true;
+}
+
+void IG1App::mouseWheel(double dx, double dy) {
+	if (!glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS && !glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS) {
+		mCamera->moveFB(dy);
+	}
+
+	mNeedsRedisplay = true;
+
 }

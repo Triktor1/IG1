@@ -39,6 +39,10 @@ public:
 
 	void takeScreenshot(std::string name, GLuint width, GLuint height, GLuint buffer);
 
+	//Mouse
+	void mouse(int button, int state, int mods);
+	void motion(double x, double y);
+	void mouseWheel(double dx, double dy);
 protected:
 	IG1App() = default;
 	~IG1App() { close(); };
@@ -74,6 +78,13 @@ protected:
 	static constexpr double FRAME_DURATION = 1.0 / 60.0; //60 fps
 	bool mUpdateEnabled = false; //Se activa y desactiva con la U para que se actualize o no
 	double mNextUpdate = 0.0; //comprueba cuando es el siguiente cambio de frame
+
+	//Mediar entre una o dos vistas
+	bool m2Vistas = false;
+
+	//Mouse
+	glm::dvec2 mMouseCoord = glm::dvec2(0.0, 0.0);
+	int mMouseButt = 0;
 };
 
 inline Viewport const&
