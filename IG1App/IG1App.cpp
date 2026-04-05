@@ -220,9 +220,6 @@ IG1App::key(unsigned int key)
 	case 'p':
 		mCamera->changePrj();
 		break;
-	case 'O':
-		mCamera->orbit(1, 0);
-		break;
 	default:
 		if (key >= '0' && key <= '9') {
 			if (changeScene(key - '0')) break;

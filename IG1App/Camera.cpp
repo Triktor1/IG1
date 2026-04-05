@@ -39,6 +39,9 @@ Camera::set2D()
 	mEye = { 0, 0, 500 };
 	mLook = { 0, 0, 0 };
 	mUp = { 0, 1, 0 };
+	vec3 dir = mEye - mLook;
+	mAng = degrees(atan2(dir.z, dir.x));
+	mRadio = length(vec3(dir.x, 0, dir.z));
 	setVM();
 }
 
@@ -48,8 +51,20 @@ Camera::set3D()
 	mEye = { 500, 500, 500 };
 	mLook = { 0, 10, 0 };
 	mUp = { 0, 1, 0 };
+	vec3 dir = mEye - mLook;
+	mAng = degrees(atan2(dir.z, dir.x));
+	mRadio = length(vec3(dir.x, 0, dir.z));
 	setVM();
 }
+
+void 
+Camera::setCenital() {
+	mEye = { 0, 500, 0 };
+	mLook = { 0, 0, 0 };
+	mUp = { 0, 0, -1 };
+	setVM();
+}
+
 
 void
 Camera::pitch(GLfloat a)
