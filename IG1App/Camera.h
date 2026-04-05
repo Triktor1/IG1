@@ -45,6 +45,8 @@ public:
 	void yawReal(GLfloat cs);
 	void rollReal(GLfloat cs);
 
+	void orbit(GLdouble incAng, GLdouble incY);
+
 	// Change projection
 	void changePrj();
 protected:
@@ -61,6 +63,7 @@ protected:
 	GLfloat xRight, xLeft, yTop, yBot;     // size of scene visible area
 	GLfloat mNearVal = 1, mFarVal = 10000; // view volume
 	GLfloat mScaleFact = 1;                // scale factor
+	GLdouble mRadio = 300, mAng = 0;					// orbit radius and angle
 	bool bOrto = true;                      // orthogonal or perspective projection
 
 	Viewport* mViewPort; // the viewport

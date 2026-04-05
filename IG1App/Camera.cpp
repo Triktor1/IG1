@@ -152,9 +152,10 @@ Camera::moveFB(GLfloat cs) {
 
 void 
 Camera::moveUD(GLfloat cs) {
-	mEye += mUp * cs;
-	mLook = mEye + mFront;
+	mEye += mUpward * cs;
+	mLook += mUpward * cs;
 	setVM();
+
 }
 
 void
@@ -187,6 +188,15 @@ Camera::rollReal(GLfloat cs) {
 	mRight = normalize(cross(mFront, mUp));
 
 	mLook = mEye + mFront;
+	setVM();
+}
+
+void 
+Camera::orbit(GLdouble incAng, GLdouble incY) {
+	mAng += incAng;
+	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
+	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
+	mEye.y += incY;
 	setVM();
 }
 
