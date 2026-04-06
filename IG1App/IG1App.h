@@ -89,7 +89,7 @@ protected:
 
 	//Mouse
 	glm::dvec2 mMouseCoord = glm::dvec2(0.0, 0.0);
-	int mMouseButt = 0;
+	int mMouseButt = -1;
 };
 
 inline Viewport const&

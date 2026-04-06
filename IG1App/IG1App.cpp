@@ -343,8 +343,9 @@ void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuin
 }
 
 void IG1App::mouse(int button, int state, int mods) {
-	mMouseButt = button;
-
+	if (mMouseButt == button) mMouseButt = -1;
+	else mMouseButt = button;
+	
 	double x, y;
 	glfwGetCursorPos(mWindow, &x, &y);
 	int height;
