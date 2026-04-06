@@ -121,6 +121,10 @@ IG1App::iniWinOpenGL()
 	glfwSetKeyCallback(mWindow, s_specialkey);
 	glfwSetWindowRefreshCallback(mWindow, s_display);
 
+	glfwSetMouseButtonCallback(mWindow, s_mouse);
+	glfwSetCursorPosCallback(mWindow, s_motion);
+	glfwSetScrollCallback(mWindow, s_mouseWheel);
+
 	// Error message callback (all messages)
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0u, 0, GL_TRUE);
