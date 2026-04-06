@@ -78,7 +78,11 @@ Scene::render(Camera const& cam) const
 {
 	cam.upload();
 
+	//Renderizamos antes los objetos opacos y luego los translúcidos
 	for (Abs_Entity* el : gOpaqueObjects) {
+		el->render(cam.viewMat());
+	}
+	for (Abs_Entity* el : gTransparentObjects) {
 		el->render(cam.viewMat());
 	}
 }
