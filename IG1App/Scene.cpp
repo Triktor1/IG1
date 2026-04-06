@@ -45,12 +45,17 @@ Scene::load()
 {
 	for (Abs_Entity* obj : gOpaqueObjects)
 		obj->load();
+	for (Abs_Entity* obj : gTransparentObjects)
+		obj->load();
+	
 }
 
 void
 Scene::unload()
 {
 	for (Abs_Entity* obj : gOpaqueObjects)
+		obj->unload();
+	for (Abs_Entity* obj : gTransparentObjects)
 		obj->unload();
 }
 

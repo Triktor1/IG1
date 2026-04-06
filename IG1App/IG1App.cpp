@@ -157,14 +157,17 @@ IG1App::display() const
 		Viewport auxVP = *mViewPort;
 		mViewPort->setSize(mWinW / 2, mWinH);
 		auxCam.setSize(mViewPort->width(), mViewPort->height());
+		auxCam.set3D();
 
 		mViewPort->setPos(0, 0);
-		auxCam.set3D();
-		mScenes[mCurrentScene]->render(auxCam);
+		if (mCurrentScene != 4) mScenes[4]->load();
+		mScenes[4]->render(auxCam);
+		if (mCurrentScene != 4) mScenes[4]->unload();
 
 		mViewPort->setPos(mWinW / 2, 0);
-		auxCam.setCenital();
-		mScenes[mCurrentScene]->render(auxCam);
+		if (mCurrentScene != 2) mScenes[2]->load();
+		mScenes[2]->render(auxCam);
+		if (mCurrentScene != 2) mScenes[2]->unload();
 
 		*mViewPort = auxVP;
 	}
