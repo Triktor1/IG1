@@ -70,7 +70,7 @@ Scene4::init()
 	texGlass->load("../assets/images/windowC.png", 155);
 	gTextures.push_back(texGlass);
 	GlassParapet* glass = new GlassParapet(glassL, texGlass);
-	gTransparentObjects.push_back(glass);
+	gTranslucentObjects.push_back(glass);
 	//Escala para que abarque todo el suelo
 	glass->setModelMat(glm::scale(glm::mat4(1.0f), glm::vec3(glassScaleXZ, glassScaleY, glassScaleXZ)));
 

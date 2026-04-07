@@ -47,7 +47,7 @@ protected:
 	void resetGL();
 
 	std::vector<Abs_Entity*> gOpaqueObjects; // Entities (graphic objects) of the scene
-	std::vector<Abs_Entity*> gTransparentObjects; // Entities (graphic objects) of the scene
+	std::vector<Abs_Entity*> gTranslucentObjects; // Entities (graphic objects) of the scene
 	std::vector<Texture*> gTextures; // Textures of the scene
 };
 

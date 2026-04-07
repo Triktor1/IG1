@@ -6,11 +6,11 @@ Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture(), l(l)
 {
 	mMesh = Mesh::generateBoxOutlineTexCor(l);
 	mMeshTapa = Mesh::generateRectangleTexCor(l, l, 1, 1);
-	mMeshTapa->load();
 	mMeshFondo = Mesh::generateRectangleTexCor(l, l, 1, 1);
+	mMeshTapa->load();
 	mMeshFondo->load();
 	setTexture(tex1);
-	mTexture = tex2;
+	boxTexture = tex2;
 }
 
 void Box::render(const glm::mat4& modelViewMat) const {
@@ -36,8 +36,8 @@ void Box::render(const glm::mat4& modelViewMat) const {
 
 		// CARA DELANTERA
 		glCullFace(GL_BACK);
-		if (EntityWithTexture::mTexture != nullptr)
-			EntityWithTexture::mTexture->bind();
+		if (mTexture != nullptr)
+			mTexture->bind();
 
 		//Malla principal
 		upload(aMat);
@@ -55,13 +55,13 @@ void Box::render(const glm::mat4& modelViewMat) const {
 			mMeshFondo->render();
 		}
 
-		if (EntityWithTexture::mTexture != nullptr)
-			EntityWithTexture::mTexture->unbind();
+		if (mTexture != nullptr)
+			mTexture->unbind();
 
 		// CARA TRASERA
 		glCullFace(GL_FRONT);
-		if (Box::mTexture != nullptr)
-			Box::mTexture->bind();
+		if (boxTexture != nullptr)
+			boxTexture->bind();
 
 		//Malla principal
 		upload(aMat);
@@ -79,8 +79,8 @@ void Box::render(const glm::mat4& modelViewMat) const {
 			mMeshFondo->render();
 		}
 
-		if (Box::mTexture != nullptr)
-			Box::mTexture->unbind();
+		if (boxTexture != nullptr)
+			boxTexture->unbind();
 
 		//Desactivamos culling
 		glDisable(GL_CULL_FACE);

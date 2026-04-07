@@ -10,6 +10,6 @@ public:
 	BoxOutline(GLdouble l, Texture* tex1, Texture* tex2);
 	void render(const glm::mat4& modelViewMat) const override;
 private:
-	Texture* mTexture;
+	Texture* boxTexture;
 };
 #endif

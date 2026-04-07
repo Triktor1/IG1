@@ -45,7 +45,7 @@ Scene::load()
 {
 	for (Abs_Entity* obj : gOpaqueObjects)
 		obj->load();
-	for (Abs_Entity* obj : gTransparentObjects)
+	for (Abs_Entity* obj : gTranslucentObjects)
 		obj->load();
 	
 }
@@ -55,7 +55,7 @@ Scene::unload()
 {
 	for (Abs_Entity* obj : gOpaqueObjects)
 		obj->unload();
-	for (Abs_Entity* obj : gTransparentObjects)
+	for (Abs_Entity* obj : gTranslucentObjects)
 		obj->unload();
 }
 
@@ -82,7 +82,7 @@ Scene::render(Camera const& cam) const
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
 	}
-	for (Abs_Entity* el : gTransparentObjects) {
+	for (Abs_Entity* el : gTranslucentObjects) {
 		el->render(cam.viewMat());
 	}
 }
