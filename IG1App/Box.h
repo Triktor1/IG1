@@ -14,7 +14,7 @@ public:
 		delete mMeshFondo;
 	};
 private:
-	Texture* mTexture;
+	Texture* boxTexture;
 	Mesh* mMeshTapa, *mMeshFondo;
 	GLdouble l;
 	GLfloat angle = 0.0f, angleInterval = 2.0f;

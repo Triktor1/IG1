@@ -10,7 +10,7 @@ Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture(), l(l)
 	mMeshTapa->load();
 	mMeshFondo->load();
 	setTexture(tex1);
-	boxTexture = tex2;
+	boxTexture = tex2;	
 }
 
 void Box::render(const glm::mat4& modelViewMat) const {
