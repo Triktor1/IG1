@@ -2,7 +2,7 @@
 #include "Mesh.h"
 #include "Texture.h"
 
-Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture(), l(l)
+Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : l(l)
 {
 	mMesh = Mesh::generateBoxOutlineTexCor(l);
 	mMeshTapa = Mesh::generateRectangleTexCor(l, l, 1, 1);
