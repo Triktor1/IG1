@@ -26,7 +26,7 @@ public:
 	void setModelMat(glm::mat4 const& aMat) { mModelMat = aMat; };
 
 	// load or unload entity data into the GPU
-	void load();
+	virtual void load();
 	void unload();
 
 	virtual void update() {};
