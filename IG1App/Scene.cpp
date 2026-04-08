@@ -34,6 +34,11 @@ Scene::destroy()
 
 	gOpaqueObjects.clear();
 
+	for (Abs_Entity* el : gTranslucentObjects)
+		delete el;
+
+	gTranslucentObjects.clear();
+
 	for (Texture* tex : gTextures)
 		delete tex;
 
