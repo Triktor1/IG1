@@ -217,8 +217,13 @@ IG1App::key(unsigned int key)
 		//UPDATE
 	case 'u':
 		if (!mUpdateEnabled) {
-		mScenes[mCurrentScene]->update();
-		mNeedsRedisplay = true;
+			mScenes[mCurrentScene]->update();
+			mNeedsRedisplay = true;
+		}
+		else if (m2Vistas) {
+			if (mMouseCoord.x < mWinW / 2) mScenes[4]->update();
+			else mScenes[2]->update();
+			mNeedsRedisplay = true;
 		}
 		break;
 	case 'U':
@@ -248,7 +253,7 @@ IG1App::key(unsigned int key)
 		break;
 		//CAMBIO DE PROYECCION
 	case 'p':
-		mCamera->changePrj();
+        mCamera->changePrj();
 		break;
 	default:
 		if (key >= '0' && key <= '9') {
@@ -354,7 +359,6 @@ void IG1App::mouse(int button, int state, int mods) {
 
 	mMouseCoord = glm::dvec2(x, y);
 }
-
 void IG1App::motion(double x, double y) {
 	//Guardar en una variable auxiliar mp la diferencia entre mCoord y(x, y)
 	int height;
