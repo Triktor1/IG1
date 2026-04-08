@@ -216,15 +216,16 @@ IG1App::key(unsigned int key)
 		break;
 		//UPDATE
 	case 'u':
-		if (!mUpdateEnabled) {
-			mScenes[mCurrentScene]->update();
-			mNeedsRedisplay = true;
-		}
-		else if (m2Vistas) {
+		if (m2Vistas) {
 			if (mMouseCoord.x < mWinW / 2) mScenes[4]->update();
 			else mScenes[2]->update();
 			mNeedsRedisplay = true;
 		}
+		else if (!mUpdateEnabled) {
+			mScenes[mCurrentScene]->update();
+			mNeedsRedisplay = true;
+		}
+
 		break;
 	case 'U':
 		mUpdateEnabled = !mUpdateEnabled;
@@ -329,10 +330,10 @@ IG1App::changeScene(size_t sceneNr)
 
 void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuint buffer) {
 
-	//Vector de píxeles con todos los píxeles de la pantalla
+	//Vector de pï¿½xeles con todos los pï¿½xeles de la pantalla
 	std::vector<Image::rgba_color> pixels(width * height);
 
-	//Se leen los píxeles de pantalla y se guardan en pixels
+	//Se leen los pï¿½xeles de pantalla y se guardan en pixels
 	glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
 
 	Image screenshot;
@@ -340,7 +341,7 @@ void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuin
 	//Carga en la imagen el vector pixels
 	screenshot.load(pixels.data(), width, height);
 
-	//Flip para que la imagen no salga al revés
+	//Flip para que la imagen no salga al revï¿½s
 	stbi_flip_vertically_on_write(1);
 
 	//Guarda la imagen en el ordenador
@@ -368,7 +369,7 @@ void IG1App::motion(double x, double y) {
 
 	glm::dvec2 mp = currentCoord - mMouseCoord;
 
-	//Guardar en mCoord la posición (x, y) del ratón
+	//Guardar en mCoord la posiciï¿½n (x, y) del ratï¿½n
 	mMouseCoord = currentCoord;
 
 	//mBot es boton izquierdo
