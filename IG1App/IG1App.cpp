@@ -216,10 +216,16 @@ IG1App::key(unsigned int key)
 		break;
 		//UPDATE
 	case 'u':
-		if (!mUpdateEnabled) {
-		mScenes[mCurrentScene]->update();
-		mNeedsRedisplay = true;
+		if (m2Vistas) {
+			if (mMouseCoord.x < mWinW / 2) mScenes[4]->update();
+			else mScenes[2]->update();
+			mNeedsRedisplay = true;
 		}
+		else if (!mUpdateEnabled) {
+			mScenes[mCurrentScene]->update();
+			mNeedsRedisplay = true;
+		}
+
 		break;
 	case 'U':
 		mUpdateEnabled = !mUpdateEnabled;
