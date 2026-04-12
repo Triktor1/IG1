@@ -35,9 +35,9 @@ public:
 	std::vector<glm::vec3> const& vertices() const { return vVertices; };
 	std::vector<glm::vec4> const& colors() const { return vColors; };
 
-	void load();
-	void unload();
-
+	virtual void load();
+	virtual void unload();
+	virtual void draw() const;
 protected:
 	GLuint mPrimitive =
 	  GL_TRIANGLES;          // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
@@ -45,7 +45,6 @@ protected:
 	std::vector<glm::vec3> vVertices; // vertex array
 	std::vector<glm::vec4> vColors;   // color array
 	std::vector<glm::vec2> vTexCoords; // texture coordinates array
-	virtual void draw() const;
 
 	GLuint mVAO;  // vertex array object
 

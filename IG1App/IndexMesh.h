@@ -1,0 +1,25 @@
+#pragma once
+#include "Mesh.h"
+
+class IndexMesh :
+    public Mesh
+{
+
+	IndexMesh();
+	virtual ~IndexMesh();
+
+	IndexMesh(const IndexMesh& m) = delete;            // no copy constructor
+	IndexMesh& operator=(const IndexMesh& m) = delete; // no copy assignment
+
+	void load() override;
+	void unload() override;
+	void draw() const override;
+
+	static IndexMesh* generateByRevolution(
+		const std::vector<glm::vec2>& profile, GLuint nSamples);
+
+protected:
+	std::vector<GLuint> vIndexes;
+	GLuint mIBO;
+};
+
