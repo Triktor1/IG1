@@ -56,7 +56,7 @@ IndexMesh::generateByRevolution(
 		for (auto p : perfil) // rota el perfil
 			mesh->vVertices.emplace_back(p.x * c, p.y, -p.x * s);
 	}
-	for (int i = 0; i < nSamples; ++i) // caras i a i + 1
+	for (int i = 0; i < nSamples; ++i){ // caras i a i + 1
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (perfil[j].x != 0.0) // triángulo inferior
 				for (auto [s, t] : { pair{i, j}, {i, j + 1}, {i + 1, j} })
@@ -65,6 +65,7 @@ IndexMesh::generateByRevolution(
 				for (auto [s, t] : { pair{i, j + 1}, {i + 1, j + 1}, {i + 1, j} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 		}
+	}
 	mesh->mNumVertices = mesh->vVertices.size();
 	return mesh;
 }
