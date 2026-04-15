@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include "Camera.h"
 
+#include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_access.hpp>
@@ -175,34 +176,22 @@ Camera::moveUD(GLfloat cs) {
 
 void
 Camera::pitchReal(GLfloat cs) {
-	mat4 rot = rotate(glm::mat4(1.0f), radians(cs), mRight);
-
-	mFront = normalize(mat3(rot) * mFront);;
-	mUp = normalize(mat3(rot) * mUp);
-
-	mLook = mEye + mFront;
+	vec3 auxVec = mLook - mEye;
+	mLook = mEye + rotate(auxVec, glm::radians(cs), mRight);
+	mUp = rotate(mUp, glm::radians(cs), mRight);
 	setVM();
 }
 
 void
 Camera::yawReal(GLfloat cs) {
-	mat4 rot = rotate(glm::mat4(1.0f), radians(-cs), mUp);
-
-	mFront = normalize(mat3(rot) * mFront);
-	mRight = normalize(cross(mFront, mUp));
-
-	mLook = mEye + mFront;
+	mLook = mEye + rotate(mLook - mEye, glm::radians(cs), mUpward);
+	mUp = rotate(mUp, glm::radians(cs), mUpward);
 	setVM();
 }
 
 void
 Camera::rollReal(GLfloat cs) {
-	mat4 rot = rotate(glm::mat4(1.0f), radians(cs), mFront);
-
-	mUp = normalize(mat3(rot) * mUp);
-	mRight = normalize(cross(mFront, mUp));
-
-	mLook = mEye + mFront;
+	mUp = rotate(mUp, glm::radians(cs), mFront);
 	setVM();
 }
 
