@@ -17,6 +17,7 @@ Camera::Camera(Viewport* vp)
 	, yBot(-yTop)
 	, mViewPort(vp)
 {
+
 	setPM();
 	setAxes();
 }
