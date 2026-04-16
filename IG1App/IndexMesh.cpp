@@ -44,7 +44,7 @@ IndexMesh::unload()
 IndexMesh*
 IndexMesh::generateByRevolution(
 	const vector<vec2>& perfil, GLuint nSamples) {
-	GLfloat angleMax = 2 * 3.14f;
+	GLfloat angleMax = 2 * 3.1415296f;
 	IndexMesh* mesh = new IndexMesh;
 	mesh->mPrimitive = GL_TRIANGLES;
 	int tamPerfil = perfil.size();
