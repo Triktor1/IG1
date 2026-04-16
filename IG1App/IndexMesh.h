@@ -4,7 +4,7 @@
 class IndexMesh :
     public Mesh
 {
-
+public:
 	IndexMesh();
 	virtual ~IndexMesh();
 

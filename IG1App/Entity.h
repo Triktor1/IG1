@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Mesh.h"
+#include "IndexMesh.h"
 #include "Shader.h"
 
 class Abs_Entity // abstract class

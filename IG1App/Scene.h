@@ -19,6 +19,7 @@
 #include "GlassParapet.h"
 #include "Photo.h"
 #include "Grass.h"
+#include "Torus.h"
 
 #include <vector>
 
