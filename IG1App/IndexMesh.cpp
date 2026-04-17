@@ -62,7 +62,7 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 		GLuint nextI = (i + 1) % nSamples;
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (perfil[j].x != 0.0) // triángulo inferior
-				for (auto [s, t] : { pair{i, j}, {i, j + 1}, {nextI, j} })
+				for (auto [s, t] : { pair{i, j}, {nextI, j}, { i, j + 1 } })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 			if (perfil[j + 1].x != 0.0) // triángulo superior
 				for (auto [s, t] : { pair{i, j + 1}, {nextI, j}, {nextI, j + 1} })
