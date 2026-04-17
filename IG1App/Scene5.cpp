@@ -6,6 +6,6 @@ void
 Scene5::init()
 {
 	Scene::init();
-	Torus* torus = new Torus(40, 40);
+	Torus* torus = new Torus(40, 20);
 	gOpaqueObjects.push_back(torus);
 }

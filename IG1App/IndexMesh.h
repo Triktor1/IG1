@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _H_IndexMesh_H_
+#define _H_IndexMesh_H_
 #include "Mesh.h"
 
 class IndexMesh :
@@ -22,4 +23,4 @@ protected:
 	std::vector<GLuint> vIndexes;
 	GLuint mIBO;
 };
-
+#endif
