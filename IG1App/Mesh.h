@@ -45,6 +45,7 @@ protected:
 	std::vector<glm::vec3> vVertices; // vertex array
 	std::vector<glm::vec4> vColors;   // color array
 	std::vector<glm::vec2> vTexCoords; // texture coordinates array
+	std::vector<glm::vec3> vNormals; //normals array
 
 	GLuint mVAO;  // vertex array object
 
@@ -52,6 +53,7 @@ private:
 	GLuint mVBO;  // vertex buffer object
 	GLuint mCBO;  // color buffer object
 	GLuint mTCO;  // texture coordinates buffer object
+	GLuint mNBO;  // normals buffer object
 };
 
 #endif //_H_Scene_H_

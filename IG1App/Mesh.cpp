@@ -63,6 +63,17 @@ Mesh::load()
 				sizeof(vec2), nullptr);
 			glEnableVertexAttribArray(2);
 		}
+
+		if (vNormals.size() > 0) {
+			glGenBuffers(1, &mNBO);
+			glBindBuffer(GL_ARRAY_BUFFER, mNBO);
+			glBufferData(GL_ARRAY_BUFFER,
+				vNormals.size() * sizeof(vec3),
+				vNormals.data(), GL_STATIC_DRAW);
+			glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE,
+				sizeof(vec3), nullptr);
+			glEnableVertexAttribArray(3);
+		}
 	}
 }
 
@@ -83,6 +94,11 @@ Mesh::unload()
 		if (mTCO != NONE) {
 			glDeleteBuffers(1, &mTCO);
 			mTCO = NONE;
+		}
+
+		if (mNBO != NONE) {
+			glDeleteBuffers(1, &mNBO);
+			mNBO = NONE;
 		}
 	}
 }
