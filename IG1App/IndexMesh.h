@@ -16,8 +16,8 @@ public:
 	void unload() override;
 	void draw() const override;
 
-	static IndexMesh* generateByRevolution(
-		const std::vector<glm::vec2>& profile, GLuint nSamples);
+	void buildNormalVectors();
+	static IndexMesh* generateByRevolution(const std::vector<glm::vec2>& profile, GLuint nSamples);
 
 protected:
 	std::vector<GLuint> vIndexes;

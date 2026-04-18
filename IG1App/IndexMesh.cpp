@@ -39,7 +39,29 @@ IndexMesh::unload()
 		mIBO = NONE;
 	}
 }
- 
+
+void
+IndexMesh::buildNormalVectors() {
+	//Resetear el vector de normales y ajustar el tamaño acorde a los vértices
+	vNormals.clear();
+	vNormals.resize(vVertices.size(), vec3(0.0f));
+
+	//Cálculo de normales
+	for (int i = 0; i < vIndexes.size(); i += 3) {
+		GLuint i0 = vIndexes[i];
+		GLuint i1 = vIndexes[i + 1];
+		GLuint i2 = vIndexes[i + 2];
+
+		vec3 n = normalize(cross(vVertices[i1] - vVertices[i0], vVertices[i2] - vVertices[i0]));
+		vNormals[i0] += n;
+		vNormals[i1] += n;
+		vNormals[i2] += n;
+	}
+
+	for (auto& n : vNormals)
+		n = normalize(n);
+
+}
 
 IndexMesh*
 IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
@@ -50,7 +72,7 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 
 	int tamPerfil = perfil.size();
 	mesh->vVertices.reserve(nSamples * tamPerfil);
-	
+
 	// Genera los vértices de las muestras
 	GLdouble theta1 = angleMax / nSamples;
 	for (int i = 0; i <= nSamples; ++i) { // muestra i-ésima
@@ -58,7 +80,7 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 		for (auto p : perfil) // rota el perfil
 			mesh->vVertices.emplace_back(p.x * c, p.y, -p.x * s);
 	}
-	for (int i = 0; i <= nSamples; ++i){ // caras i a i + 1
+	for (int i = 0; i <= nSamples; ++i) { // caras i a i + 1
 		GLuint nextI = (i + 1) % nSamples;
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (perfil[j].x != 0.0) // triángulo inferior
@@ -70,5 +92,6 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 		}
 	}
 	mesh->mNumVertices = mesh->vVertices.size();
+	mesh->buildNormalVectors();
 	return mesh;
 }

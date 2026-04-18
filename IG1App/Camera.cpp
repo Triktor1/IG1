@@ -59,7 +59,7 @@ Camera::set3D()
 	setVM();
 }
 
-void 
+void
 Camera::setCenital() {
 	mEye = { 0, 500, 0 };
 	mLook = { 0, 0, 0 };
@@ -144,6 +144,11 @@ Camera::upload() const
 	mViewPort->upload();
 	uploadVM();
 	uploadPM();
+
+	glm::vec4 lightDir = normalize(mViewMat * vec4(-1.0f, -1.5f, -1.25f, 0.0f));
+	auto shader = Shader::get("simple_light");
+	shader->use();
+	shader->setUniform("lightDir", lightDir);
 }
 
 void
@@ -153,21 +158,21 @@ Camera::setAxes() {
 	mFront = -glm::vec3(glm::row(mViewMat, 2));
 }
 
-void 
+void
 Camera::moveLR(GLfloat cs) {
 	mEye += mRight * cs;
 	mLook = mEye + mFront;
 	setVM();
 }
 
-void 
+void
 Camera::moveFB(GLfloat cs) {
 	mEye += mFront * cs;
 	mLook = mEye + mFront;
 	setVM();
 }
 
-void 
+void
 Camera::moveUD(GLfloat cs) {
 	mEye += mUpward * cs;
 	mLook += mUpward * cs;
@@ -196,7 +201,7 @@ Camera::rollReal(GLfloat cs) {
 	setVM();
 }
 
-void 
+void
 Camera::orbit(GLdouble incAng, GLdouble incY) {
 	mAng += incAng;
 	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;

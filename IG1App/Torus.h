@@ -1,8 +1,8 @@
-#include "SingleColorEntity.h"
+#include "ColorMaterialEntity.h"
 #include <vector>
 
 class Torus :
-	public SingleColorEntity
+	public ColorMaterialEntity
 {
 public:
 	Torus(GLdouble R, GLdouble r, GLuint nPoints = 40, GLuint nSamples = 40);
