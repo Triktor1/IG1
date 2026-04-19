@@ -28,7 +28,7 @@ public:
 
 	// load or unload entity data into the GPU
 	virtual void load();
-	void unload();
+	virtual void unload();
 
 	virtual void update() {};
 

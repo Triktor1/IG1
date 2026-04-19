@@ -10,7 +10,11 @@ public:
 	void render(const glm::mat4& modelViewMat) const override;
 	void update();
 	void load() override;
+	void unload() override;
+
 	~Box() {
+		if (mMeshTapa) mMeshTapa->unload();
+		if (mMeshFondo) mMeshFondo->unload();
 		delete mMeshTapa;
 		delete mMeshFondo;
 	};

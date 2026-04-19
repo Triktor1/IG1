@@ -106,3 +106,9 @@ void Box::load() {
 	mMeshTapa->load();
 	mMeshFondo->load();
 }
+
+void Box::unload() {
+	mMesh->unload();
+	mMeshTapa->unload();
+	mMeshFondo->unload();
+}

@@ -34,6 +34,7 @@ void IndexMesh::draw() const
 void
 IndexMesh::unload()
 {
+	Mesh::unload();
 	if (mIBO != NONE) {
 		glDeleteBuffers(1, &mIBO);
 		mIBO = NONE;
