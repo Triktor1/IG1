@@ -9,7 +9,7 @@ protected:
 	glm::vec4 mColor;
 
 public:
-	SingleColorEntity(glm::vec4);
+	SingleColorEntity(glm::vec4 color = glm::vec4(1.0));
 
 	void render(const glm::mat4& modelViewMat) const override;
 

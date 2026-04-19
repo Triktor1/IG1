@@ -5,7 +5,7 @@ class ColorMaterialEntity :
     public SingleColorEntity
 {
 public:
-    ColorMaterialEntity(glm::vec4 color = {0, 0, 0, 255});
+    ColorMaterialEntity();
     void render(const glm::mat4& modelViewMat) const override;
 };
 #endif
