@@ -22,6 +22,8 @@ public:
 		const std::vector<glm::vec2>& profile, GLuint nSamples,
 		GLfloat angleMax = 2 * std::numbers::pi);
 
+	static IndexMesh* generateIndexedBox8(GLdouble l);
+
 protected:
 	std::vector<GLuint> vIndexes;
 	GLuint mIBO;
