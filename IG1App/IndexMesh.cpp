@@ -123,3 +123,59 @@ IndexMesh::generateIndexedBox8(GLdouble l) {
 	mesh->buildNormalVectors();
 	return mesh;
 }
+
+IndexMesh*
+IndexMesh::generateIndexedBox(GLdouble l) {
+	IndexMesh* mesh = new IndexMesh;
+	mesh->mPrimitive = GL_TRIANGLES;
+	mesh->vVertices.reserve(24);
+	mesh->mNumVertices = 24;
+
+	//Cara 1 (+X)
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);   //0
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //1
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);    //2
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);   //3
+
+	//Cara 2 (-X)
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);   //4
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);  //5
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);  //6
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //7
+
+	//Cara 3 (+Z)
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);  //8
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2); //9
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);   //10
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);  //11
+
+	//Cara 4 (-Z)
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);  //12
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //13
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);   //14
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //15
+
+	//Cara 5 (+Y)
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);  //16
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2); //17
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);   //18
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);  //19
+
+	//Cara 6 (-Y)
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);  //20
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //21
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);   //22
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //23
+
+	mesh->vIndexes = {
+		1, 0, 2, 2, 3, 1,
+		4, 7, 5, 7, 4, 6,
+		10, 9, 11, 10, 8, 9,
+		12, 14, 13, 14, 15, 13,
+		17, 16, 18, 18, 19, 17,
+		22, 20, 21, 22, 21, 23
+	};
+
+	mesh->buildNormalVectors();
+	return mesh;
+}
