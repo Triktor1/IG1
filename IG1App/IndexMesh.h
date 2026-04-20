@@ -1,5 +1,6 @@
 #ifndef _H_IndexMesh_H_
 #define _H_IndexMesh_H_
+#include <numbers>
 #include "Mesh.h"
 
 class IndexMesh :
@@ -17,7 +18,9 @@ public:
 	void draw() const override;
 
 	void buildNormalVectors();
-	static IndexMesh* generateByRevolution(const std::vector<glm::vec2>& profile, GLuint nSamples);
+	static IndexMesh* generateByRevolution(
+		const std::vector<glm::vec2>& profile, GLuint nSamples,
+		GLfloat angleMax = 2 * std::numbers::pi);
 
 protected:
 	std::vector<GLuint> vIndexes;
