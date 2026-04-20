@@ -99,3 +99,8 @@ IndexMesh::buildNormalVectors() {
 		n = normalize(n);
 
 }
+
+IndexMesh*
+IndexMesh::generateIndexedBox8(GLdouble l) {
+	
+}
