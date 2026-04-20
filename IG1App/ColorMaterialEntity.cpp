@@ -1,5 +1,7 @@
 #include "ColorMaterialEntity.h"
 
+bool ColorMaterialEntity::mShowNormals = false;
+
 ColorMaterialEntity::ColorMaterialEntity() :
 	SingleColorEntity()
 {
@@ -15,7 +17,7 @@ void ColorMaterialEntity::render(const glm::mat4& modelViewMat) const
 
 		mMesh->render();
 
-		if (!true) { //provisional
+		if (mShowNormals) {
 			glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 			Shader* shader = Shader::get("normals");
 			shader->use();

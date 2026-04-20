@@ -4,8 +4,11 @@
 class ColorMaterialEntity :
     public SingleColorEntity
 {
+private:
+    static bool mShowNormals;
 public:
     ColorMaterialEntity();
     void render(const glm::mat4& modelViewMat) const override;
+	static void toggleNormals() { mShowNormals = !mShowNormals; }
 };
 #endif

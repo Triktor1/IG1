@@ -7,6 +7,6 @@ Scene5::init()
 {
 	Scene::init();
 	Torus* torus = new Torus(40, 20);
-	torus->setColor(vec4(0, 0, 255, 255));
+	torus->setColor(vec4(0, 255, 0, 255));
 	gOpaqueObjects.push_back(torus);
 }

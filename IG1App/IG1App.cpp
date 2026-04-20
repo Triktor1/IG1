@@ -257,6 +257,9 @@ IG1App::key(unsigned int key)
 	case 'p':
         mCamera->changePrj();
 		break;
+	case 'N':		
+		ColorMaterialEntity::toggleNormals();
+		break;
 	default:
 		if (key >= '0' && key <= '9') {
 			if (changeScene(key - '0')) break;

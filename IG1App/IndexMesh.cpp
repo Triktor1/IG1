@@ -41,29 +41,6 @@ IndexMesh::unload()
 	}
 }
 
-void
-IndexMesh::buildNormalVectors() {
-	//Resetear el vector de normales y ajustar el tamaño acorde a los vértices
-	vNormals.clear();
-	vNormals.resize(vVertices.size(), vec3(0.0f));
-
-	//Cálculo de normales
-	for (int i = 0; i < vIndexes.size(); i += 3) {
-		GLuint i0 = vIndexes[i];
-		GLuint i1 = vIndexes[i + 1];
-		GLuint i2 = vIndexes[i + 2];
-
-		vec3 n = normalize(cross(vVertices[i1] - vVertices[i0], vVertices[i2] - vVertices[i0]));
-		vNormals[i0] += n;
-		vNormals[i1] += n;
-		vNormals[i2] += n;
-	}
-
-	for (auto& n : vNormals)
-		n = normalize(n);
-
-}
-
 IndexMesh*
 IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 	GLfloat angleMax = 2 * 3.1415926;
@@ -95,4 +72,27 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples) {
 	mesh->mNumVertices = mesh->vVertices.size();
 	mesh->buildNormalVectors();
 	return mesh;
+}
+
+void
+IndexMesh::buildNormalVectors() {
+	//Resetear el vector de normales y ajustar el tamaño acorde a los vértices
+	vNormals.clear();
+	vNormals.resize(vVertices.size(), vec3(0.0f));
+
+	//Cálculo de normales
+	for (int i = 0; i < vIndexes.size(); i += 3) {
+		GLuint i0 = vIndexes[i];
+		GLuint i1 = vIndexes[i + 1];
+		GLuint i2 = vIndexes[i + 2];
+
+		vec3 n = normalize(cross(vVertices[i1] - vVertices[i0], vVertices[i2] - vVertices[i0]));
+		vNormals[i0] += n;
+		vNormals[i1] += n;
+		vNormals[i2] += n;
+	}
+
+	for (auto& n : vNormals)
+		n = normalize(n);
+
 }
