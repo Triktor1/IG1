@@ -21,6 +21,9 @@
 #include "Grass.h"
 #include "Torus.h"
 #include "IndexedBox.h"
+#include "Sphere.h"
+#include "Disk.h"
+#include "Cone.h"
 
 #include <vector>
 
