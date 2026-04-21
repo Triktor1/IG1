@@ -15,7 +15,7 @@ Scene7::init() {
 	dsk->setColor(glm::vec4(0, 1, 0, 1));
 	gOpaqueObjects.push_back(dsk);
 
-	Cone* con = new Cone(50, 40, 8, 25, 25);
+	Cone* con = new Cone(50, 0, 80, 25, 25);
 	con->setColor(glm::vec4(0, 1, 0, 1));
 	gOpaqueObjects.push_back(con);
 	
