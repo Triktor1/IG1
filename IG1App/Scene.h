@@ -43,11 +43,14 @@ public:
 	// load or unload scene data into the GPU
 	void load();
 	void unload();
+	void setBGColor(glm::vec4 const& color = glm::vec4(0.6, 0.7, 0.8, 1.0));
 
 	virtual void update();
 
+
 protected:
 	void destroy();
+
 	void setGL();
 	void resetGL();
 

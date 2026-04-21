@@ -65,6 +65,10 @@ Scene::unload()
 }
 
 void
+Scene::setBGColor(glm::vec4 const& color) {
+	glClearColor(color.r, color.g, color.b, color.a);
+}
+void
 Scene::setGL()
 {
 	// OpenGL basic setting

@@ -83,6 +83,7 @@ IG1App::init()
 	mScenes.push_back(new Scene5);
 	mScenes.push_back(new Scene6);
 	mScenes.push_back(new Scene7);
+	mScenes.push_back(new Scene8);
 
 	mCamera->set2D();
 	for (Scene* s : mScenes) s->init();
@@ -329,6 +330,8 @@ IG1App::changeScene(size_t sceneNr)
 		mScenes[mCurrentScene]->unload();
 		mCurrentScene = sceneNr;
 		mScenes[mCurrentScene]->load();
+		glm::vec4 sceneBGColor = mCurrentScene == 8 ? glm::vec4(0.0, 0.0, 0.0, 1.0) : glm::vec4(0.6, 0.7, 0.8, 1.0);
+		mScenes[mCurrentScene]->setBGColor(sceneBGColor);
 	}
 
 	return true;
