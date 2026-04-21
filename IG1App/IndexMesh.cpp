@@ -48,13 +48,20 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLf
 
 	int tamPerfil = perfil.size();
 	mesh->vVertices.reserve(nSamples * tamPerfil);
+	mesh->vTexCoords.reserve(nSamples * tamPerfil);
 
 	// Genera los v�rtices de las muestras
 	GLdouble theta1 = angleMax / nSamples;
 	for (int i = 0; i <= nSamples; ++i) { // muestra i-�sima
 		GLdouble c = cos(i * theta1), s = sin(i * theta1);
 		for (auto p : perfil) // rota el perfil
+		{
 			mesh->vVertices.emplace_back(p.x * c, p.y, -p.x * s);
+
+			GLfloat u = (GLfloat)i / nSamples;
+			GLfloat v = (p.y + 0.5f) / 1.0f;
+			mesh->vTexCoords.emplace_back(u, v);
+		}
 	}
 	for (int i = 0; i <= nSamples; ++i) { // caras i a i + 1
 		GLuint nextI = (i + 1) % nSamples;
