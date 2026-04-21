@@ -132,40 +132,40 @@ IndexMesh::generateIndexedBox(GLdouble l) {
 	mesh->mNumVertices = 24;
 
 	//Cara 1 (+X)
-	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);   //0
-	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //1
-	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);    //2
-	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);   //3
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);
 
 	//Cara 2 (-X)
-	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);   //4
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);  //5
-	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);  //6
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //7
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2);
 
 	//Cara 3 (+Z)
-	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);  //8
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2); //9
-	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);   //10
-	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);  //11
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);
 
 	//Cara 4 (-Z)
-	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);  //12
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //13
-	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);   //14
-	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //15
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);
 
 	//Cara 5 (+Y)
-	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);  //16
-	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2); //17
-	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);   //18
-	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);  //19
+	mesh->vVertices.emplace_back(-l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, l / 2, l / 2);
+	mesh->vVertices.emplace_back(l / 2, l / 2, -l / 2);
 
 	//Cara 6 (-Y)
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);  //20
-	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2); //21
-	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);   //22
-	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);  //23
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, l / 2);
+	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);
+	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);
 
 	mesh->vIndexes = {
 		1, 0, 2, 2, 3, 1,
