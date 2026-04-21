@@ -7,7 +7,9 @@ ColorMaterialEntity()
 	GLdouble alphaStep = (R - r) / (float)nRings;
 	GLdouble alpha = r;
 	for (int i = nRings; i > 0; --i) {
-		profile.emplace_back(alpha - alphaStep * i, h - alphaStep*i);
+		profile.emplace_back(r + (R - r) * (float)i / nRings, h - (h * (float)i / nRings));
 	}
+	profile.emplace_back(0, h);
+
 	mMesh = IndexMesh::generateByRevolution(profile, nSamples);
 }
