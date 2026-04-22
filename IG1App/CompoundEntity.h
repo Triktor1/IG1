@@ -1,3 +1,7 @@
+#ifndef COMPOUNDENTITY_H
+#define COMPOUNDENTITY_H
+
+
 #include "Entity.h"
 class CompoundEntity :
     public Abs_Entity
@@ -15,4 +19,4 @@ public:
 protected:
     std::vector<Abs_Entity*> gObjects;
 };
-
+#endif

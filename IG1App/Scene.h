@@ -26,6 +26,7 @@
 #include "Cone.h"
 #include "SphereWithTexture.h"
 #include "Snowman.h"
+#include "Droid.h"
 
 #include <vector>
 
