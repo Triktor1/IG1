@@ -8,9 +8,9 @@ Scene5::init()
 	Scene::init();
 
 	//Parámetros del Torus
-	GLdouble torusR = 80, torusr = 40;
+	GLdouble torus_R = 80, torus_r = 40;
 
-	Torus* torus = new Torus(torusR, torusr);
+	Torus* torus = new Torus(torus_R, torus_r);
 	torus->setColor(vec4(0, 1, 0, 1));
 	gOpaqueObjects.push_back(torus);
 }
