@@ -4,6 +4,9 @@ void
 Scene7::init() {
 	Scene::init();
 
-	Droid* con = new Droid(150);
+	//Parámetros del Droid
+	GLfloat droidRadius = 150;
+
+	Droid* con = new Droid(droidRadius);
 	gOpaqueObjects.push_back(con);
 }
