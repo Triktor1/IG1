@@ -12,7 +12,7 @@ private:
     Sphere* mDownSphere, *mUpSphere;
     Cone* mLeftEye, *mRightEye, *mNose, *mHatCilinder;
     Disk* mDiskUp, *mDiskDown;
-    CompoundEntity* mHat, *mSnowman;
+    CompoundEntity* mHat;
     GLfloat radius;
 public:
     Snowman(GLfloat radius);
