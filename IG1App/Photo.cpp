@@ -1,10 +1,9 @@
 #include "Photo.h"
 #include "IG1App.h"
 #include "Image.h"
-Photo::Photo(GLdouble w, GLdouble h, Texture* tex) : EntityWithTexture()
+Photo::Photo(GLdouble w, GLdouble h, Texture* tex) : EntityWithTexture(tex)
 {
 	mMesh = Mesh::generateRectangleTexCor(w, h, 1.0, 1.0);
-	setTexture(tex);
 }
 
 void

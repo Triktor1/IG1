@@ -1,6 +1,9 @@
 #include "CompoundEntity.h"
 
 CompoundEntity::~CompoundEntity() {
+    for (int i = 0; i < gObjects.size(); i++) {
+        delete gObjects[i];
+    }
 }
 
 void CompoundEntity::addEntity(Abs_Entity* ae) {

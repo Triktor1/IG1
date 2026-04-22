@@ -2,7 +2,7 @@
 #include "Shader.h"
 #include "Texture.h"
 
-EntityWithTexture::EntityWithTexture() : mTexture(nullptr)
+EntityWithTexture::EntityWithTexture(Texture* tex) : Abs_Entity(), mTexture(tex), mModulate(false)
 {
 	mShader = Shader::get("texture");
 }

@@ -5,10 +5,9 @@
 
 using namespace glm;
 
-Grass::Grass(GLdouble w, GLdouble h, Texture* tex) : EntityWithTexture()
+Grass::Grass(GLdouble w, GLdouble h, Texture* tex) : EntityWithTexture(tex)
 {
     mMesh = Mesh::generateRectangleTexCor(w, h, 1, 1);
-    setTexture(tex);
     mShader = Shader::get("texture:texture_alpha");
 }
 

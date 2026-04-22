@@ -1,9 +1,8 @@
 #include "GlassParapet.h"
 #include "Texture.h"
 
-GlassParapet::GlassParapet(GLdouble l, Texture* tex) {
+GlassParapet::GlassParapet(GLdouble l, Texture* tex):EntityWithTexture(tex){
 	mMesh = Mesh::generateBoxOutlineTexCor(l);
-	setTexture(tex);
 }
 
 void GlassParapet::render(const glm::mat4& modelViewMat) const {

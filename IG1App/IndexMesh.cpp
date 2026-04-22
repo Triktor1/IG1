@@ -54,12 +54,11 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLf
 	GLdouble theta1 = angleMax / nSamples;
 	for (int i = 0; i <= nSamples; ++i) { // muestra i-�sima
 		GLdouble c = cos(i * theta1), s = sin(i * theta1);
-		for (auto p : perfil) // rota el perfil
-		{
-			mesh->vVertices.emplace_back(p.x * c, p.y, -p.x * s);
+		for (int j = 0; j < perfil.size(); j++) {
+			mesh->vVertices.emplace_back(perfil[j].x * c, perfil[j].y, -perfil[j].x * s);
 
 			GLfloat u = (GLfloat)i / nSamples;
-			GLfloat v = (p.y + 0.5f) / 1.0f;
+			GLfloat v = (GLfloat)j / tamPerfil;
 			mesh->vTexCoords.emplace_back(u, v);
 		}
 	}
@@ -97,9 +96,20 @@ IndexMesh::buildNormalVectors() {
 		vNormals[i2] += n;
 	}
 
-	for (auto& n : vNormals)
-		n = normalize(n);
+	for (auto& n : vNormals) n = normalize(n);
+}
 
+IndexMesh*
+IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians) {
+	std::vector<glm::vec2> profile;
+
+	GLdouble alphaStep = 2 * std::numbers::pi / (float)nParallel;
+	GLdouble alpha = std::numbers::pi / 2;
+	for (int i = 0; i <= nParallel / 2; ++i) {
+		profile.emplace_back(radius * cos(alphaStep * i - alpha), radius * sin(alphaStep * i - alpha));
+	}
+	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, nMeridians);
+	return mesh;
 }
 
 IndexMesh*

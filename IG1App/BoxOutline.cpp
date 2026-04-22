@@ -1,10 +1,9 @@
 #include "BoxOutline.h"
 
 BoxOutline::
-BoxOutline(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture()
+BoxOutline(GLdouble l, Texture* tex1, Texture* tex2) : EntityWithTexture(tex1)
 {
 	mMesh = Mesh::generateBoxOutlineTexCor(l);
-	setTexture(tex1);
 	boxTexture = tex2;
 }
 

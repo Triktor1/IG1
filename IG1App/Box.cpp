@@ -2,12 +2,11 @@
 #include "Mesh.h"
 #include "Texture.h"
 
-Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : l(l)
+Box::Box(GLdouble l, Texture* tex1, Texture* tex2) : l(l), EntityWithTexture(tex1)
 {
 	mMesh = Mesh::generateBoxOutlineTexCor(l);
 	mMeshTapa = Mesh::generateRectangleTexCor(l, l, 1, 1);
 	mMeshFondo = Mesh::generateRectangleTexCor(l, l, 1, 1);
-	setTexture(tex1);
 	boxTexture = tex2;
 }
 
