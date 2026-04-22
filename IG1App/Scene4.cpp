@@ -5,11 +5,10 @@ using namespace glm;
 void
 Scene4::init()
 {
-
 	Scene::init();
+	//Variables del suelo
 
 	// GROUND
-	//Variables del suelo
 	GLdouble groundL = 400.0;
 	Texture* tex = new Texture();
 	tex->load("../assets/images/baldosaC.png", 255);
