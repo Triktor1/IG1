@@ -4,7 +4,7 @@
 #include "Cone.h"
 #include "Disk.h"
 
-Snowman::Snowman(GLfloat radius) : radius(radius) {
+Snowman::Snowman(GLfloat radius) {
 	//Bola de abajo
 	mDownSphere = new Sphere(radius, 30, 20);
 	mDownSphere->setColor(glm::vec4(243 / 255.0, 243 / 255.0, 243 / 255.0, 1));
