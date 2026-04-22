@@ -1,5 +1,8 @@
 #include "CompoundEntity.h"
 
+class Cone;
+class Disk;
+class SphereWithTexture;
 class Droid :
     public CompoundEntity
 {

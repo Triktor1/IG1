@@ -4,5 +4,5 @@
 #include "Disk.h"
 
 Droid::Droid(GLdouble radius) {
-	Cone* cone;
+	
 }
