@@ -12,6 +12,13 @@ public:
 	virtual ~Scene8() = default;
 
 	void init() override;
+		
+	void rotate() override;
+	void orbit() override;
+
+private:
+	CompoundEntity* node = nullptr;
+	Droid* droid;
 };
 #endif
 

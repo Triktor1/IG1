@@ -235,7 +235,7 @@ IG1App::key(unsigned int key)
 	case 'U':
 		mUpdateEnabled = !mUpdateEnabled;
 		break;
-	case 'f':
+	case 'F':
 		takeScreenshot("screenshot.png", mViewPort->width(), mViewPort->height(), GL_FRONT);
 		break;
 		//MOVER LA CAMARA 
@@ -263,6 +263,12 @@ IG1App::key(unsigned int key)
 		break;
 	case 'N':		
 		ColorMaterialEntity::toggleNormals();
+		break;
+	case 'f':
+		mScenes[mCurrentScene]->rotate();
+		break;
+	case 'g':
+		mScenes[mCurrentScene]->orbit();
 		break;
 	default:
 		if (key >= '0' && key <= '9') {

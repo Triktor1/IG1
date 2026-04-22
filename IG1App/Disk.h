@@ -1,3 +1,4 @@
+
 #include "ColorMaterialEntity.h"
 class Disk :
     public ColorMaterialEntity

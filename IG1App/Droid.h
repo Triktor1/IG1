@@ -18,5 +18,7 @@ private:
 public:
     Droid(GLdouble radius);
     ~Droid();
+
+    void rotateSphere(GLfloat);
 };
 #endif
