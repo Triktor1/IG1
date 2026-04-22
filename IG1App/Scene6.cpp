@@ -7,6 +7,7 @@ Scene6::init() {
 	//Parámetros del Indexed Box
 	GLdouble idxBoxLength = 200;
 
+	//IndexedBox
 	IndexedBox* idxBox = new IndexedBox(idxBoxLength);
 	idxBox->setColor(glm::vec4(0, 1, 0, 1));
 	gOpaqueObjects.push_back(idxBox);

@@ -31,15 +31,18 @@ Snowman::Snowman(GLfloat radius) {
 	mRightEye->setColor(glm::vec4(0, 128 / 255.0, 128 / 255.0, 1));
 	addEntity(mRightEye);
 
+	//Nariz
 	mNose = new Cone(radius * 0.4, 0, radius * 0.1, 10, 10);
 	glm::mat4 mNoseMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 1.75, radius * 0.75)) * glm::rotate(glm::mat4(1), glm::radians(90.0f), glm::vec3(1, 0, 0));
 	mNose->setModelMat(mNoseMat);
 	mNose->setColor(glm::vec4(1, 165 / 255.0, 0, 1));
 	addEntity(mNose);
 
+	//Sombrero
 	mHat = new CompoundEntity();
 	addEntity(mHat);
 
+	//Objetos del sombrero
 	mDiskUp = new Disk(radius, 0, radius * 0.1, radius * 0.3);
 	glm::mat4 mDiskUpMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 2.3, 0));
 	mDiskUp->setModelMat(mDiskUpMat);

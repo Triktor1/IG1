@@ -11,12 +11,17 @@ Scene8::init() {
 	dathomir->setColor(glm::vec4(171/255.0f, 33/255.0f, 72/255.0f, 1));
 	gOpaqueObjects.push_back(dathomir);
 
+	//Nodo fantasma
 	node = new CompoundEntity();
 	gOpaqueObjects.push_back(node);
 
+	//Parámetros del Droid
 	GLdouble droidRadius = 20.0f;
+	
+	//Droide
 	droid = new Droid(droidRadius);
 
+	//Ponemos droide encima del dathomir (1/2 radio del dathomir + 1/2 radio del droide (bola + cabeza))
 	glm::mat4 droidMat = droid->modelMat() * glm::translate(glm::mat4(1), glm::vec3(0, dathomirRadius + droidRadius * 0.75,0));
 	droid->setModelMat(droidMat);
 	node->addEntity(droid);
@@ -30,6 +35,8 @@ Scene8::rotate() {
 void
 Scene8::orbit() {
 	GLfloat factor = 2.0f;
+
+	//Rotación de la esfera del droide por separado del resto de objetos
 	droid->rotateSphere(factor * 10);
 	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
 	node->setModelMat(nodeMat);

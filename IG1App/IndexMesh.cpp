@@ -128,6 +128,7 @@ IndexMesh::generateIndexedBox8(GLdouble l) {
 	mesh->vVertices.emplace_back(-l / 2, l / 2, -l / 2);
 	mesh->vVertices.emplace_back(-l / 2, -l / 2, -l / 2);
 
+	//Índices en el orden correcto
 	mesh->vIndexes = {
 		2, 1, 0, 3, 1, 2,
 		4, 3, 2, 5, 3, 4,
@@ -184,6 +185,7 @@ IndexMesh::generateIndexedBox(GLdouble l) {
 	mesh->vVertices.emplace_back(l / 2, -l / 2, l / 2);
 	mesh->vVertices.emplace_back(l / 2, -l / 2, -l / 2);
 
+	//Índices en el orden correcto
 	mesh->vIndexes = {
 		1, 0, 2, 2, 3, 1,
 		4, 7, 5, 7, 4, 6,
