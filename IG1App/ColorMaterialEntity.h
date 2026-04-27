@@ -1,14 +1,15 @@
 #ifndef _H_ColorMaterialEntity_H
 #define _H_ColorMaterialEntity_H
-#include "SingleColorEntity.h"
+#include "EntityWithMaterial.h"
 class ColorMaterialEntity :
-    public SingleColorEntity
+    public EntityWithMaterial
 {
 private:
     static bool mShowNormals;
 public:
-    ColorMaterialEntity();
+    ColorMaterialEntity(const glm::vec4& color = glm::vec4(1, 1, 1, 1));
     void render(const glm::mat4& modelViewMat) const override;
 	static void toggleNormals() { mShowNormals = !mShowNormals; }
+    void setColor(glm::vec4);
 };
 #endif

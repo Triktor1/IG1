@@ -29,3 +29,11 @@ Material::setCopper()
 	specular = {0.256777, 0.137622, 0.086014};
 	expF = 12.8;
 }
+
+void Material::setGold()
+{
+	ambient = { 0.24725f, 0.1995f, 0.0745f };
+	diffuse = { 0.75164f, 0.60648f, 0.22648f };
+	specular = { 0.628281f, 0.555802f, 0.366065f };
+	expF = 51.2f;
+}

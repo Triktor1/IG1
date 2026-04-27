@@ -2,8 +2,8 @@
 
 bool ColorMaterialEntity::mShowNormals = false;
 
-ColorMaterialEntity::ColorMaterialEntity() :
-	SingleColorEntity()
+ColorMaterialEntity::ColorMaterialEntity(const glm::vec4& color) :
+	EntityWithMaterial(new Material(color))
 {
 	mShader = Shader::get("simple_light");
 }
@@ -14,7 +14,7 @@ void ColorMaterialEntity::render(const glm::mat4& modelViewMat) const
 		mShader->use();
 		glm::mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		upload(aMat);
-		mShader->setUniform("color", mColor);
+		material->upload(*mShader);
 		mMesh->render();
 
 		if (mShowNormals) {
@@ -23,4 +23,10 @@ void ColorMaterialEntity::render(const glm::mat4& modelViewMat) const
 			mMesh->render();
 		}
 	}
+}
+
+void ColorMaterialEntity::setColor(glm::vec4 color = glm::vec4(1, 1, 1, 1)) {
+	material->setAmb(color);
+	material->setDiff(color);
+	material->setSpec(color);
 }
