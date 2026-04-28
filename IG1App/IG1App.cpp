@@ -270,6 +270,7 @@ IG1App::key(unsigned int key)
 	case 'g':
 		mScenes[mCurrentScene]->orbit();
 		break;
+	case 'r': {
 		Scene* scene = mScenes[mCurrentScene];
 		for (Light* el : scene->getLights()) el->setEnabled(!el->enabled());
 		break;
