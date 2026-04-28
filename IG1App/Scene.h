@@ -27,6 +27,7 @@
 #include "SphereWithTexture.h"
 #include "Snowman.h"
 #include "Droid.h"
+#include "Light.h"
 
 #include <vector>
 
@@ -58,9 +59,13 @@ protected:
 	void setGL();
 	void resetGL();
 
+	void uploadLights(Camera const& cam) const;
+
 	std::vector<Abs_Entity*> gOpaqueObjects; // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTranslucentObjects; // Entities (graphic objects) of the scene
 	std::vector<Texture*> gTextures; // Textures of the scene
+
+	std::vector<Light*> gLights;
 };
 
 #endif //_H_Scene_H_

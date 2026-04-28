@@ -43,6 +43,11 @@ Scene::destroy()
 		delete tex;
 
 	gTextures.clear();
+
+	for (Light* light : gLights)
+		delete light;
+
+	gLights.clear();
 }
 
 void
@@ -62,6 +67,9 @@ Scene::unload()
 		obj->unload();
 	for (Abs_Entity* obj : gTranslucentObjects)
 		obj->unload();
+
+	for (Light* light : gLights)
+		light->unload(*Shader::get("simple_light"));
 }
 
 void
@@ -87,6 +95,8 @@ Scene::render(Camera const& cam) const
 {
 	cam.upload();
 
+	uploadLights(cam);
+
 	//Renderizamos antes los objetos opacos y luego los translúcidos
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
@@ -99,5 +109,12 @@ Scene::render(Camera const& cam) const
 void Scene::update() {
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->update();
+	}
+}
+
+
+void Scene::uploadLights(Camera const& cam) const{
+	for (Light* el : gLights) {
+		el->upload(*Shader::get("simple_light"),cam.viewMat());
 	}
 }

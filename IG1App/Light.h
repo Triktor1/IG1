@@ -2,6 +2,7 @@
 #define _H_Light_H
 
 #include <string>
+#include <vector>
 
 #include "Shader.h"
 #include <glm/glm.hpp>
@@ -33,6 +34,7 @@ protected:
 	glm::vec3 ambient = {0.1, 0.1, 0.1};
 	glm::vec3 diffuse = {0.5, 0.5, 0.5};
 	glm::vec3 specular = {0.5, 0.5, 0.5};
+
 };
 
 class DirLight : public Light {
