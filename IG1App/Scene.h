@@ -53,6 +53,8 @@ public:
 
 	virtual void rotate() {};
 	virtual void orbit() {};
+
+	std::vector<Light*> getLights() { return gLights; };
 protected:
 	void destroy();
 

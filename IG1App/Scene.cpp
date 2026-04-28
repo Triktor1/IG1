@@ -17,6 +17,13 @@ Scene::init()
 	// Graphics objects (entities) of the scene
 	gOpaqueObjects.push_back(new RGBAxes(400.0));
 
+	DirLight* dirLight = new DirLight(0);
+	dirLight->setDirection(glm::vec3(1.0f, 1.0f, 1.0f));
+	dirLight->setAmb(glm::vec3(0.25f));
+	dirLight->setDiff(glm::vec3(0.6f));
+	dirLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+
+	gLights.push_back(dirLight);
 }
 
 Scene::~Scene()
