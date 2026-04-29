@@ -8,8 +8,9 @@ protected:
     Material* material;
 
 public:
-    EntityWithMaterial(Material* m);
+    EntityWithMaterial();
     ~EntityWithMaterial();
+    void render(const glm::mat4& modelViewMat) const override;
     Material* getMaterial() { return material; }
 };
 
