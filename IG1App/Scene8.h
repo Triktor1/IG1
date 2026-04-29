@@ -12,9 +12,10 @@ public:
 	virtual ~Scene8() = default;
 
 	void init() override;
+	bool handleKey(unsigned char key) override;
 		
-	void rotate() override;
-	void orbit() override;
+	void rotate();
+	void orbit();
 
 private:
 	CompoundEntity* node = nullptr;

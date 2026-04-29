@@ -64,7 +64,7 @@ Scene::load()
 		obj->load();
 	for (Abs_Entity* obj : gTranslucentObjects)
 		obj->load();
-	
+
 }
 
 void
@@ -120,11 +120,22 @@ void Scene::update() {
 }
 
 
-void Scene::uploadLights(Camera const& cam) const{
+void Scene::uploadLights(Camera const& cam) const {
 	Shader* shader = Shader::get("light");
 	shader->use();
 	for (Light* el : gLights)
 	{
 		el->upload(*shader, cam.viewMat());
 	}
+}
+
+bool Scene::handleKey(unsigned char key) {
+	bool need_redisplay = false;
+	switch (key) {
+	case 'r':
+		for (Light* el : getLights()) el->setEnabled(!el->enabled());
+		need_redisplay = true;
+		break;
+	}
+	return need_redisplay;
 }

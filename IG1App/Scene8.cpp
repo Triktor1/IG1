@@ -41,3 +41,21 @@ Scene8::orbit() {
 	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
 	node->setModelMat(nodeMat);
 }
+
+bool
+Scene8::handleKey(unsigned char key) {
+	bool need_redisplay = false;
+	switch (key) {
+	case 'f':
+		orbit();
+		need_redisplay = true;
+		break;
+	case 'g':
+		rotate();
+		need_redisplay = true;
+		break;
+	default:
+		need_redisplay = Scene::handleKey(key);
+	}
+	return need_redisplay;
+}

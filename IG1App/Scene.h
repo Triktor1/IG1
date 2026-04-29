@@ -51,8 +51,7 @@ public:
 
 	virtual void update();
 
-	virtual void rotate() {};
-	virtual void orbit() {};
+	virtual bool handleKey(unsigned char key);
 
 	std::vector<Light*> getLights() { return gLights; };
 protected:

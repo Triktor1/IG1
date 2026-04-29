@@ -230,7 +230,6 @@ IG1App::key(unsigned int key)
 			mScenes[mCurrentScene]->update();
 			mNeedsRedisplay = true;
 		}
-
 		break;
 	case 'U':
 		mUpdateEnabled = !mUpdateEnabled;
@@ -259,28 +258,20 @@ IG1App::key(unsigned int key)
 		break;
 		//CAMBIO DE PROYECCION
 	case 'p':
-        mCamera->changePrj();
+		mCamera->changePrj();
 		break;
-	case 'N':		
+	case 'N':
 		ColorMaterialEntity::toggleNormals();
 		break;
-	case 'f':
-		mScenes[mCurrentScene]->rotate();
-		break;
-	case 'g':
-		mScenes[mCurrentScene]->orbit();
-		break;
-	case 'r': {
-		Scene* scene = mScenes[mCurrentScene];
-		for (Light* el : scene->getLights()) el->setEnabled(!el->enabled());
-		break;
-	}
 	default:
 		if (key >= '0' && key <= '9') {
 			if (changeScene(key - '0')) break;
 			cout << "[NOTE] There is no scene " << char(key) << ".\n";
+			need_redisplay = false;
 		}
-		need_redisplay = false;
+		else {
+			need_redisplay = mScenes[mCurrentScene]->handleKey(key);
+		}
 		break;
 	} // switch
 
@@ -372,7 +363,7 @@ void IG1App::takeScreenshot(std::string name, GLuint width, GLuint height, GLuin
 void IG1App::mouse(int button, int state, int mods) {
 	if (mMouseButt == button) mMouseButt = -1;
 	else mMouseButt = button;
-	
+
 	double x, y;
 	glfwGetCursorPos(mWindow, &x, &y);
 	int height;
