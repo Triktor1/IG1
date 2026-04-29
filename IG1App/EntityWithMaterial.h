@@ -11,6 +11,7 @@ public:
     EntityWithMaterial();
     ~EntityWithMaterial();
     void render(const glm::mat4& modelViewMat) const override;
-    Material* getMaterial() { return material; }
+    Material* getMaterial() const { return material; }
+	void setMaterial(const Material& m) { *material = m; }
 };
 

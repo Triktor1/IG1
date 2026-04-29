@@ -5,8 +5,8 @@ bool ColorMaterialEntity::mShowNormals = false;
 ColorMaterialEntity::ColorMaterialEntity(const glm::vec4& color) :
 	EntityWithMaterial()
 {
-	mShader = Shader::get("simple_light");
-	//setMaterial(Material(color));
+	//mShader = Shader::get("simple_light");
+	setMaterial(Material(color));
 }
 
 void ColorMaterialEntity::render(const glm::mat4& modelViewMat) const
