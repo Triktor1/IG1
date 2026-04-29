@@ -14,7 +14,7 @@ Scene10::init() {
     //paltnea dorado
     Sphere* goldPlanet = new Sphere(50, 20, 20);
     goldPlanet->setModelMat(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 150)));
-    goldPlanet->getMaterial()->setGold();
+    goldPlanet->getMaterial().setGold();
 
     gOpaqueObjects.push_back(goldPlanet);
 }

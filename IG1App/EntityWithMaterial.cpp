@@ -9,10 +9,9 @@ EntityWithMaterial::render(const glm::mat4& modelViewMat) const
 {
     mShader->use();
     // Carga los atributos del material en la GPU
-    material->upload(*mShader);
+    material.upload(*mShader);
     upload(modelViewMat * mModelMat);
     mMesh->render();
 }
 EntityWithMaterial::~EntityWithMaterial(){
-    delete material;
 }
