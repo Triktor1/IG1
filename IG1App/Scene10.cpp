@@ -13,6 +13,7 @@ Scene10::init() {
 
     //paltnea dorado
     Sphere* goldPlanet = new Sphere(50, 20, 20);
+    goldPlanet->setColor(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
     goldPlanet->setModelMat(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 150)));
     goldPlanet->getMaterial().setGold();
 
