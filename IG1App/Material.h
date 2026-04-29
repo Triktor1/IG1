@@ -7,7 +7,6 @@
 class Material
 {
 public:
-	Material() = default;
 	Material(glm::vec3 color = glm::vec4(1.0f), float shininess = 8.0); // color material
 
 	virtual ~Material() = default;
