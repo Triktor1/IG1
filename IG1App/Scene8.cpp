@@ -36,6 +36,9 @@ Scene8::init() {
 	spotLight->setEnabled(true);
 	gLights.push_back(spotLight);
 
+	droidLight = new SpotLight(glm::vec3(0, dathomirRadius + droidRadius * 0.1, 0), 1);
+	droidLight->setEnabled(true);
+	gLights.push_back(droidLight);
 }
 
 void
