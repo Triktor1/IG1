@@ -31,6 +31,11 @@ Scene8::init() {
 	posLight->setPosition(glm::vec3(0, dathomirRadius+50, 0));
 	posLight->setEnabled(true);
 	gLights.push_back(posLight);
+
+	spotLight = new SpotLight(glm::vec3(0, 0, dathomirRadius+50), 0);
+	spotLight->setEnabled(true);
+	gLights.push_back(spotLight);
+
 }
 
 void
@@ -62,6 +67,9 @@ Scene8::handleKey(unsigned char key) {
 		break;
 	case 't':
 		posLight->setEnabled(!posLight->enabled());
+		break;
+	case 'y':
+		spotLight->setEnabled(!spotLight->enabled());
 		break;
 	default:
 		need_redisplay = Scene::handleKey(key);
