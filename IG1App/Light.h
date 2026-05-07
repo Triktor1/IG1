@@ -69,7 +69,7 @@ protected:
 };
 
 inline void
-PosLight::setPosition(const glm::vec3& pos) {
+PosLight::setPosition(const glm::fvec3& pos) {
 	position = glm::vec4(pos, 1.0);
 }
 

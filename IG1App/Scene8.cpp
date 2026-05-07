@@ -67,9 +67,11 @@ Scene8::handleKey(unsigned char key) {
 		break;
 	case 't':
 		posLight->setEnabled(!posLight->enabled());
+		need_redisplay = true;
 		break;
 	case 'y':
 		spotLight->setEnabled(!spotLight->enabled());
+		need_redisplay = true;
 		break;
 	default:
 		need_redisplay = Scene::handleKey(key);
