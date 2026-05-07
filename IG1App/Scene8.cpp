@@ -25,6 +25,12 @@ Scene8::init() {
 	glm::mat4 droidMat = droid->modelMat() * glm::translate(glm::mat4(1), glm::vec3(0, dathomirRadius + droidRadius * 0.75,0));
 	droid->setModelMat(droidMat);
 	node->addEntity(droid);
+
+	//Luz
+	posLight = new PosLight(0);
+	posLight->setPosition(glm::vec3(0, dathomirRadius+50, 0));
+	posLight->setEnabled(true);
+	gLights.push_back(posLight);
 }
 
 void
@@ -53,6 +59,9 @@ Scene8::handleKey(unsigned char key) {
 	case 'g':
 		rotate();
 		need_redisplay = true;
+		break;
+	case 't':
+		posLight->setEnabled(!posLight->enabled());
 		break;
 	default:
 		need_redisplay = Scene::handleKey(key);
