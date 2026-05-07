@@ -1,4 +1,4 @@
-#ifndef _H_Camera_H_
+﻿#ifndef _H_Camera_H_
 #define _H_Camera_H_
 
 #include <GL/glew.h>
@@ -40,7 +40,7 @@ public:
 
 	// Move camera
 	void moveLR(GLfloat cs); // A izquierda/A derecha
-	void moveFB(GLfloat cs); // Adelante/Atr�s
+	void moveFB(GLfloat cs); // Adelante/Atrás
 	void moveUD(GLfloat cs); // Arriba/Abajo
 
 	void pitchReal(GLfloat cs);

@@ -1,10 +1,10 @@
-#include "Scene6.h"
+﻿#include "Scene6.h"
 
 void 
 Scene6::init() {
 	Scene::init();
 
-	//Par�metros del Indexed Box
+	//Parámetros del Indexed Box
 	GLdouble idxBoxLength = 200;
 
 	//IndexedBox

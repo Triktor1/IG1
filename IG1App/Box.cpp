@@ -25,7 +25,7 @@ void Box::render(const glm::mat4& modelViewMat) const {
 
 		glm::mat4 tapaMat = aMat *
 			glm::translate(glm::mat4(1.0f), glm::vec3(-l / 2.0f, l / 2.0f, 0)) * //Muevo para alterar el ancla
-			glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0, 0, 1)) * //Hago la rotación
+			glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0, 0, 1)) * //Hago la rotaciÃ³n
 			glm::translate(glm::mat4(1.0f), glm::vec3(l / 2.0f, 0, 0)) * //Deshago el primer translate (solo en el eje x para mantener el ancla)
 			rotTapa;
 

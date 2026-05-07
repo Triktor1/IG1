@@ -1,10 +1,10 @@
-#include "Scene9.h"
+﻿#include "Scene9.h"
 
 void
 Scene9::init() {
 	Scene::init();
 
-	//Par�metros del Snowman
+	//Parámetros del Snowman
 	GLdouble snowmanRadius = 100;
 
 	Snowman* snowman = new Snowman(snowmanRadius);

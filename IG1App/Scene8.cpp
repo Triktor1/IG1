@@ -1,10 +1,10 @@
-#include "Scene8.h"
+ï»¿#include "Scene8.h"
 
 void 
 Scene8::init() {
 	Scene::init();
 
-	//Parámetros del Dathomir
+	//ParÃ¡metros del Dathomir
 	GLdouble dathomirRadius = 250, dathomirParallels = 30, dathomirMeridians = 20;
 
 	Sphere* dathomir = new Sphere(dathomirRadius, dathomirParallels, dathomirMeridians);
@@ -15,7 +15,7 @@ Scene8::init() {
 	node = new CompoundEntity();
 	gOpaqueObjects.push_back(node);
 
-	//Parámetros del Droid
+	//ParÃ¡metros del Droid
 	GLdouble droidRadius = 20.0f;
 	
 	//Droide
@@ -50,7 +50,7 @@ void
 Scene8::orbit() {
 	GLfloat factor = 2.0f;
 
-	//Rotación de la esfera del droide por separado del resto de objetos
+	//RotaciÃ³n de la esfera del droide por separado del resto de objetos
 	droid->rotateSphere(factor * 10);
 	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
 	node->setModelMat(nodeMat);

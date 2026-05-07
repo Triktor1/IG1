@@ -1,4 +1,4 @@
-#include "Scene.h"
+﻿#include "Scene.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -104,7 +104,7 @@ Scene::render(Camera const& cam) const
 
 	uploadLights(cam);
 
-	//Renderizamos antes los objetos opacos y luego los transl�cidos
+	//Renderizamos antes los objetos opacos y luego los translúcidos
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
 	}

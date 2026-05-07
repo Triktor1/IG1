@@ -1,4 +1,4 @@
-#include "Scene4.h"
+ï»¿#include "Scene4.h"
 
 using namespace glm;
 
@@ -16,7 +16,7 @@ Scene4::init()
 
 	Ground* ground = new Ground(groundL, groundL, 4, 4, tex);
 	gOpaqueObjects.push_back(ground);
-	//Rotado 90º para que esté paralelo al plano XZ
+	//Rotado 90Âº para que estÃ© paralelo al plano XZ
 	ground->setModelMat(glm::rotate(ground->modelMat(), glm::radians(90.0f), glm::vec3(1, 0, 0)));
 
 	// BOX
@@ -32,7 +32,7 @@ Scene4::init()
 
 	Box* box = new Box(boxL, texBox1, texBox2);
 	gOpaqueObjects.push_back(box);
-	//Movimiento de la caja para ponerla en la posición correcta
+	//Movimiento de la caja para ponerla en la posiciÃ³n correcta
 	box->setModelMat(glm::translate(box->modelMat(), glm::vec3(boxPosX, boxPosY, boxPosZ)));
 
 	// STAR
@@ -45,7 +45,7 @@ Scene4::init()
 
 	Star3D* star = new Star3D(starRe, starNp, starH, texS);
 	gOpaqueObjects.push_back(star);
-	//Movimiento de la estrella para ponerla en la posición correcta
+	//Movimiento de la estrella para ponerla en la posiciÃ³n correcta
 	star->setModelMat(glm::translate(star->modelMat(), glm::vec3(starPosX, starPosY, starPosZ)));
 
 	// PHOTO
@@ -56,7 +56,7 @@ Scene4::init()
 	
 	Photo* photo = new Photo(photoL, photoL, empty);
 	gOpaqueObjects.push_back(photo);
-	//Rotación para estar paralelo al suelo y subida para evitar el z-fighting con el suelo
+	//RotaciÃ³n para estar paralelo al suelo y subida para evitar el z-fighting con el suelo
 	photo->setModelMat(glm::rotate(photo->modelMat(), glm::radians(90.0f), glm::vec3(1, 0, 0)) *
 		glm::translate(photo->modelMat(), glm::vec3(0.0f, 0.0f, -0.1f)));
 
@@ -82,6 +82,6 @@ Scene4::init()
 
 	Grass* grass = new Grass(grassWH, grassWH, texGrass);
 	gOpaqueObjects.push_back(grass);
-	//Movimiento de la estrella para ponerla en la posición correcta
+	//Movimiento de la estrella para ponerla en la posiciÃ³n correcta
 	grass->setModelMat(glm::translate(grass->modelMat(), glm::vec3(grassPosX, grassPosY, grassPosZ)));
 }

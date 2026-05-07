@@ -1,4 +1,4 @@
-#include "Scene5.h"
+﻿#include "Scene5.h"
 
 using namespace glm;
 
@@ -7,7 +7,7 @@ Scene5::init()
 {
 	Scene::init();
 
-	//Par�metros del Torus
+	//Parámetros del Torus
 	GLdouble torus_R = 80, torus_r = 40;
 
 	//Torus

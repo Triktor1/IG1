@@ -1,4 +1,4 @@
-#include "Cube.h"
+﻿#include "Cube.h"
 
 Cube::Cube(GLdouble l, glm::vec4 color) : SingleColorEntity(color)
 {
@@ -19,7 +19,7 @@ void Cube::render(const glm::mat4& modelViewMat) const {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 		mMesh->render();
 
-		//Quitamos la cara trasera, y la repintamos con l�neas
+		//Quitamos la cara trasera, y la repintamos con líneas
 		glCullFace(GL_BACK);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();

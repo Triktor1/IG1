@@ -1,10 +1,10 @@
-#include "Scene7.h"
+﻿#include "Scene7.h"
 
 void
 Scene7::init() {
 	Scene::init();
 
-	//Par�metros del Droid
+	//Parámetros del Droid
 	GLfloat droidRadius = 150;
 
 	//Droide
