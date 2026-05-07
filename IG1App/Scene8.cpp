@@ -54,6 +54,9 @@ Scene8::orbit() {
 	droid->rotateSphere(factor * 10);
 	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
 	node->setModelMat(nodeMat);
+
+	glm::vec3 nodePos = glm::vec3(node->modelMat() * droid->modelMat() * glm::vec4(0, 0, 0, 1));
+	droidLight->setPosition(nodePos);
 }
 
 bool
@@ -74,6 +77,10 @@ Scene8::handleKey(unsigned char key) {
 		break;
 	case 'y':
 		spotLight->setEnabled(!spotLight->enabled());
+		need_redisplay = true;
+		break;
+	case 'h':
+		droidLight->setEnabled(!droidLight->enabled());
 		need_redisplay = true;
 		break;
 	default:

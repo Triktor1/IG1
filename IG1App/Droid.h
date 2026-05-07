@@ -11,8 +11,10 @@ class Droid :
     public CompoundEntity
 {
 private:
+
     Cone* hat, *eye1, *eye2;
     Disk* hatDisk;
+    CompoundEntity* head;
     SphereWithTexture* sphere;
     Texture* tx;
 public:
