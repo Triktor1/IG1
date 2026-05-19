@@ -133,7 +133,7 @@ bool Scene::handleKey(unsigned char key) {
 	bool need_redisplay = false;
 	switch (key) {
 	case 'r':
-		gLights[0]->setEnabled(!gLights[0]->enabled());
+		for (Light* el : getLights()) el->setEnabled(!el->enabled());
 		need_redisplay = true;
 		break;
 	}
