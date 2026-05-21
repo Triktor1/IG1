@@ -2,8 +2,14 @@
 #include "Light.h"
 
 CompoundEntity::~CompoundEntity() {
-    for (int i = 0; i < gObjects.size(); i++) {
-        delete gObjects[i];
+    for (Abs_Entity* entity : gObjects) {
+        delete entity;
+    }
+    for (Texture* texture : gTextures) {
+        delete texture;
+    }
+    for (Light* light : gLights) {
+        delete light;
     }
 }
 
@@ -26,12 +32,6 @@ void CompoundEntity::load() {
 void CompoundEntity::unload() {
     for (Abs_Entity* entity : gObjects) {
         entity->unload();
-    }
-    for (Texture* texture : gTextures) {
-        delete texture;
-    }
-    for (Light* light : gLights) {
-        delete light;
     }
     unloadLights();
 }

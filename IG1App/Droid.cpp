@@ -6,15 +6,16 @@
 #include "Light.h"
 
 Droid::Droid(GLdouble radius) {
+	//HEAD
+	head = new CompoundEntity();
+	addEntity(head);
+
 	//ESFERA
 	tx = new Texture();
 	tx->load("../assets/images/container.jpg", 255);
 	sphere = new SphereWithTexture(radius, 20, 20, tx);
 	addEntity(sphere);
-
-	//HEAD
-	head = new CompoundEntity();
-	addEntity(head);
+	head->addTexture(tx);
 
 	//SOMBRERO
 	hat = new Cone(radius / 2, radius / 2, radius, 10, 30);
@@ -56,7 +57,7 @@ Droid::Droid(GLdouble radius) {
 }
 
 Droid::~Droid() {
-	delete(tx);
+
 }
 
 void Droid:: rotateSphere(GLfloat factor) {
