@@ -13,6 +13,7 @@ public:
     void render(const glm::mat4& modelViewMat) const override;
     Material& getMaterial() { return material; }
 	void setMaterial(const Material& m) { material = m; }
-    }
+
+    static void toggleNormals() { mShowNormals = !mShowNormals;}
 };
 
