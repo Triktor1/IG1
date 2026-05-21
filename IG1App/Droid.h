@@ -22,7 +22,7 @@ private:
 
 public:
     Droid(GLdouble radius);
-    ~Droid();
+    ~Droid() = default;
 
     void rotateSphere(GLfloat);
     SpotLight* getSpotLight() { return droidLight; }

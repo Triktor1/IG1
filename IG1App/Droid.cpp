@@ -52,12 +52,7 @@ Droid::Droid(GLdouble radius) {
 	droidLight->setAmb(glm::vec3(0.05f));
 	droidLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
 	droidLight->setCutoff(35.0f, 35.0f);
-	gLights.push_back(droidLight);
 	head->addLight(droidLight);
-}
-
-Droid::~Droid() {
-
 }
 
 void Droid:: rotateSphere(GLfloat factor) {
