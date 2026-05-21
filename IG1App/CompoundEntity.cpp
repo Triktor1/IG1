@@ -1,4 +1,5 @@
 #include "CompoundEntity.h"
+#include "Light.h"
 
 CompoundEntity::~CompoundEntity() {
     for (int i = 0; i < gObjects.size(); i++) {
@@ -26,11 +27,28 @@ void CompoundEntity::unload() {
     for (auto& entity : gObjects) {
         entity->unload();
     }
+    unloadLights();
 }
 
 void CompoundEntity::render(const glm::mat4& modelViewMat) const {
     glm::mat4 aMat = modelViewMat * mModelMat;
     for (auto& entity : gObjects) {
         entity->render(aMat);
+    }
+}
+
+void CompoundEntity::uploadLights(glm::mat4& aMat) const {
+    Shader* shader = Shader::get("light");
+    shader->use();
+    for (Light* el : gLights) {
+        el->upload(*shader, aMat);
+    }
+}
+
+void CompoundEntity::unloadLights() const {
+    Shader* shader = Shader::get("light");
+    shader->use();
+    for (Light* l : gLights) {
+        l->unload(*shader);
     }
 }

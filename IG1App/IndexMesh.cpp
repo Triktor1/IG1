@@ -63,7 +63,7 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLf
 		}
 	}
 	for (int i = 0; i < nSamples; ++i) { // caras i a i + 1
-		GLuint nextI = (i + 1) % nSamples;
+		GLuint nextI = i + 1;
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (perfil[j].x != 0.0) // tri�ngulo inferior
 				for (auto [s, t] : { pair{i, j}, {nextI, j}, { i, j + 1 } })
