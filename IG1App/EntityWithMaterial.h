@@ -1,6 +1,6 @@
 #include "Entity.h"
 #include "Material.h"
-#include <iostream>
+
 class EntityWithMaterial :
     public Abs_Entity
 {
@@ -13,8 +13,6 @@ public:
     void render(const glm::mat4& modelViewMat) const override;
     Material& getMaterial() { return material; }
 	void setMaterial(const Material& m) { material = m; }
-
-    static void toggleNormals() { mShowNormals = !mShowNormals; std::cout << "fuck" << std::endl;
     }
 };
 

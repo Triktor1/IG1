@@ -18,7 +18,6 @@ EntityWithMaterial::render(const glm::mat4& modelViewMat) const
         shader->use();
         shader->setUniform("modelViewMat", modelViewMat * mModelMat);
         mMesh->render();
-        std::cout << "drawing normals\n";
     }
 }
 EntityWithMaterial::~EntityWithMaterial(){
