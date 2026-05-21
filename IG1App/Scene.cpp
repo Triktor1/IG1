@@ -75,8 +75,12 @@ Scene::unload()
 	for (Abs_Entity* obj : gTranslucentObjects)
 		obj->unload();
 
-	for (Light* light : gLights)
-		light->unload(*Shader::get("simple_light"));
+	Shader* shader = Shader::get("light");
+	shader->use();
+	for (Light* el : gLights)
+	{
+		el->unload(*shader);
+	}
 }
 
 void
