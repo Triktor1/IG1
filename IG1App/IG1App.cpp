@@ -261,7 +261,8 @@ IG1App::key(unsigned int key)
 		mCamera->changePrj();
 		break;
 	case 'N':
-		ColorMaterialEntity::toggleNormals();
+		EntityWithMaterial::toggleNormals();
+		
 		break;
 	default:
 		if (key >= '0' && key <= '9') {

@@ -12,6 +12,14 @@ EntityWithMaterial::render(const glm::mat4& modelViewMat) const
     material.upload(*mShader);
     upload(modelViewMat * mModelMat);
     mMesh->render();
+
+    if (mShowNormals) {
+        Shader* shader = Shader::get("normals");
+        shader->use();
+        shader->setUniform("modelViewMat", modelViewMat * mModelMat);
+        mMesh->render();
+        std::cout << "drawing normals\n";
+    }
 }
 EntityWithMaterial::~EntityWithMaterial(){
 }
