@@ -24,14 +24,21 @@ void CompoundEntity::load() {
 }
 
 void CompoundEntity::unload() {
-    for (auto& entity : gObjects) {
+    for (Abs_Entity* entity : gObjects) {
         entity->unload();
+    }
+    for (Texture* texture : gTextures) {
+        delete texture;
+    }
+    for (Light* light : gLights) {
+        delete light;
     }
     unloadLights();
 }
 
 void CompoundEntity::render(const glm::mat4& modelViewMat) const {
     glm::mat4 aMat = modelViewMat * mModelMat;
+    uploadLights(aMat);
     for (auto& entity : gObjects) {
         entity->render(aMat);
     }

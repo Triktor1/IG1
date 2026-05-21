@@ -5,7 +5,7 @@
 using namespace glm;
 
 Light::Light(std::string name)
- : lightID(std::move(name))
+ : lightID(std::move(name)), bEnabled(true)
 {
 }
 

@@ -28,17 +28,17 @@ Scene8::init() {
 
 	//Luz
 	posLight = new PosLight(0);
+	posLight->setAmb(glm::vec3(0.05f));
+	posLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	posLight->setAttenuation(0.25, 0, 0);
 	posLight->setPosition(glm::vec3(0, dathomirRadius+50, 0));
-	posLight->setEnabled(true);
 	gLights.push_back(posLight);
 
 	spotLight = new SpotLight(glm::vec3(0, 0, dathomirRadius+50), 0);
-	spotLight->setEnabled(true);
+	spotLight->setAmb(glm::vec3(0.25f));
+	spotLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	spotLight->setCutoff(60, 60);
 	gLights.push_back(spotLight);
-
-	droidLight = new SpotLight(glm::vec3(0, dathomirRadius + droidRadius * 0.1, 0), 1);
-	droidLight->setEnabled(true);
-	gLights.push_back(droidLight);
 }
 
 void
@@ -54,9 +54,6 @@ Scene8::orbit() {
 	droid->rotateSphere(factor * 10);
 	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
 	node->setModelMat(nodeMat);
-
-	glm::vec3 nodePos = glm::vec3(node->modelMat() * droid->modelMat() * glm::vec4(0, 0, 0, 1));
-	droidLight->setPosition(nodePos);
 }
 
 bool
@@ -80,7 +77,7 @@ Scene8::handleKey(unsigned char key) {
 		need_redisplay = true;
 		break;
 	case 'h':
-		droidLight->setEnabled(!droidLight->enabled());
+		droid->getSpotLight()->setEnabled(!droid->getSpotLight()->enabled());
 		need_redisplay = true;
 		break;
 	default:

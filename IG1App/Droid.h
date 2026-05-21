@@ -6,6 +6,7 @@ class Cone;
 class Disk;
 class SphereWithTexture;
 class Texture;
+class SpotLight;
 
 class Droid :
     public CompoundEntity
@@ -17,10 +18,13 @@ private:
     CompoundEntity* head;
     SphereWithTexture* sphere;
     Texture* tx;
+    SpotLight* droidLight = nullptr;
+
 public:
     Droid(GLdouble radius);
     ~Droid();
 
     void rotateSphere(GLfloat);
+    SpotLight* getSpotLight() { return droidLight; }
 };
 #endif

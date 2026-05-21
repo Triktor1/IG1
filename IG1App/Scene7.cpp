@@ -9,5 +9,6 @@ Scene7::init() {
 
 	//Droide
 	Droid* con = new Droid(droidRadius);
+	con->getSpotLight()->setEnabled(false);
 	gOpaqueObjects.push_back(con);
 }

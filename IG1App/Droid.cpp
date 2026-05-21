@@ -3,6 +3,7 @@
 #include "Cone.h"
 #include "Disk.h"
 #include "Texture.h"
+#include "Light.h"
 
 Droid::Droid(GLdouble radius) {
 	//ESFERA
@@ -43,6 +44,15 @@ Droid::Droid(GLdouble radius) {
 	eye2->setModelMat(eye2CilinderMat);
 	eye2->setColor(glm::vec4(0, 0.8, 0, 1));
 	head->addEntity(eye2);
+	
+	//LUZ
+	droidLight = new SpotLight(glm::vec3(0, 0, 0), 1);
+	droidLight->setDirection(glm::vec3(0, -1, 0));
+	droidLight->setAmb(glm::vec3(0.05f));
+	droidLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	droidLight->setCutoff(35.0f, 35.0f);
+	gLights.push_back(droidLight);
+	head->addLight(droidLight);
 }
 
 Droid::~Droid() {

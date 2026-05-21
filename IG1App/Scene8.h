@@ -21,8 +21,7 @@ private:
 	CompoundEntity* node = nullptr;
 	Droid* droid;
 	PosLight* posLight = nullptr;
-	SpotLight* spotLight = nullptr,
-		*droidLight = nullptr;
+	SpotLight* spotLight = nullptr;
 };
 #endif
 
