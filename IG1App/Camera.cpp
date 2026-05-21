@@ -25,12 +25,15 @@ Camera::Camera(Viewport* vp)
 void
 Camera::uploadVM() const
 {
-	//Shader::setUniform4All("modelView", mViewMat);
+	Shader::setUniform4All("modelView", mViewMat);
 }
 
 void
 Camera::setVM()
 {
+	vec3 dir = mEye - mLook;
+	mRadio = length(vec3(dir.x, 0, dir.z));
+	mAng = -degrees(atan2(dir.z, dir.x));
 	mViewMat = lookAt(mEye, mLook, mUp); // glm::lookAt defines the view matrix
 	setAxes();
 }
@@ -41,9 +44,6 @@ Camera::set2D()
 	mEye = { 0, 0, 500 };
 	mLook = { 0, 0, 0 };
 	mUp = { 0, 1, 0 };
-	vec3 dir = mEye - mLook;
-	mAng = degrees(atan2(dir.z, dir.x));
-	mRadio = length(vec3(dir.x, 0, dir.z));
 	setVM();
 }
 
@@ -53,9 +53,6 @@ Camera::set3D()
 	mEye = { 500, 500, 500 };
 	mLook = { 0, 10, 0 };
 	mUp = { 0, 1, 0 };
-	vec3 dir = mEye - mLook;
-	mAng = degrees(atan2(dir.z, dir.x));
-	mRadio = length(vec3(dir.x, 0, dir.z));
 	setVM();
 }
 
@@ -89,7 +86,6 @@ Camera::roll(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 0, 1.0));
 	// glm::rotate returns mViewMat * rotationMatrix
-	setAxes();
 }
 
 void
@@ -159,7 +155,7 @@ Camera::setAxes() {
 void
 Camera::moveLR(GLfloat cs) {
 	mEye += mRight * cs;
-	mLook = mEye + mFront;
+	mLook += mRight * cs;
 	setVM();
 }
 
