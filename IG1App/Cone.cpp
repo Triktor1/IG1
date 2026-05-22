@@ -1,6 +1,6 @@
 #include "Cone.h"
 
-Cone::Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples) : 
+Cone::Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples, GLfloat angleMax) : 
 ColorMaterialEntity() 
 {
 	std::vector<glm::vec2> profile;
@@ -12,5 +12,5 @@ ColorMaterialEntity()
 	}
 	
 
-	mMesh = IndexMesh::generateByRevolution(profile, nSamples);
+	mMesh = IndexMesh::generateByRevolution(profile, nSamples, angleMax);
 }

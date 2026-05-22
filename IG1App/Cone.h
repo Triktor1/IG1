@@ -3,6 +3,6 @@ class Cone :
     public ColorMaterialEntity
 {
 public:
-    Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples);
+    Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples, GLfloat angleMax = 2 * std::numbers::pi);
 };
 

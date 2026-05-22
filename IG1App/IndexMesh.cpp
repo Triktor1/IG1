@@ -100,7 +100,7 @@ IndexMesh::buildNormalVectors() {
 }
 
 IndexMesh*
-IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians) {
+IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, GLfloat angleMax) {
 	std::vector<glm::vec2> profile;
 
 	GLdouble alphaStep = 2 * std::numbers::pi / (float)nParallel;
@@ -108,7 +108,7 @@ IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians) 
 	for (int i = 0; i <= nParallel / 2; ++i) {
 		profile.emplace_back(radius * cos(alphaStep * i - alpha), radius * sin(alphaStep * i - alpha));
 	}
-	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, nMeridians);
+	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, nMeridians, angleMax);
 	return mesh;
 }
 
