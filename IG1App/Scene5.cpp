@@ -19,7 +19,7 @@ Scene5::init()
 	tex1->load("../assets/images/Zelda.bmp", 255);
 	tex2->load("../assets/images/container.jpg", 128);
 	tex3->load("../assets/images/papelE.png", 255);
-	tex4->load("../assets/images/baldosaF.png", 255);
+	tex4->load("../assets/images/baldosaF.png", 128);
 	TorusTwoTextureHor* torusHor = new TorusTwoTextureHor(tex3, tex4, torus_R, torus_r);
 	gTranslucentObjects.push_back(torusHor);
 	TorusTwoTextureVer* torusVer = new TorusTwoTextureVer(tex1, tex2, torus_R*4, torus_r);

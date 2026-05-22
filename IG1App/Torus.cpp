@@ -42,22 +42,15 @@ void TorusTwoTextureHor::render(const glm::mat4& modelViewMat) const {
 
 		upload(aMat);
 		if (mTexture != nullptr) mTexture->bind();
-		mMesh->render();
+		mMesh->render(); //TEXTURA OPACA
 		if (mTexture != nullptr) mTexture->unbind();
 
 		aMat *= glm::rotate(glm::mat4(1.0f), glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glDepthMask(GL_FALSE);
-		glEnable(GL_BLEND);
-
 		upload(aMat);
 		if (tex2 != nullptr) tex2->bind();
-		mMesh->render();
+		mMesh->render(); //TEXTURA TRANSLÚCIDA
 		if (tex2 != nullptr) tex2->unbind();
-
-		glDisable(GL_BLEND);
-		glDepthMask(GL_TRUE);
 	}
 }
 
@@ -73,17 +66,10 @@ void TorusTwoTextureVer::render(const glm::mat4& modelViewMat) const {
 		if (mTexture != nullptr) mTexture->unbind();
 
 		aMat *= glm::rotate(glm::mat4(1.0f), glm::radians(180.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glDepthMask(GL_FALSE);
-		glEnable(GL_BLEND);
 
 		upload(aMat);
 		if (tex2 != nullptr) tex2->bind();
 		mMesh->render();
 		if (tex2 != nullptr) tex2->unbind();
-
-		glDisable(GL_BLEND);
-		glDepthMask(GL_TRUE);
 	}
 }

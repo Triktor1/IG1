@@ -108,13 +108,18 @@ Scene::render(Camera const& cam) const
 
 	uploadLights(cam);
 
-	//Renderizamos antes los objetos opacos y luego los translúcidos
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
 	}
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
 	for (Abs_Entity* el : gTranslucentObjects) {
 		el->render(cam.viewMat());
 	}
+	glDisable(GL_BLEND);
+	glDepthMask(GL_TRUE);
 }
 
 void Scene::update() {
