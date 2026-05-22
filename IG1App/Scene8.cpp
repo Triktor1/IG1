@@ -43,17 +43,17 @@ Scene8::init() {
 
 void
 Scene8::rotate() {
-	node->setModelMat(glm::rotate(node->modelMat(), glm::radians(5.0f), { 0.0,1.0,0.0 }));
+	glm::mat4 droidMat = node->modelMat() * glm::rotate(glm::mat4(1.0), glm::radians(15.0f), glm::vec3(0, 1, 0));
+	node->setModelMat(droidMat);
 }
 
 void
 Scene8::orbit() {
 	GLfloat factor = 2.0f;
-
-	//Rotación de la esfera del droide por separado del resto de objetos
 	droid->rotateSphere(factor * 10);
-	glm::mat4 nodeMat = glm::rotate(node->modelMat(), glm::radians(factor), glm::vec3(1, 0, 0));
-	node->setModelMat(nodeMat);
+
+	glm::mat4 droidMat = node->modelMat() * glm::rotate(glm::mat4(1.0), glm::radians(factor), glm::vec3(1, 0, 0));
+	node->setModelMat(droidMat);
 }
 
 bool
