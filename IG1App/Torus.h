@@ -18,6 +18,7 @@ public:
 	virtual void render(const glm::mat4& modelViewMat) const override;
 private:
 	Texture* tex2;
+	bool horizontal;
 };
 
 class TorusTwoTextureVer :
