@@ -86,6 +86,7 @@ Camera::roll(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 0, 1.0));
 	// glm::rotate returns mViewMat * rotationMatrix
+	setAxes();
 }
 
 void
@@ -162,7 +163,7 @@ Camera::moveLR(GLfloat cs) {
 void
 Camera::moveFB(GLfloat cs) {
 	mEye += mFront * cs;
-	mLook = mEye + mFront;
+	mLook += cs * mRight;
 	setVM();
 }
 
