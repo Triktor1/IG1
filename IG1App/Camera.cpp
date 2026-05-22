@@ -176,8 +176,7 @@ Camera::moveUD(GLfloat cs) {
 
 void
 Camera::pitchReal(GLfloat cs) {
-	vec3 auxVec = mLook - mEye;
-	mLook = mEye + rotate(auxVec, glm::radians(cs), mRight);
+	mLook = mEye + rotate(mLook - mEye, glm::radians(cs), mRight);
 	mUp = rotate(mUp, glm::radians(cs), mRight);
 	setVM();
 }
