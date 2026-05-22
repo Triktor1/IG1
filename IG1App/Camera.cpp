@@ -163,7 +163,7 @@ Camera::moveLR(GLfloat cs) {
 void
 Camera::moveFB(GLfloat cs) {
 	mEye += mFront * cs;
-	mLook += cs * mRight;
+	mLook = mEye + mFront;
 	setVM();
 }
 
