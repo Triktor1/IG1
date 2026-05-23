@@ -133,7 +133,7 @@ IndexMesh::generateHat(GLdouble r, GLuint nParallel, GLuint nMeridians) {
 }
 
 IndexMesh*
-IndexMesh::generateHiperboloide(GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
+IndexMesh::generateHiperboloide(	GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
 	std::vector<glm::vec2> profile;
 	profile.reserve(nParallel);
 
