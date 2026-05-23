@@ -1,5 +1,7 @@
 #include "EntityWithMaterial.h"
 
+bool EntityWithMaterial::mShowNormals = false;
+
 EntityWithMaterial::EntityWithMaterial() {
 	mShader = Shader::get("light");
 }

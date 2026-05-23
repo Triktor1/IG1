@@ -49,7 +49,7 @@ void TorusTwoTextureHor::render(const glm::mat4& modelViewMat) const {
 
 		upload(aMat);
 		if (tex2 != nullptr) tex2->bind();
-		mMesh->render(); //TEXTURA TRANSLÚCIDA
+		mMesh->render(); //TEXTURA TRANSLï¿½CIDA
 		if (tex2 != nullptr) tex2->unbind();
 	}
 }

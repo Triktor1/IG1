@@ -1,4 +1,4 @@
-﻿#include "Scene.h"
+#include "Scene.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -112,9 +112,9 @@ Scene::render(Camera const& cam) const
 		el->render(cam.viewMat());
 	}
 
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_FALSE);
 	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (Abs_Entity* el : gTranslucentObjects) {
 		el->render(cam.viewMat());
 	}
