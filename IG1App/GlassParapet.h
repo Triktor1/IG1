@@ -6,6 +6,5 @@ class GlassParapet :
 {
 public:
 	GlassParapet(GLdouble l, Texture* tex1);
-	void render(const glm::mat4& modelViewMat) const override;
 };
 #endif

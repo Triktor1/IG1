@@ -112,9 +112,15 @@ Scene::render(Camera const& cam) const
 	for (Abs_Entity* el : gOpaqueObjects) {
 		el->render(cam.viewMat());
 	}
+
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (Abs_Entity* el : gTranslucentObjects) {
 		el->render(cam.viewMat());
 	}
+	glDisable(GL_BLEND);
+	glDepthMask(GL_TRUE);
 }
 
 void Scene::update() {
