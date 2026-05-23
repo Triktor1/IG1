@@ -28,6 +28,7 @@
 #include "Snowman.h"
 #include "Droid.h"
 #include "Light.h"
+#include "Exprimidor.h"
 
 #include <vector>
 

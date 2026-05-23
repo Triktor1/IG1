@@ -81,6 +81,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityWithMaterial.h" />
     <ClInclude Include="EntityWithTexture.h" />
+    <ClInclude Include="Exprimidor.h" />
     <ClInclude Include="GlassParapet.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Ground.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityWithMaterial.cpp" />
     <ClCompile Include="EntityWithTexture.cpp" />
+    <ClCompile Include="Exprimidor.cpp" />
     <ClCompile Include="GlassParapet.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Ground.cpp" />
