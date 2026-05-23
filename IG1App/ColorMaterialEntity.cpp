@@ -1,6 +1,6 @@
 #include "ColorMaterialEntity.h"
 
-bool ColorMaterialEntity::mShowNormals = false;
+
 
 ColorMaterialEntity::ColorMaterialEntity(const glm::vec4& color) :
 	EntityWithMaterial()
