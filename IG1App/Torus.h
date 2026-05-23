@@ -30,3 +30,15 @@ public:
 private:
 	Texture* tex2;
 };
+
+class Hat :
+	public ColorMaterialEntity {
+public:
+	Hat(GLdouble radius, GLuint nParallel, GLuint nMeridian);
+};
+
+class Hiperboloide :
+	public ColorMaterialEntity {
+public:
+	Hiperboloide(GLdouble radius, GLuint nParallel, GLuint nMeridian, GLfloat offset);
+};

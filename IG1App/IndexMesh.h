@@ -22,6 +22,8 @@ public:
 	static IndexMesh* generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, GLfloat angleMax = 2 * std::numbers::pi);
 	static IndexMesh* generateIndexedBox8(GLdouble l);
 	static IndexMesh* generateIndexedBox(GLdouble l);
+	static IndexMesh* generateHat(GLdouble r, GLuint nParallel, GLuint nMeridians);
+	static IndexMesh* generateHiperboloide(GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset);
 
 protected:
 	std::vector<GLuint> vIndexes;

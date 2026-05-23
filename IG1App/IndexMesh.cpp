@@ -112,6 +112,46 @@ IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, 
 	return mesh;
 }
 
+IndexMesh* 
+IndexMesh::generateHat(GLdouble r, GLuint nParallel, GLuint nMeridians) {
+	std::vector<glm::vec2> profile;
+	profile.reserve(nParallel);
+
+	GLfloat diffX = r / (nParallel - 1);
+	GLfloat diffY = (std::numbers::pi * 2) / (nParallel - 1);
+	
+	for (int i = 0; i < nParallel; ++i) {
+		GLdouble theta = std::numbers::pi * 2.0 - (diffY * i);
+
+		GLfloat x = diffX * ((nParallel-1) - i);
+		GLfloat y = r/2 * sin(theta);
+
+		profile.emplace_back(x, y);
+	}
+
+	return IndexMesh::generateByRevolution(profile, nMeridians);
+}
+
+IndexMesh*
+IndexMesh::generateHiperboloide(GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
+	std::vector<glm::vec2> profile;
+	profile.reserve(nParallel);
+
+	GLfloat diffX = (std::numbers::pi * 2) / (nParallel - 1);
+	GLfloat diffY = r*2 / (nParallel - 1);
+
+	for (int i = nParallel-1; i >= 0; i--) {
+		GLfloat theta = (diffX*i);
+		
+		GLfloat x = offset + cos(theta) * r/2;
+		GLfloat y = diffY * (nParallel - 1 - i);
+
+		profile.emplace_back(x, y);
+	}
+
+	return generateByRevolution(profile, nMeridian);
+}
+
 IndexMesh*
 IndexMesh::generateIndexedBox8(GLdouble l) {
 	IndexMesh* mesh = new IndexMesh();

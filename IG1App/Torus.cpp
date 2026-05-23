@@ -9,7 +9,7 @@ Torus::Torus(GLdouble R, GLdouble r, GLuint nPoints, GLuint nSamples, GLfloat an
 	for (int i = 0; i <= nPoints; ++i) {
 		profile.emplace_back(R + r * cos(alphaStep * i - alpha), r * sin(alphaStep * i - alpha));
 	}
-	mMesh = IndexMesh::generateByRevolution(profile, nSamples, angleMax);
+	mMesh = IndexMesh::generateByRevolution(profile, nSamples);
 }
 
 TorusTwoTextureHor::TorusTwoTextureHor(Texture* tex1, Texture* tex2, GLdouble R, GLdouble r, GLuint nPoints, GLuint nSamples) :
@@ -72,4 +72,12 @@ void TorusTwoTextureVer::render(const glm::mat4& modelViewMat) const {
 		mMesh->render();
 		if (tex2 != nullptr) tex2->unbind();
 	}
+}
+
+Hat::Hat(GLdouble radius, GLuint nParallel, GLuint nMeridian) {
+	mMesh = IndexMesh::generateHat(radius, nParallel, nMeridian);
+}
+
+Hiperboloide::Hiperboloide(GLdouble radius, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
+	mMesh = IndexMesh::generateHiperboloide(radius, nParallel, nMeridian, offset);
 }
