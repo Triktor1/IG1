@@ -31,7 +31,7 @@ public:
 	// Viewport position and size
 	Viewport const& viewPort();
 	// Camera position, view volume and projection
-	Camera const& camera();
+	Camera& camera();
 	// Graphics objects of the scene
 	Scene const& scene();
 
@@ -104,7 +104,7 @@ IG1App::viewPort()
 	return *mViewPort;
 }
 
-inline Camera const&
+inline Camera&
 IG1App::camera()
 {
 	return *mCamera;

@@ -5,6 +5,7 @@
 class Sphere;
 class Cone;
 class Disk;
+class SpotLight;
 
 class Snowman : public CompoundEntity {
 private:
@@ -16,9 +17,11 @@ private:
     Disk* hatDown, * hatUp;
     Cone* hatCyl;
 
+    SpotLight* snowLight = nullptr;
 public:
     Snowman(GLdouble radius);
     ~Snowman() = default;
 
+    SpotLight* getSpotLight() { return snowLight; };
 };
 #endif

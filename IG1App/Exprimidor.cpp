@@ -1,15 +1,15 @@
 #include "Exprimidor.h"
-#include <iostream>
 
 Exprimidor::Exprimidor(GLdouble w, GLdouble h,
     GLuint nRings, GLuint nSamples, GLfloat angleMax)
 {
     std::vector<glm::vec2> profile;
     float x, y;
-    for (int i = nRings; i > 0; --i) {
-        x = w * ((float)(i)/nRings);
-        
-        y = h * sin( 2.0 * std::numbers::pi * ((float)i / nRings));
+    float difW = w / (nRings - 1);
+    float difH = 2.0 * std::numbers::pi / (nRings - 1);
+    for (int i = nRings - 1; i >= 0; --i) {
+        x = i * difW;
+        y = h * sin( difH*i);
         
         profile.emplace_back(x, y);
     }

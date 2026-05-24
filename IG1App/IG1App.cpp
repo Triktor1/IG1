@@ -334,7 +334,13 @@ IG1App::changeScene(size_t sceneNr)
 		mScenes[mCurrentScene]->unload();
 		mCurrentScene = sceneNr;
 		mScenes[mCurrentScene]->load();
-		glm::vec4 sceneBGColor = mCurrentScene == 8 ? glm::vec4(0.0, 0.0, 0.0, 1.0) : glm::vec4(0.6, 0.7, 0.8, 1.0);
+		glm::vec4 sceneBGColor = glm::vec4(0.6, 0.7, 0.8, 1.0);
+		if (mCurrentScene == 8) {
+			sceneBGColor = glm::vec4(0.0, 0.0, 0.0, 1.0);
+		}
+		else if (mCurrentScene == 7) {
+			sceneBGColor = glm::vec4(0.1, 0.05, 0.2, 1.0);
+		}
 		mScenes[mCurrentScene]->setBGColor(sceneBGColor);
 	}
 

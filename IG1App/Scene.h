@@ -29,6 +29,7 @@
 #include "Droid.h"
 #include "Light.h"
 #include "Exprimidor.h"
+#include "Hiperbole.h"
 
 #include <vector>
 

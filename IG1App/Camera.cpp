@@ -210,3 +210,10 @@ Camera::changePrj() {
 	setPM();
 	setVM();
 }
+
+void Camera::followCamera(const glm::mat4& posMat, const glm::vec3& offset, float distance) {
+	mEye = glm::vec3(posMat[3]) + glm::vec3(posMat * glm::vec4(glm::normalize(offset), 0.0f) * distance);
+	mLook = posMat[3];
+	mUp = posMat * glm::vec4(0, 1, 0, 0);
+	setVM();
+}

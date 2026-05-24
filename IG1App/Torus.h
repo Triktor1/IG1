@@ -20,3 +20,13 @@ public:
 private:
 	Texture* mTex2;
 };
+
+class Torus2TextVer :
+	public EntityWithTexture {
+public:
+	Torus2TextVer(GLdouble R, GLdouble r, Texture* tex1, Texture* tex2, GLuint nPoints = 40, GLuint nSamples = 40);
+	void render(const glm::mat4& modelViewMat) const override;
+
+private:
+	Texture* mTex2;
+};

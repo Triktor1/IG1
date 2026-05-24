@@ -8,5 +8,12 @@ public:
 	virtual ~Scene7() = default;
 
 	void init() override;
+
+	bool handleKey(unsigned char key) override;
+	void move();
+
+private:
+	Snowman* snowm;
+	CompoundEntity* node = nullptr;
 };
 #endif

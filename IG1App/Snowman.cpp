@@ -3,6 +3,7 @@
 #include "Sphere.h"
 #include "Cone.h"
 #include "Disk.h"
+#include "Light.h"
 
 Snowman::Snowman(GLdouble radius) {
 	//HAT
@@ -59,4 +60,13 @@ Snowman::Snowman(GLdouble radius) {
 	hatUp->setModelMat(upDiskMat);
 	hatUp->setColor(glm::vec4(2, 0, 0, 1));
 	hat->addEntity(hatUp);
+
+	snowLight = new SpotLight(glm::vec3(0, 0, 0), 1);
+	snowLight->setDirection(glm::vec3(0, 0, 1));
+	snowLight->setAmb(glm::vec3(0.05f));
+	snowLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	snowLight->setCutoff(35.0f, 35.0f);
+	snowLight->setEnabled(true);
+
+	hat->addLight(snowLight);
 }

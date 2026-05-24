@@ -51,6 +51,8 @@ public:
 
 	// Change projection
 	void changePrj();
+
+	void followCamera(const glm::mat4& posMat, const glm::vec3& offset, float distance);
 protected:
 	glm::vec3 mEye = {0.0, 0.0, 500.0}; // camera's position
 	glm::vec3 mLook = {0.0, 0.0, 0.0};  // target's position
