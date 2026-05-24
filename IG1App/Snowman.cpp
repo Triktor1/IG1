@@ -5,59 +5,59 @@
 #include "Disk.h"
 
 Snowman::Snowman(GLfloat radius) {
-	//Bola de abajo
-	mDownSphere = new Sphere(radius, 30, 20);
+	//Esfera abajo
+	mDownSphere = new Sphere(radius, 20, 20);
 	mDownSphere->setColor(glm::vec4(243 / 255.0, 243 / 255.0, 243 / 255.0, 1));
 	addEntity(mDownSphere);
-
-	//Bola de arriba
-	mUpSphere = new Sphere(radius * 0.75, 30, 20);
-	glm::mat4 mUpSphereMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 1.75, 0));
-	mUpSphere->setModelMat(mUpSphereMat);
+	//Esfera arriba
+	mUpSphere = new Sphere(radius * 0.75, 20, 20);
 	mUpSphere->setColor(glm::vec4(243 / 255.0, 243 / 255.0, 243 / 255.0, 1));
+	glm::mat4 upSphereModelMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 1.75, 0));
+	mUpSphere->setModelMat(upSphereModelMat);
 	addEntity(mUpSphere);
 
-	//Ojo izquierdo
-	mLeftEye = new Cone(radius * 0.2, 0, radius * 0.15, 10, 10);
-	glm::mat4 mLeftEyeMat = glm::translate(glm::mat4(1), glm::vec3(20, radius * 2, radius * 0.75)) * glm::rotate(glm::mat4(1), glm::radians(90.0f), glm::vec3(1, 0, 0));
-	mLeftEye->setModelMat(mLeftEyeMat);
-	mLeftEye->setColor(glm::vec4(0, 128 / 255.0, 128 / 255.0, 1));
-	addEntity(mLeftEye);
-
-	//Ojo derecho
-	mRightEye = new Cone(radius * 0.2, 0, radius * 0.15, 10, 10);
-	glm::mat4 mRightEyeMat = glm::translate(glm::mat4(1), glm::vec3(-20, radius * 2, radius * 0.75)) * glm::rotate(glm::mat4(1), glm::radians(90.0f), glm::vec3(1, 0, 0));
-	mRightEye->setModelMat(mRightEyeMat);
-	mRightEye->setColor(glm::vec4(0, 128 / 255.0, 128 / 255.0, 1));
-	addEntity(mRightEye);
-
 	//Nariz
-	mNose = new Cone(radius * 0.4, 0, radius * 0.1, 10, 10);
-	glm::mat4 mNoseMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 1.75, radius * 0.75)) * glm::rotate(glm::mat4(1), glm::radians(90.0f), glm::vec3(1, 0, 0));
-	mNose->setModelMat(mNoseMat);
-	mNose->setColor(glm::vec4(1, 165 / 255.0, 0, 1));
+	mNose = new Cone(radius * 0.3, 0, radius * 0.1, 20, 20);
+	mNose->setColor(glm::vec4(1, 0.5, 0, 1));
+	glm::mat4 noseModelMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 1.75, radius * 0.75)) *
+		glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	mNose->setModelMat(noseModelMat);
 	addEntity(mNose);
+
+	//Ojo izquierdo
+	mLeftEye = new Cone(radius * 0.25, 0, radius * 0.15, 20, 20);
+	mLeftEye->setColor(glm::vec4(0, 0.5, 0.5, 1));
+	glm::mat4 leftEyeModelMat = glm::translate(glm::mat4(1), glm::vec3(radius*0.2, radius * 2, radius*0.75)) *
+		glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	mLeftEye->setModelMat(leftEyeModelMat);
+	addEntity(mLeftEye);
+	//Ojo derecho
+	mRightEye = new Cone(radius * 0.25, 0, radius * 0.15, 20, 20);
+	mRightEye->setColor(glm::vec4(0, 0.5, 0.5, 1));
+	glm::mat4 rightEyeModelMat = glm::translate(glm::mat4(1), glm::vec3(-radius * 0.2, radius * 2, radius * 0.75)) *
+		glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	mRightEye->setModelMat(rightEyeModelMat);
+	addEntity(mRightEye);
 
 	//Sombrero
 	mHat = new CompoundEntity();
 	addEntity(mHat);
-
-	//Objetos del sombrero
-	mDiskUp = new Disk(radius, 0, radius * 0.1, radius * 0.3);
-	glm::mat4 mDiskUpMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 2.3, 0));
-	mDiskUp->setModelMat(mDiskUpMat);
-	mDiskUp->setColor(glm::vec4(0, 2, 2, 1));
-	mHat->addEntity(mDiskUp);
-
-	mHatCilinder = new Cone(radius * 0.55, radius * 0.75, radius * 0.75, 10, 30);
-	glm::mat4 mHatCilinderMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 2.3, 0));
-	mHatCilinder->setModelMat(mHatCilinderMat);
-	mHatCilinder->setColor(glm::vec4(0, 0, 2, 1));
-	mHat->addEntity(mHatCilinder);
-
-	mDiskDown = new Disk(radius*0.75, 0, 10, 30);
-	glm::mat4 mDiskDownMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 2.8, 0));
-	mDiskDown->setModelMat(mDiskDownMat);
-	mDiskDown->setColor(glm::vec4(2, 0, 0, 1));
+	
+	mDiskDown = new Disk(radius, 0, 20, 20);
+	mDiskDown->setColor(glm::vec4(0, 1, 1, 1));
+	glm::mat4 diskDownModelMat = glm::translate(glm::mat4(1), glm::vec3(0, radius*2.5, 0));
+	mDiskDown->setModelMat(diskDownModelMat);
 	mHat->addEntity(mDiskDown);
+	
+	mHatCilinder = new Cone(radius * 0.4, radius * 0.8, radius * 0.8, 20, 20);
+	mHatCilinder->setColor(glm::vec4(0, 0, 1, 1));
+	glm::mat4 hatCilinderModelMat = glm::translate(glm::mat4(1), glm::vec3(0, radius*2.51, 0));
+	mHatCilinder->setModelMat(hatCilinderModelMat);
+	mHat->addEntity(mHatCilinder);
+	
+	mDiskUp = new Disk(radius*0.8, 0, 20, 20);
+	mDiskUp->setColor(glm::vec4(1, 0, 0, 1));
+	glm::mat4 diskUpModelMat = glm::translate(glm::mat4(1), glm::vec3(0, radius * 2.9, 0));
+	mDiskUp->setModelMat(diskUpModelMat);
+	mHat->addEntity(mDiskUp);
 }
