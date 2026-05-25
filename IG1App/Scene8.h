@@ -22,6 +22,7 @@ private:
 	Droid* droid;
 	PosLight* posLight = nullptr;
 	SpotLight* spotLight = nullptr;
+	bool followCamera = false;
 };
 #endif
 

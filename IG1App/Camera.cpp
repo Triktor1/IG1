@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include "Camera.h"
+#include <iostream>
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/rotate_vector.hpp>
@@ -208,5 +209,16 @@ void
 Camera::changePrj() {
 	bOrto = !bOrto;
 	setPM();
+	setVM();
+}
+
+void
+Camera::followCamera(const glm::mat4& posMat, const glm::vec3& offset, float distance) {
+	glm::vec3 objPos = glm::vec3(posMat[3]);
+	glm::vec3 rotatedDirection = glm::vec3(posMat * glm::vec4(normalize(offset), 0.0f));
+	glm::vec3 desplazamiento = rotatedDirection * distance;
+	mEye = objPos + desplazamiento;
+	mLook = objPos;
+	mUp = posMat * glm::vec4(0, 1, 0, 0);
 	setVM();
 }

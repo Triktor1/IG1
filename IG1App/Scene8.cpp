@@ -1,6 +1,7 @@
 ﻿#include "Scene8.h"
+#include "IG1App.h"
 
-void 
+void
 Scene8::init() {
 	Scene::init();
 
@@ -8,7 +9,7 @@ Scene8::init() {
 	GLdouble dathomirRadius = 250, dathomirParallels = 30, dathomirMeridians = 20;
 
 	Sphere* dathomir = new Sphere(dathomirRadius, dathomirParallels, dathomirMeridians);
-	dathomir->setColor(glm::vec4(171/255.0f, 33/255.0f, 72/255.0f, 1));
+	dathomir->setColor(glm::vec4(171 / 255.0f, 33 / 255.0f, 72 / 255.0f, 1));
 	gOpaqueObjects.push_back(dathomir);
 
 	//Nodo fantasma
@@ -17,12 +18,12 @@ Scene8::init() {
 
 	//Parámetros del Droid
 	GLdouble droidRadius = 20.0f;
-	
+
 	//Droide
 	droid = new Droid(droidRadius);
 
 	//Ponemos droide encima del dathomir (1/2 radio del dathomir + 1/2 radio del droide (bola + cabeza))
-	glm::mat4 droidMat = droid->modelMat() * glm::translate(glm::mat4(1), glm::vec3(0, dathomirRadius + droidRadius * 0.75,0));
+	glm::mat4 droidMat = droid->modelMat() * glm::translate(glm::mat4(1), glm::vec3(0, dathomirRadius + droidRadius * 0.75, 0));
 	droid->setModelMat(droidMat);
 	node->addEntity(droid);
 
@@ -31,10 +32,10 @@ Scene8::init() {
 	posLight->setAmb(glm::vec3(0.05f));
 	posLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
 	posLight->setAttenuation(0.25, 0, 0);
-	posLight->setPosition(glm::vec3(0, dathomirRadius+50, 0));
+	posLight->setPosition(glm::vec3(0, dathomirRadius + 50, 0));
 	gLights.push_back(posLight);
 
-	spotLight = new SpotLight(glm::vec3(0, 0, dathomirRadius+50), 0);
+	spotLight = new SpotLight(glm::vec3(0, 0, dathomirRadius + 50), 0);
 	spotLight->setAmb(glm::vec3(0.25f));
 	spotLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
 	spotLight->setCutoff(60, 60);
@@ -62,11 +63,23 @@ Scene8::handleKey(unsigned char key) {
 	switch (key) {
 	case 'f':
 		orbit();
+		if (followCamera)
+		{
+			glm::mat4 cameraModelMat = glm::translate(node->modelMat() * droid->modelMat(), glm::vec3(0, 0, 100));
+			IG1App::s_ig1app.camera().followCamera(cameraModelMat, glm::vec3(0, 0, -1), 300);
+		}
 		need_redisplay = true;
 		break;
 	case 'g':
 		rotate();
+		if (followCamera) {
+			glm::mat4 cameraModelMat = glm::translate(node->modelMat() * droid->modelMat(), glm::vec3(0, 0, 100));
+			IG1App::s_ig1app.camera().followCamera(cameraModelMat, glm::vec3(0, 0, -1), 300);
+		}
 		need_redisplay = true;
+		break;
+	case 'j':
+		followCamera = !followCamera;
 		break;
 	case 't':
 		posLight->setEnabled(!posLight->enabled());
