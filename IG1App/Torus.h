@@ -1,3 +1,5 @@
+#ifndef TORUS_H_
+#define TORUS_H_
 #include "ColorMaterialEntity.h"
 #include <vector>
 
@@ -7,3 +9,4 @@ class Torus :
 public:
 	Torus(GLdouble R, GLdouble r, GLuint nPoints = 40, GLuint nSamples = 40, GLfloat angleMax = 2 * std::numbers::pi, GLfloat angleMaxPoints = 2 * std::numbers::pi);
 };
+#endif

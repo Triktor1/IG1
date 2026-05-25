@@ -1,3 +1,5 @@
+#ifndef RGBCUBE_H_
+#define RGBCUBE_H_
 #include "Entity.h"
 class RGBCube :
     public EntityWithColors
@@ -10,3 +12,4 @@ public:
     void update();
 	void moveRGBCube(GLdouble x, GLdouble y, GLdouble z);
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef CONE_H
+#define CONE_H
 #include "ColorMaterialEntity.h"
 class Cone :
     public ColorMaterialEntity
@@ -5,4 +7,4 @@ class Cone :
 public:
     Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples, GLfloat angleMax = 2 * std::numbers::pi);
 };
-
+#endif

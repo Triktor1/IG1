@@ -1,3 +1,5 @@
+#ifndef RGBTRIANGLE_H_
+#define RGBTRIANGLE_H_
 #include "Entity.h"
 class RGBTriangle :
     public EntityWithColors
@@ -11,3 +13,4 @@ public:
     void update() override;
     void moveRGBTriangle(GLdouble x, GLdouble y, GLdouble z);
 };  
+#endif

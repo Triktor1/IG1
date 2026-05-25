@@ -1,3 +1,5 @@
+#ifndef SCENE2_H_
+#define SCENE2_H_
 #include "Scene.h"
 class Scene2 :
     public Scene
@@ -11,3 +13,4 @@ private:
 
 };
 
+#endif

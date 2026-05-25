@@ -1,3 +1,5 @@
+#ifndef ENTITYWITHMATERIAL_H_
+#define ENTITYWITHMATERIAL_H_
 #include "Entity.h"
 #include "Material.h"
 
@@ -17,3 +19,4 @@ public:
     static void toggleNormals() { mShowNormals = !mShowNormals;}
 };
 
+#endif
