@@ -28,6 +28,8 @@
 #include "Snowman.h"
 #include "Droid.h"
 #include "Light.h"
+#include "Corolla.h"
+#include "CorollaWithGradient.h"
 
 #include <vector>
 

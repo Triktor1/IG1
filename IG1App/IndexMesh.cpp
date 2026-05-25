@@ -42,13 +42,14 @@ IndexMesh::unload()
 }
 
 IndexMesh*
-IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLfloat angleMax) {
+IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLfloat angleMax, glm::vec4 color1, glm::vec4 color2) {
 	IndexMesh* mesh = new IndexMesh;
 	mesh->mPrimitive = GL_TRIANGLES;
 
 	int tamPerfil = perfil.size();
 	mesh->vVertices.reserve(nSamples * tamPerfil);
 	mesh->vTexCoords.reserve(nSamples * tamPerfil);
+	mesh->vColors.reserve(nSamples * tamPerfil);
 
 	// Genera los v�rtices de las muestras
 	GLdouble theta1 = angleMax / nSamples;
@@ -60,6 +61,14 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLf
 			GLfloat u = (GLfloat)i / nSamples;
 			GLfloat v = (GLfloat)j / tamPerfil;
 			mesh->vTexCoords.emplace_back(u, v);
+
+			//Añadimos vértice de color
+			GLfloat lambda = (float)j / (tamPerfil - 1);
+			glm::vec4 color = glm::vec4(lambda * color1.r + (1 - lambda) * color2.r, //Interpolación lineal del rojo
+				lambda * color1.g + (1 - lambda) * color2.g, //Interpolación lineal del verde
+				lambda * color1.b + (1 - lambda) * color2.b, //Interpolación lineal del azul
+				1);											 //Alpha siempre en 1 (obvio)
+			mesh->vColors.push_back(color);
 		}
 	}
 	for (int i = 0; i < nSamples; ++i) { // caras i a i + 1
@@ -77,6 +86,29 @@ IndexMesh::generateByRevolution(const vector<vec2>& perfil, GLuint nSamples, GLf
 	mesh->buildNormalVectors();
 	return mesh;
 }
+
+IndexMesh*
+IndexMesh::generateCorolla(GLfloat height, GLfloat width, GLuint nParallels, GLuint nStops, glm::vec4 color1, glm::vec4 color2) {
+	std::vector<glm::vec2> profile;
+
+	//Se puede hacer diffX pero no diffY ya que sus distancias no son la misma
+	float diffX = width / nParallels;
+
+	for (int i = 0; i < nParallels; i++) {
+		//Lineal de toda la vida facilico
+		float x = diffX * i;
+
+		//Se hace (i/(nParallels-1))^2, porque estará en un rango [0, 1] y se multiplica por height para
+		//pase a tener un rango [0, height]
+		float y = pow((float)i / (nParallels-1), 2) * height;
+		profile.emplace_back(x, y);
+	}
+	//Vértice extra
+	profile.emplace_back(width * 1.1, height * 0.9);
+
+	return generateByRevolution(profile, nStops, std::numbers::pi*2, color1, color2);
+}
+
 
 void
 IndexMesh::buildNormalVectors() {
@@ -112,19 +144,19 @@ IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, 
 	return mesh;
 }
 
-IndexMesh* 
+IndexMesh*
 IndexMesh::generateHat(GLdouble r, GLuint nParallel, GLuint nMeridians) {
 	std::vector<glm::vec2> profile;
 	profile.reserve(nParallel);
 
 	GLfloat diffX = r / (nParallel - 1);
 	GLfloat diffY = (std::numbers::pi * 2) / (nParallel - 1);
-	
+
 	for (int i = 0; i < nParallel; ++i) {
 		GLdouble theta = std::numbers::pi * 2.0 - (diffY * i);
 
-		GLfloat x = diffX * ((nParallel-1) - i);
-		GLfloat y = r/2 * sin(theta);
+		GLfloat x = diffX * ((nParallel - 1) - i);
+		GLfloat y = r / 2 * sin(theta);
 
 		profile.emplace_back(x, y);
 	}
@@ -133,17 +165,17 @@ IndexMesh::generateHat(GLdouble r, GLuint nParallel, GLuint nMeridians) {
 }
 
 IndexMesh*
-IndexMesh::generateHiperboloide(	GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
+IndexMesh::generateHiperboloide(GLdouble r, GLuint nParallel, GLuint nMeridian, GLfloat offset) {
 	std::vector<glm::vec2> profile;
 	profile.reserve(nParallel);
 
 	GLfloat diffX = (std::numbers::pi * 2) / (nParallel - 1);
-	GLfloat diffY = r*2 / (nParallel - 1);
+	GLfloat diffY = r * 2 / (nParallel - 1);
 
-	for (int i = nParallel-1; i >= 0; i--) {
-		GLfloat theta = (diffX*i);
-		
-		GLfloat x = offset + cos(theta) * r/2;
+	for (int i = nParallel - 1; i >= 0; i--) {
+		GLfloat theta = (diffX * i);
+
+		GLfloat x = offset + cos(theta) * r / 2;
 		GLfloat y = diffY * (nParallel - 1 - i);
 
 		profile.emplace_back(x, y);
