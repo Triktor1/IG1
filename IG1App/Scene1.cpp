@@ -1,4 +1,5 @@
 #include "Scene1.h"
+#include "Corolla.h"
 
 using namespace glm;
 
@@ -6,6 +7,10 @@ void
 Scene1::init()
 {
 	Scene::init();
-	gOpaqueObjects.push_back(new RegularPolygon(6, 300.0, vec4(1, 0, 1, 1)));
-	gOpaqueObjects.push_back(new RegularPolygon(50, 300.0, vec4(1, 1, 0, 1)));
+
+	float corW = 100.0, corH = 100.0;
+	Corolla* cor = new Corolla(corW, corH, 100, 100);
+
+	gOpaqueObjects.push_back(cor);
+
 }

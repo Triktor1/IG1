@@ -113,6 +113,23 @@ IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, 
 }
 
 IndexMesh*
+IndexMesh::generateCorolla(GLfloat w, GLfloat h, GLuint points, GLuint Samples) {
+	std::vector<glm::vec2> profile;
+	float x, y;
+	float wOff = w / points;
+	profile.emplace_back(1.1 * w, 0.9 * h);
+
+	for (int i = points - 1; i > 0; --i) {
+		x = wOff * i;
+		y = pow((float)i / (points - 1), 2) * h;
+		profile.emplace_back(x, y);
+	}
+	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, Samples);
+	return mesh;
+}
+
+
+IndexMesh*
 IndexMesh::generateIndexedBox8(GLdouble l) {
 	IndexMesh* mesh = new IndexMesh();
 	mesh->mPrimitive = GL_TRIANGLES;
