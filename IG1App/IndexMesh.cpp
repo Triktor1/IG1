@@ -115,6 +115,7 @@ IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, 
 IndexMesh*
 IndexMesh::generateCorolla(GLfloat w, GLfloat h, GLuint points, GLuint Samples) {
 	std::vector<glm::vec2> profile;
+	profile.reserve(points + 1);
 	float x, y;
 	float wOff = w / points;
 	profile.emplace_back(1.1 * w, 0.9 * h);
@@ -128,6 +129,31 @@ IndexMesh::generateCorolla(GLfloat w, GLfloat h, GLuint points, GLuint Samples) 
 	return mesh;
 }
 
+IndexMesh*
+IndexMesh::generateCorollaGradient(GLfloat w, GLfloat h, GLuint points, GLuint Samples) {
+	std::vector<glm::vec2> profile;
+	profile.reserve(points + 1);
+	float x, y;
+	float wOff = w / points;
+	profile.emplace_back(1.1 * w, 0.9 * h);
+
+	for (int i = points - 1; i > 0; --i) {
+		x = wOff * i;
+		y = pow((float)i / (points - 1), 2) * h;
+		profile.emplace_back(x, y);
+	}
+	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, Samples);
+
+	mesh->vColors.reserve((points + 1) * Samples);
+	float colorDiff = 255 / (points - 1);
+
+	for (int i = 0; i <= Samples; i++) {
+		for (int j = 0; j < points; j++) {
+			mesh->vColors.emplace_back(glm::vec4((float)(255-colorDiff*j)/255.0, 0, (float)(colorDiff * j)/255.0, 1));
+		}
+	}
+	return mesh;
+}
 
 IndexMesh*
 IndexMesh::generateIndexedBox8(GLdouble l) {

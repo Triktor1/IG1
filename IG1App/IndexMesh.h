@@ -21,6 +21,7 @@ public:
 	static IndexMesh* generateByRevolution(const std::vector<glm::vec2>& profile, GLuint nSamples, GLfloat angleMax = 2 * std::numbers::pi);
 	static IndexMesh* generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians, GLfloat angleMax = 2 * std::numbers::pi);
 	static IndexMesh* generateCorolla(GLfloat w, GLfloat h, GLuint points = 40, GLuint Samples = 40);
+	static IndexMesh* generateCorollaGradient(GLfloat w, GLfloat h, GLuint points = 40, GLuint Samples = 40);
 	static IndexMesh* generateIndexedBox8(GLdouble l);
 	static IndexMesh* generateIndexedBox(GLdouble l);
 
